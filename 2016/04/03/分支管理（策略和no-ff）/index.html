@@ -64,7 +64,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="git," />
 
 
 
@@ -80,13 +80,21 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="xybCoder博客">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta name="description" content="通常，合并分支时，如果可能，Git会用Fast forward模式，但这种模式下，删除分支后，会丢掉分支信息。 如果要强制禁用Fast forward模式，Git就会在merge时生成一个新的commit，这样，从分支历史上就可以看出分支信息。 下面我们实战一下–no-ff方式的git merge： 首先，仍然创建并切换dev分支： 12$ git checkout -b devSwitched">
+<meta name="keywords" content="git">
+<meta property="og:type" content="article">
+<meta property="og:title" content="分支管理（策略和no-ff）">
+<meta property="og:url" content="http://yoursite.com/2016/04/03/分支管理（策略和no-ff）/index.html">
 <meta property="og:site_name" content="xybCoder博客">
+<meta property="og:description" content="通常，合并分支时，如果可能，Git会用Fast forward模式，但这种模式下，删除分支后，会丢掉分支信息。 如果要强制禁用Fast forward模式，Git就会在merge时生成一个新的commit，这样，从分支历史上就可以看出分支信息。 下面我们实战一下–no-ff方式的git merge： 首先，仍然创建并切换dev分支： 12$ git checkout -b devSwitched">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/images/master_8.png">
+<meta property="og:image" content="http://yoursite.com/images/master_9.png">
+<meta property="og:updated_time" content="2016-04-03T10:53:48.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="xybCoder博客">
+<meta name="twitter:title" content="分支管理（策略和no-ff）">
+<meta name="twitter:description" content="通常，合并分支时，如果可能，Git会用Fast forward模式，但这种模式下，删除分支后，会丢掉分支信息。 如果要强制禁用Fast forward模式，Git就会在merge时生成一个新的commit，这样，从分支历史上就可以看出分支信息。 下面我们实战一下–no-ff方式的git merge： 首先，仍然创建并切换dev分支： 12$ git checkout -b devSwitched">
+<meta name="twitter:image" content="http://yoursite.com/images/master_8.png">
 
 
 
@@ -104,7 +112,7 @@
   };
 </script>
 
-  <title> xybCoder博客 </title>
+  <title> 分支管理（策略和no-ff） | xybCoder博客 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -135,9 +143,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-right 
-   page-home 
- ">
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -240,9 +246,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
   
@@ -262,368 +268,7 @@
             
             
               
-                
-                <a class="post-title-link" href="/2017/08/05/hello-world/" itemprop="url">
-                  博客管理环境从Windows迁移到Mac
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-08-05T12:48:45+08:00" content="2017-08-05">
-              2017-08-05
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2017/08/05/hello-world/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/08/05/hello-world/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in 
-          ...
-
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2017/08/05/hello-world/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-    
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/04/03/标签管理/" itemprop="url">
-                  标签管理
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-04-03T20:46:16+08:00" content="2016-04-03">
-              2016-04-03
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/git/" itemprop="url" rel="index">
-                    <span itemprop="name">git</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/04/03/标签管理/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/03/标签管理/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          发布一个版本时，我们通常先在版本库中打一个标签，这样，就唯一确定了打标签时刻的版本。将来无论什么时候，取某个标签的版本，就是把那个打标签的时刻的历史版本取出来。所以，标签也是版本库的一个快照。
-Git的标签虽然是版本库的快照，但其实它就是指向某个commit的指针（跟分支很像对不对？但是分支可以移动
-          ...
-
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/04/03/标签管理/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-    
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/04/03/分支管理（创建与合并分支）/" itemprop="url">
-                  分支管理（创建与合并分支）
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-04-03T19:01:38+08:00" content="2016-04-03">
-              2016-04-03
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/git/" itemprop="url" rel="index">
-                    <span itemprop="name">git</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/04/03/分支管理（创建与合并分支）/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/03/分支管理（创建与合并分支）/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          原理分析在版本回退里，我们知道，每次提交，Git都把它们串成一条时间线，这条时间线就是一个分支。到目前我们只有一条时间线，在Git里，这个分支叫主分支，即master分支。HEAD严格来说不是指向提交，而是指向master，master才是指向提交的，所以，HEAD指向的就是当前分支。
-一开始的时候
-          ...
-
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/04/03/分支管理（创建与合并分支）/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-    
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/04/03/分支管理（策略和no-ff）/" itemprop="url">
-                  分支管理（策略和no-ff）
-                </a>
+                分支管理（策略和no-ff）
               
             
           </h1>
@@ -678,132 +323,10 @@ Git的标签虽然是版本库的快照，但其实它就是指向某个commit�
           
 
           
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          通常，合并分支时，如果可能，Git会用Fast forward模式，但这种模式下，删除分支后，会丢掉分支信息。
-如果要强制禁用Fast forward模式，Git就会在merge时生成一个新的commit，这样，从分支历史上就可以看出分支信息。
-下面我们实战一下–no-ff方式的git merge：
-          ...
-
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/04/03/分支管理（策略和no-ff）/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-    
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/04/03/分支管理（解决冲突）/" itemprop="url">
-                  分支管理（解决冲突）
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-04-03T18:16:24+08:00" content="2016-04-03">
-              2016-04-03
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
               &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
+              <span class="page-pv">本文总阅读量
+              <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
               </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/git/" itemprop="url" rel="index">
-                    <span itemprop="name">git</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/04/03/分支管理（解决冲突）/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/03/分支管理（解决冲突）/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
           
         </div>
       </header>
@@ -816,183 +339,107 @@ Git的标签虽然是版本库的快照，但其实它就是指向某个commit�
       
 
       
-        
-          
-          分支的合并不是一帆风顺的，下面就来演示下冲突解决。
-准备新的feature1分支，继续我们的新分支开发：
-12$ git checkout -b feature1Switched to a new branch 'feature1'
-修改README.md文件，加一句：
-1Creating a ne
-          ...
+        <p>通常，合并分支时，如果可能，Git会用Fast forward模式，但这种模式下，删除分支后，会丢掉分支信息。</p>
+<p>如果要强制禁用Fast forward模式，Git就会在merge时生成一个新的commit，这样，从分支历史上就可以看出分支信息。</p>
+<p>下面我们实战一下–no-ff方式的git merge：</p>
+<p>首先，仍然创建并切换dev分支：</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ git checkout -<span class="selector-tag">b</span> dev</div><div class="line">Switched to <span class="selector-tag">a</span> new branch <span class="string">'dev'</span></div></pre></td></tr></table></figure>
+<p>修改README.md文件，并提交一个新的commit：<br><figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ git <span class="keyword">add</span><span class="bash"> README.md</span></div><div class="line"><span class="bash">$ git commit -m <span class="string">"add merge"</span></span></div><div class="line"><span class="bash">[dev 6224937] add merge</span></div><div class="line"><span class="bash"> 1 file changed, 1 insertion(+)</span></div></pre></td></tr></table></figure></p>
+<p>现在，我们切换回master：</p>
+<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ git checkout <span class="literal">master</span></div><div class="line">Switched to branch '<span class="literal">master</span>'</div></pre></td></tr></table></figure>
+<p>准备合并dev分支，请注意–no-ff参数，表示禁用Fast forward：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ git <span class="keyword">merge</span> <span class="comment">--no-ff -m "merge with no-ff" dev</span></div><div class="line"><span class="keyword">Merge</span> made <span class="keyword">by</span> the <span class="string">'recursive'</span> strategy.</div><div class="line"> readme.txt |    <span class="number">1</span> +</div><div class="line"> <span class="number">1</span> <span class="keyword">file</span> <span class="keyword">changed</span>, <span class="number">1</span> insertion(+)</div></pre></td></tr></table></figure></p>
+<p>因为本次合并要创建一个新的commit，所以加上-m参数，把commit描述写进去。</p>
+<p>合并后，我们用git log看看分支历史：</p>
+<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">$ git <span class="built_in">log</span> <span class="comment">--graph --pretty=oneline --abbrev-commit</span></div><div class="line">*   <span class="number">5623</span>a50 <span class="built_in">merge</span> <span class="keyword">with</span> no-ff</div><div class="line">|\</div><div class="line">| * <span class="number">3425671</span> <span class="built_in">add</span> <span class="built_in">merge</span></div><div class="line">|/</div><div class="line">*   <span class="number">23</span>dd556 conflict fixed</div></pre></td></tr></table></figure>
+<p>可以看到，不使用Fast forward模式，merge后就像这样：</p>
+<p><img src="/images/master_8.png" alt="icon"></p>
+<h2 id="分支策略"><a href="#分支策略" class="headerlink" title="分支策略"></a>分支策略</h2><p>在实际开发中，我们应该按照几个基本原则进行分支管理：</p>
+<ol>
+<li>master分支应该是非常稳定的，也就是仅用来发布新版本，平时不能在上面干活；</li>
+<li>干活都在dev分支上，也就是说，dev分支是不稳定的，到某个时候，比如1.0版本发布时，再把dev分支合并到master上，在master分支发布1.0版本；</li>
+<li>你和你的小伙伴们每个人都在dev分支上干活，每个人都有自己的分支，时不时地往dev分支上合并就可以了。</li>
+</ol>
+<p>所以，团队合作开发分支图看起来就像这样：</p>
+<p><img src="/images/master_9.png" alt="icon"></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ol>
+<li>master主分支应该是非常稳定的，也就是仅用来发布新版本</li>
+<li>干活都在分支上</li>
+<li>合并分支时，加上–no-ff参数就可以用普通模式合并，合并后的历史有分支，能看出来曾经做过合并，而fast forward合并就看不出来曾经做过合并</li>
+</ol>
 
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/04/03/分支管理（解决冲突）/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
       
     </div>
     
     <div>
       
+        
+      
     </div>
 
     <div>
+      
+        
       
     </div>
 
     <footer class="post-footer">
       
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/04/03/工作区和暂存区和分支理解/" itemprop="url">
-                  工作区和暂存区和分支理解
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-04-03T17:42:52+08:00" content="2016-04-03">
-              2016-04-03
-            </time>
-          </span>
-
+        <div class="post-tags">
           
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/git/" itemprop="url" rel="index">
-                    <span itemprop="name">git</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/04/03/工作区和暂存区和分支理解/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/03/工作区和暂存区和分支理解/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
+            <a href="/tags/git/" rel="tag">#git</a>
           
         </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          
-          Git和其他版本控制系统如SVN的一个不同之处就是有暂存区（stage）的概念。工作区：就是你在电脑里能看到的目录，比如我的learngit文件夹就是一个工作区。
-前面讲了我们把文件往Git版本库里添加的时候，是分两步执行的：
-第一步是用git add把文件添加进去，实际上就是把文件修改添加到暂存区
-          ...
-
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/04/03/工作区和暂存区和分支理解/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/04/03/分支管理（解决冲突）/" rel="next" title="分支管理（解决冲突）">
+                <i class="fa fa-chevron-left"></i> 分支管理（解决冲突）
+              </a>
+            
           </div>
-        
-      
-    </div>
-    
-    <div>
-      
-    </div>
 
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/04/03/分支管理（创建与合并分支）/" rel="prev" title="分支管理（创建与合并分支）">
+                分支管理（创建与合并分支） <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
       
 
       
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </article>
 
 
-    
-  </section>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
           
 
+  <p>热评文章</p>
+  <div class="ds-top-threads" data-range="weekly" data-num-items="4"></div>
+
 
           
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/04/03/分支管理（策略和no-ff）/"
+           data-title="分支管理（策略和no-ff）" data-url="http://yoursite.com/2016/04/03/分支管理（策略和no-ff）/">
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -1012,8 +459,17 @@ Git的标签虽然是版本库的快照，但其实它就是指向某个commit�
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.png"
@@ -1166,6 +622,17 @@ Git的标签虽然是版本库的快照，但其实它就是指向某个commit�
       </section>
 
       
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#分支策略"><span class="nav-number">1.</span> <span class="nav-text">分支策略</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">2.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
 
     </div>
   </aside>
@@ -1277,6 +744,10 @@ Git的标签虽然是版本库的快照，但其实它就是指向某个commit�
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
 
   
 
