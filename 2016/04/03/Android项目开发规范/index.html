@@ -64,7 +64,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="git," />
+  <meta name="keywords" content="Android项目规范," />
 
 
 
@@ -80,20 +80,18 @@
 
 
 
-<meta name="description" content="上次我们讲了先有本地库，并关联远程库learngit,如下图。  现在，假设我们从零开发，那么最好的方式是先从远程库克隆（拉取数据）。 现在，远程库learngit已经准备好了，下一步是用命令git clone克隆一个本地库：12345678910$ git clone git@github.com:xybCoder/learngit.gitCloning into &apos;learngit&apos;...re">
-<meta name="keywords" content="git">
+<meta name="description" content="项目结构大概项目结构命名（不考虑MVP,MVVM模式）  entity： 实体集合 net：API接口 ui：包含activity包，fragment包，view包 http ：网络请求集合 utils ：工具类集合 db：数据库管理 receive：服务 base ：基类管理 BaseActivity，BaseFragment  命名规范activity和fragment命名：  采用大驼峰命名">
+<meta name="keywords" content="Android项目规范">
 <meta property="og:type" content="article">
-<meta property="og:title" content="远程库管理（克隆远程库）">
-<meta property="og:url" content="http://yoursite.com/2016/04/03/远程库管理（克隆远程库）/index.html">
+<meta property="og:title" content="Android 项目开发规范">
+<meta property="og:url" content="http://yoursite.com/2016/04/03/Android项目开发规范/index.html">
 <meta property="og:site_name" content="xybCoder博客">
-<meta property="og:description" content="上次我们讲了先有本地库，并关联远程库learngit,如下图。  现在，假设我们从零开发，那么最好的方式是先从远程库克隆（拉取数据）。 现在，远程库learngit已经准备好了，下一步是用命令git clone克隆一个本地库：12345678910$ git clone git@github.com:xybCoder/learngit.gitCloning into &apos;learngit&apos;...re">
+<meta property="og:description" content="项目结构大概项目结构命名（不考虑MVP,MVVM模式）  entity： 实体集合 net：API接口 ui：包含activity包，fragment包，view包 http ：网络请求集合 utils ：工具类集合 db：数据库管理 receive：服务 base ：基类管理 BaseActivity，BaseFragment  命名规范activity和fragment命名：  采用大驼峰命名">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/images/github3.png">
-<meta property="og:updated_time" content="2016-04-03T09:39:44.000Z">
+<meta property="og:updated_time" content="2016-04-03T13:07:40.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="远程库管理（克隆远程库）">
-<meta name="twitter:description" content="上次我们讲了先有本地库，并关联远程库learngit,如下图。  现在，假设我们从零开发，那么最好的方式是先从远程库克隆（拉取数据）。 现在，远程库learngit已经准备好了，下一步是用命令git clone克隆一个本地库：12345678910$ git clone git@github.com:xybCoder/learngit.gitCloning into &apos;learngit&apos;...re">
-<meta name="twitter:image" content="http://yoursite.com/images/github3.png">
+<meta name="twitter:title" content="Android 项目开发规范">
+<meta name="twitter:description" content="项目结构大概项目结构命名（不考虑MVP,MVVM模式）  entity： 实体集合 net：API接口 ui：包含activity包，fragment包，view包 http ：网络请求集合 utils ：工具类集合 db：数据库管理 receive：服务 base ：基类管理 BaseActivity，BaseFragment  命名规范activity和fragment命名：  采用大驼峰命名">
 
 
 
@@ -111,7 +109,7 @@
   };
 </script>
 
-  <title> 远程库管理（克隆远程库） | xybCoder博客 </title>
+  <title> Android 项目开发规范 | xybCoder博客 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -267,7 +265,7 @@
             
             
               
-                远程库管理（克隆远程库）
+                Android 项目开发规范
               
             
           </h1>
@@ -279,7 +277,7 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-04-03T17:39:44+08:00" content="2016-04-03">
+            <time itemprop="dateCreated" datetime="2016-04-03T21:07:40+08:00" content="2016-04-03">
               2016-04-03
             </time>
           </span>
@@ -293,8 +291,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/git/" itemprop="url" rel="index">
-                    <span itemprop="name">git</span>
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
                   </a>
                 </span>
 
@@ -309,8 +307,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/04/03/远程库管理（克隆远程库）/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/03/远程库管理（克隆远程库）/" itemprop="commentsCount"></span>
+                <a href="/2016/04/03/Android项目开发规范/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/03/Android项目开发规范/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -338,14 +336,53 @@
       
 
       
-        <p>上次我们讲了先有本地库，并关联远程库learngit,如下图。</p>
-<p><img src="/images/github3.png" alt="icon"></p>
-<p>现在，假设我们从零开发，那么最好的方式是先从远程库克隆（拉取数据）。</p>
-<p>现在，远程库learngit已经准备好了，下一步是用命令git clone克隆一个本地库：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span><span class="bash"> git <span class="built_in">clone</span> git@github.com:xybCoder/learngit.git</span></div><div class="line">Cloning into 'learngit'...</div><div class="line">remote: Counting objects: 3, done.</div><div class="line">remote: Total 3 (delta 0), reused 0 (delta 0)</div><div class="line">Receiving objects: 100% (3/3), done.</div><div class="line"></div><div class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">cd</span> learngit</span></div><div class="line"><span class="meta">$</span><span class="bash"> ls</span></div><div class="line">README.md</div><div class="line">test.txt</div></pre></td></tr></table></figure></p>
-<p>如果有多个人协作开发，那么每个人各自从远程克隆一份就可以了。</p>
-<p>你也许注意到，GitHub给出了SSH和HTTPS两种协议，所以还可以用 <a href="https://github.com/xybCoder/learngit.git" target="_blank" rel="external">https://github.com/xybCoder/learngit.git</a>   地址。实际上，Git支持多种协议，默认的git://使用ssh，但也可以使用https等其他协议。</p>
-<h3 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h3><p>要克隆一个仓库，首先必须知道仓库的地址，然后使用git clone命令克隆。</p>
-<p>Git支持多种协议，包括https，但通过ssh支持的原生git协议速度最快。</p>
+        <h3 id="项目结构"><a href="#项目结构" class="headerlink" title="项目结构"></a>项目结构</h3><p>大概项目结构命名（不考虑MVP,MVVM模式）</p>
+<ol>
+<li>entity： 实体集合</li>
+<li>net：API接口</li>
+<li>ui：包含activity包，fragment包，view包</li>
+<li>http ：网络请求集合</li>
+<li>utils ：工具类集合</li>
+<li>db：数据库管理</li>
+<li>receive：服务</li>
+<li>base ：基类管理 BaseActivity，BaseFragment</li>
+</ol>
+<h3 id="命名规范"><a href="#命名规范" class="headerlink" title="命名规范"></a>命名规范</h3><p>activity和fragment命名：</p>
+<ol>
+<li>采用大驼峰命名法，尽量避免缩写,如：MainActivity</li>
+</ol>
+<p>layout命名:</p>
+<ol>
+<li>activity_main</li>
+<li>fragment_account</li>
+<li>item_person</li>
+<li>include_toolbar</li>
+<li>view_progress_xx</li>
+<li>view_ppw _xx</li>
+<li>view_dialog_xx</li>
+</ol>
+<p>id命名：</p>
+<ol>
+<li>btn_send</li>
+<li>tv_name</li>
+<li>list_persons</li>
+<li>et_password</li>
+<li>frag_home</li>
+</ol>
+<p>图片资源命名：</p>
+<ol>
+<li>图标：ic_star.png</li>
+<li>启动图标：ic_launcher_calendar.png</li>
+<li>菜单图标和操作栏图标：ic_menu_archive.png</li>
+<li>状态栏图标：ic_stat_notify_msg.png</li>
+<li>标签（选项卡）的图标：ic_tab_recent.png</li>
+<li>对话框的图标：ic_dialog_info.png</li>
+</ol>
+<p>背景命名：</p>
+<ol>
+<li>bg_home.png</li>
+</ol>
+<p>同时强烈建议采用<strong><a href="http://hawstein.com/posts/google-java-style.html" target="_blank" rel="external">Google Java Style</a></strong>(译文)编码风格。</p>
 
       
     </div>
@@ -366,7 +403,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/git/" rel="tag">#git</a>
+            <a href="/tags/Android项目规范/" rel="tag">#Android项目规范</a>
           
         </div>
       
@@ -375,16 +412,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/04/03/远程库管理（添加远程库）/" rel="next" title="远程库管理（添加远程库）">
-                <i class="fa fa-chevron-left"></i> 远程库管理（添加远程库）
+              <a href="/2016/04/03/标签管理/" rel="next" title="标签管理">
+                <i class="fa fa-chevron-left"></i> 标签管理
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/04/03/工作区和暂存区和分支理解/" rel="prev" title="工作区和暂存区和分支理解">
-                工作区和暂存区和分支理解 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/08/05/hello-world/" rel="prev" title="博客管理环境从Windows迁移到Mac">
+                博客管理环境从Windows迁移到Mac <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -414,8 +451,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/04/03/远程库管理（克隆远程库）/"
-           data-title="远程库管理（克隆远程库）" data-url="http://yoursite.com/2016/04/03/远程库管理（克隆远程库）/">
+      <div class="ds-thread" data-thread-key="2016/04/03/Android项目开发规范/"
+           data-title="Android 项目开发规范" data-url="http://yoursite.com/2016/04/03/Android项目开发规范/">
       </div>
     
   </div>
@@ -608,7 +645,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#小结"><span class="nav-number">1.</span> <span class="nav-text">小结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#项目结构"><span class="nav-number">1.</span> <span class="nav-text">项目结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#命名规范"><span class="nav-number">2.</span> <span class="nav-text">命名规范</span></a></li></ol></div>
             
           </div>
         </section>
