@@ -64,7 +64,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="git," />
 
 
 
@@ -80,17 +80,18 @@
 
 
 
-<meta name="description" content="声明：本文只是作为IOS开源库的一个汇总，方便自己查找，没有任何商业目的网络1.AFNetworking作者是 NSHipster 的博主, iOS 开发界的大神级人物, 毕业于卡内基·梅隆大学, 开源了许多牛逼的项目, 这个便是其中之一, AFNetworking 采用 NSURLConnection + NSOperation, 主要方便与服务端 API 进行数据交换, 操作简单, 功能强大,">
-<meta property="og:type" content="website">
-<meta property="og:title" content="IOS开源库">
-<meta property="og:url" content="http://yoursite.com/IOS/index.html">
+<meta name="description" content="先添加一个新文件test.txt到Git并且提交：12345$ git add test.txt$ git commit -m &quot;add git.txt&quot;[master ad981a0] add git.txt 1 file changed, 0 insertions(+), 0 deletions(-) create mode 100644 git.txt 一般情况下，你通常直接在文件管理器中把">
+<meta name="keywords" content="git">
+<meta property="og:type" content="article">
+<meta property="og:title" content="删除(恢复)文件">
+<meta property="og:url" content="http://yoursite.com/2016/04/03/Git用法（删除恢复）/index.html">
 <meta property="og:site_name" content="xybCoder博客">
-<meta property="og:description" content="声明：本文只是作为IOS开源库的一个汇总，方便自己查找，没有任何商业目的网络1.AFNetworking作者是 NSHipster 的博主, iOS 开发界的大神级人物, 毕业于卡内基·梅隆大学, 开源了许多牛逼的项目, 这个便是其中之一, AFNetworking 采用 NSURLConnection + NSOperation, 主要方便与服务端 API 进行数据交换, 操作简单, 功能强大,">
+<meta property="og:description" content="先添加一个新文件test.txt到Git并且提交：12345$ git add test.txt$ git commit -m &quot;add git.txt&quot;[master ad981a0] add git.txt 1 file changed, 0 insertions(+), 0 deletions(-) create mode 100644 git.txt 一般情况下，你通常直接在文件管理器中把">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2016-04-27T11:40:14.000Z">
+<meta property="og:updated_time" content="2016-04-03T09:46:14.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="IOS开源库">
-<meta name="twitter:description" content="声明：本文只是作为IOS开源库的一个汇总，方便自己查找，没有任何商业目的网络1.AFNetworking作者是 NSHipster 的博主, iOS 开发界的大神级人物, 毕业于卡内基·梅隆大学, 开源了许多牛逼的项目, 这个便是其中之一, AFNetworking 采用 NSURLConnection + NSOperation, 主要方便与服务端 API 进行数据交换, 操作简单, 功能强大,">
+<meta name="twitter:title" content="删除(恢复)文件">
+<meta name="twitter:description" content="先添加一个新文件test.txt到Git并且提交：12345$ git add test.txt$ git commit -m &quot;add git.txt&quot;[master ad981a0] add git.txt 1 file changed, 0 insertions(+), 0 deletions(-) create mode 100644 git.txt 一般情况下，你通常直接在文件管理器中把">
 
 
 
@@ -108,13 +109,7 @@
   };
 </script>
 
-  <title>
-  
-
-  
-    IOS开源库 | xybCoder博客
-  
-</title>
+  <title> 删除(恢复)文件 | xybCoder博客 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -145,7 +140,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-right  ">
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -251,17 +246,181 @@
 
   <div id="posts" class="posts-expand">
     
-    
-      <h1 id="声明：本文只是作为IOS开源库的一个汇总，方便自己查找，没有任何商业目的"><a href="#声明：本文只是作为IOS开源库的一个汇总，方便自己查找，没有任何商业目的" class="headerlink" title="声明：本文只是作为IOS开源库的一个汇总，方便自己查找，没有任何商业目的"></a>声明：本文只是作为IOS开源库的一个汇总，方便自己查找，没有任何商业目的</h1><h2 id="网络"><a href="#网络" class="headerlink" title="网络"></a>网络</h2><p>1.<a href="https://github.com/AFNetworking/AFNetworking" target="_blank" rel="external">AFNetworking</a><br>作者是 NSHipster 的博主, iOS 开发界的大神级人物, 毕业于卡内基·梅隆大学, 开源了许多牛逼的项目, 这个便是其中之一, AFNetworking 采用 NSURLConnection + NSOperation, 主要方便与服务端 API 进行数据交换, 操作简单, 功能强大, 现在许多人都用它取代 ASIHTTPRequest<br>2.<a href="https://github.com/RestKit/RestKit" target="_blank" rel="external">RestKit</a><br>主要用于 iOS 上网络通信, 允许与 RESTful Web 服务交互, 常用于处理 API, 解析 JSON, 映射响应对象等操作, 简单易用, 方便你把所有精力都放在对数据的操作上<br>3.<a href="https://github.com/MugunthKumar/MKNetworkKit" target="_blank" rel="external">MKNetworkKit</a><br>一个轻量级网络请求框架, 完全基于 ARC, 仅有两个类, 具有自主操作多个网络请求, 更加准确的显示网络活动指标等优点</p>
-<h2 id="Json库"><a href="#Json库" class="headerlink" title="Json库"></a>Json库</h2><p>1.<a href="https://github.com/johnezang/JSONKit" target="_blank" rel="external">JSONKit</a><br>主要用于解析 JSON, 适用于 iOS6 以下环境, 自从 iOS5 开始 Apple 官方给出了 NSJSONSerialization API, 自此大家都用官方的了</p>
-<h2 id="加载网络图片"><a href="#加载网络图片" class="headerlink" title="加载网络图片"></a>加载网络图片</h2><p>1.<a href="https://github.com/rs/SDWebImage" target="_blank" rel="external">SDWebImage</a><br>作者 Olivier Poitrey 是 Dailymotion 的 CTO, 拥有多个不错的开源项目, 此项目常用于对从 Web 端接受到的图片进行缓存, 是 UIImageView 的扩展, 应用起来比较简单</p>
-<h2 id="响应式编程"><a href="#响应式编程" class="headerlink" title="响应式编程"></a>响应式编程</h2><p>2.<a href="https://github.com/ReactiveCocoa/ReactiveCocoa" target="_blank" rel="external">ReactiveCocoa</a><br>由 GitHub 工程师们开发的一个应用于 iOS 和 OS X 开发的函数响应式编程新框架, Matt 称其为 “An open source project that exemplifies this brave new era for Objective-C”</p>
-<h2 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h2><p>1.<a href="https://github.com/ccgus/fmdb" target="_blank" rel="external">FMDB</a><br>一个对 SQLite 进行封装的库, 使用起来方便, 简单</p>
-<h2 id="UI"><a href="#UI" class="headerlink" title="UI"></a>UI</h2><p>1.<a href="https://github.com/Grouper/FlatUIKit" target="_blank" rel="external">FlatUIKit</a><br>收集了很多扁平化 UI 的 iOS 组件, 方便使用<br>2.<a href="https://github.com/SVProgressHUD/SVProgressHUD" target="_blank" rel="external">SVProgressHUD</a><br>又一款轻量级的 iOS 第三方控件, 用于显示任务加载时的动画, 非常轻便, 容易使用<br>3.<a href="https://github.com/romaonthego/RESideMenu" target="_blank" rel="external">RESideMenu</a><br>作者 Roman Efimov 是雅虎的 iOS 工程师, 这个项目实现了 iOS 上的菜单侧滑效果, 创意来源于 Dribbble, 该项目支持 iOS8<br>4.<a href="https://github.com/mutualmobile/MMDrawerController" target="_blank" rel="external">MMDrawerController</a><br>一个轻量级, 易于使用的侧边抽屉导航 iOS 控件<br>5.MWPhotoBrowser<a href="https://github.com/mwaterfall/MWPhotoBrowser" target="_blank" rel="external">12</a><br>一款简单的 iOS 照片浏览控件<br>6.<a href="https://github.com/escoz/QuickDialog" target="_blank" rel="external">QuickDialog</a><br>用于快速创建复杂的 iOS 表单, 自定义了 UITableViewCell, TableView 的样式<br>7.<a href="https://github.com/samvermette/SVPullToRefresh" target="_blank" rel="external">SVPullToRefresh</a><br>一款只需一行代码便可集成上拉刷新和下拉加载的组件<br>8.<a href="https://github.com/PureLayout/PureLayout" target="_blank" rel="external">PureLayout</a><br>一个简单却强大的 AutoLayout API 库, 兼容了 Objective-C 和 Swift, 扩展了 UIView/NSView, NSArray, 和 NSLayoutConstraint</p>
-<h2 id="日志"><a href="#日志" class="headerlink" title="日志"></a>日志</h2><p>1.<a href="https://github.com/CocoaLumberjack/CocoaLumberjack" target="_blank" rel="external">CocoaLumberjack</a><br>这是 Mac 和 iOS 的一款强大的日志框架, 配置简单, 多线程, 提供更高级的 log 功能, 可用于代替默认的 NSLog 语句</p>
-<h2 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h2><p>1.<a href="https://github.com/MacDownApp/macdown" target="_blank" rel="external">MacDown</a><br>Mac OS X 下的一款开源的 Markdown 编辑器, 创意来自与 Mou, 使用 brew cask 即可完成安装</p>
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
 
     
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                删除(恢复)文件
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-04-03T17:46:14+08:00" content="2016-04-03">
+              2016-04-03
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/git/" itemprop="url" rel="index">
+                    <span itemprop="name">git</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/04/03/Git用法（删除恢复）/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/03/Git用法（删除恢复）/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+              &nbsp; | &nbsp;
+              <span class="page-pv">本文总阅读量
+              <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+              </span>
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>先添加一个新文件test.txt到Git并且提交：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$ git add test.txt</div><div class="line">$ git <span class="keyword">commit</span> -m <span class="string">"add git.txt"</span></div><div class="line">[<span class="keyword">master</span> ad981a0] <span class="keyword">add</span> git.txt</div><div class="line"> <span class="number">1</span> <span class="keyword">file</span> <span class="keyword">changed</span>, <span class="number">0</span> insertions(+), <span class="number">0</span> deletions(-)</div><div class="line"> <span class="keyword">create</span> <span class="keyword">mode</span> <span class="number">100644</span> git.txt</div></pre></td></tr></table></figure></p>
+<p>一般情况下，你通常直接在文件管理器中把没用的文件删了，或者用rm命令删了：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span><span class="bash"> rm git.txt</span></div></pre></td></tr></table></figure>
+<p>这个时候，Git知道你删除了文件，因此，工作区和版本库就不一致了，git status命令会立刻告诉你哪些文件被删除了：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">$ git status</div><div class="line">On branch master</div><div class="line">Changes not staged for <span class="keyword">commit</span>:</div><div class="line">  (<span class="keyword">use</span> <span class="string">"git add/rm &lt;file&gt;..."</span> <span class="keyword">to</span> <span class="keyword">update</span> what will be committed)</div><div class="line">  (<span class="keyword">use</span> <span class="string">"git checkout -- &lt;file&gt;..."</span> <span class="keyword">to</span> discard changes <span class="keyword">in</span> working <span class="keyword">directory</span>)</div><div class="line"></div><div class="line">        deleted:    git.txt</div><div class="line"></div><div class="line"><span class="keyword">no</span> changes added <span class="keyword">to</span> <span class="keyword">commit</span> (<span class="keyword">use</span> <span class="string">"git add"</span> <span class="keyword">and</span>/<span class="keyword">or</span> <span class="string">"git commit -a"</span>)</div></pre></td></tr></table></figure></p>
+<p>现在你有两个选择，一是确实要从版本库中删除该文件，那就用命令git rm删掉，并且git commit：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">$ git rm git.txt</div><div class="line">rm 'git.txt'</div><div class="line">$ git <span class="keyword">commit</span> -m <span class="string">"remove git.txt"</span></div><div class="line">[<span class="keyword">master</span> a31e730] remove git.txt</div><div class="line"> <span class="number">1</span> <span class="keyword">file</span> <span class="keyword">changed</span>, <span class="number">0</span> insertions(+), <span class="number">0</span> deletions(-)</div><div class="line"> <span class="keyword">delete</span> <span class="keyword">mode</span> <span class="number">100644</span> git.txt</div></pre></td></tr></table></figure></p>
+<p>现在，文件就从版本库中被删除了。</p>
+<p>另一种情况是删错了，因为版本库里还有呢，所以可以很轻松地把误删的文件恢复到最新版本:<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span><span class="bash"> git checkout -- test.txt</span></div></pre></td></tr></table></figure></p>
+<p>git checkout其实是用版本库里的版本替换工作区的版本，无论工作区是修改还是删除，都可以“一键还原”。</p>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>命令git rm用于删除一个文件。如果一个文件已经被提交到版本库，那么你永远不用担心误删，但是要小心，你只能恢复文件到最新版本，你会丢失最近一次提交后你修改的内容。</p>
+<h2 id="加深理解"><a href="#加深理解" class="headerlink" title="加深理解"></a>加深理解</h2><p>1）对于没提交到stage的修改，删除后，重新恢复，修改的内容是会直接消失的:</p>
+<p>比如你在文件中添加一个字符：‘1’，不用git add file 添加到stage，然后用rm删除后，再用git checkout －－ file恢复，恢复过来后，去看文件是没有这个字符：‘1’的。</p>
+<p>可以看出：git checkout －－ file恢复的是已经添加到stage的内容</p>
+<p>2）git rm删除的就是stage的内容；</p>
+<p>3）如果你使用了git rm之后接着使用 git commit －m “remove file”<br>则会删除master里的内容：</p>
+<p>利用git reset －－hard HEAD^可以将删除的master从回收站恢复过来；<br>然后利用git reset HEAD －－ file 从master中拷贝到stage中；<br>最后再用git checkout －－ file 从stage中拷贝到工作目录中。</p>
+<p>一、rm只删除工作区信息；</p>
+<p>使用 git checkout – file即可恢复；</p>
+<p>二、git rm 删除工作区和stage信息；</p>
+<p>1、使用git reset HEAD – file即可恢复；</p>
+<p>2、恢复步骤：</p>
+<p>1）先使用git reset HEAD – file从master中把已删除信息copy到到stage区；</p>
+<p>2）再使用git checkout – file从stage区把已删除信息copy到工作区。</p>
+<p>3）这时你就看到删除的文件又回来啦！</p>
+<p>三、git commit －m “file”删除工作区，stage和master信息；</p>
+<p>1、使用git reset –hard HEAD^即可恢复。</p>
+<p>2、恢复步骤：</p>
+<p>1）先使用git reset –hard HEAD^从master回收处恢复到master中；</p>
+<p>2）再使用git reset HeAD – file从master中把已删除信息copy到到stage区；</p>
+<p>3）最后，使用git checkout – file从stage区把已删除信息copy到工作区。</p>
+<p>4）这时你就看到删除的文件又回来啦！</p>
+
+      
+    </div>
+    
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/git/" rel="tag">#git</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/04/03/Git用法（撤销修改）/" rel="next" title="撤销修改">
+                <i class="fa fa-chevron-left"></i> 撤销修改
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/04/03/分支管理（解决冲突）/" rel="prev" title="分支管理（解决冲突）">
+                分支管理（解决冲突） <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
   </div>
 
 
@@ -275,8 +434,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="IOS/index.html"
-           data-title="IOS开源库" data-url="http://yoursite.com/IOS/index.html">
+      <div class="ds-thread" data-thread-key="2016/04/03/Git用法（删除恢复）/"
+           data-title="删除(恢复)文件" data-url="http://yoursite.com/2016/04/03/Git用法（删除恢复）/">
       </div>
     
   </div>
@@ -300,8 +459,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.png"
@@ -454,6 +622,17 @@
       </section>
 
       
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#小结"><span class="nav-number">1.</span> <span class="nav-text">小结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#加深理解"><span class="nav-number">2.</span> <span class="nav-text">加深理解</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
 
     </div>
   </aside>
@@ -565,6 +744,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
 
   
 

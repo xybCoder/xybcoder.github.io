@@ -80,21 +80,18 @@
 
 
 
-<meta name="description" content="分支的合并不是一帆风顺的，下面就来演示下冲突解决。 准备新的feature1分支，继续我们的新分支开发： 12$ git checkout -b feature1Switched to a new branch &apos;feature1&apos; 修改README.md文件，加一句： 1Creating a new branch is quick AND simple.  在feature1分支上提交： 123">
+<meta name="description" content="上篇博客已经讲解了如何提交修改的文件到git版本库，现在，再练习一次，修改README.md文件如下：12Git is very goodGit is very nice 提交：1234$ git add README.md$ git commit -m &quot;add Git is very nice&quot;On branch masternothing to commit, working directo">
 <meta name="keywords" content="git">
 <meta property="og:type" content="article">
-<meta property="og:title" content="分支管理（解决冲突）">
-<meta property="og:url" content="http://yoursite.com/2016/04/03/分支管理（解决冲突）/index.html">
+<meta property="og:title" content="版本回退">
+<meta property="og:url" content="http://yoursite.com/2016/04/03/Git用法（版本回退）/index.html">
 <meta property="og:site_name" content="xybCoder博客">
-<meta property="og:description" content="分支的合并不是一帆风顺的，下面就来演示下冲突解决。 准备新的feature1分支，继续我们的新分支开发： 12$ git checkout -b feature1Switched to a new branch &apos;feature1&apos; 修改README.md文件，加一句： 1Creating a new branch is quick AND simple.  在feature1分支上提交： 123">
+<meta property="og:description" content="上篇博客已经讲解了如何提交修改的文件到git版本库，现在，再练习一次，修改README.md文件如下：12Git is very goodGit is very nice 提交：1234$ git add README.md$ git commit -m &quot;add Git is very nice&quot;On branch masternothing to commit, working directo">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/images/master_6.png">
-<meta property="og:image" content="http://yoursite.com/images/master_7.png">
-<meta property="og:updated_time" content="2016-04-03T10:16:24.000Z">
+<meta property="og:updated_time" content="2016-04-03T09:45:48.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="分支管理（解决冲突）">
-<meta name="twitter:description" content="分支的合并不是一帆风顺的，下面就来演示下冲突解决。 准备新的feature1分支，继续我们的新分支开发： 12$ git checkout -b feature1Switched to a new branch &apos;feature1&apos; 修改README.md文件，加一句： 1Creating a new branch is quick AND simple.  在feature1分支上提交： 123">
-<meta name="twitter:image" content="http://yoursite.com/images/master_6.png">
+<meta name="twitter:title" content="版本回退">
+<meta name="twitter:description" content="上篇博客已经讲解了如何提交修改的文件到git版本库，现在，再练习一次，修改README.md文件如下：12Git is very goodGit is very nice 提交：1234$ git add README.md$ git commit -m &quot;add Git is very nice&quot;On branch masternothing to commit, working directo">
 
 
 
@@ -112,7 +109,7 @@
   };
 </script>
 
-  <title> 分支管理（解决冲突） | xybCoder博客 </title>
+  <title> 版本回退 | xybCoder博客 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -268,7 +265,7 @@
             
             
               
-                分支管理（解决冲突）
+                版本回退
               
             
           </h1>
@@ -280,7 +277,7 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-04-03T18:16:24+08:00" content="2016-04-03">
+            <time itemprop="dateCreated" datetime="2016-04-03T17:45:48+08:00" content="2016-04-03">
               2016-04-03
             </time>
           </span>
@@ -310,8 +307,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/04/03/分支管理（解决冲突）/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/03/分支管理（解决冲突）/" itemprop="commentsCount"></span>
+                <a href="/2016/04/03/Git用法（版本回退）/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/03/Git用法（版本回退）/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -339,37 +336,27 @@
       
 
       
-        <p>分支的合并不是一帆风顺的，下面就来演示下冲突解决。</p>
-<p>准备新的feature1分支，继续我们的新分支开发：</p>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ git checkout -<span class="selector-tag">b</span> feature1</div><div class="line">Switched to <span class="selector-tag">a</span> new branch <span class="string">'feature1'</span></div></pre></td></tr></table></figure>
-<p>修改README.md文件，加一句：</p>
-<figure class="highlight ada"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Creating a <span class="keyword">new</span> branch <span class="keyword">is</span> quick <span class="keyword">AND</span> simple.</div></pre></td></tr></table></figure>
-<p> 在feature1分支上提交：</p>
-<figure class="highlight routeros"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ git <span class="builtin-name">add</span> README.md </div><div class="line">$ git commit -m <span class="string">"add new branch 'feature1'"</span></div><div class="line">[feature1 75a857c] <span class="keyword">AND</span> simple</div><div class="line"> 1 file changed, 1 insertion(+), 1 deletion(-)</div></pre></td></tr></table></figure>
-<p> 切换到master分支：</p>
-<figure class="highlight livescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"> $ git checkout master</div><div class="line">Switched <span class="keyword">to</span> branch <span class="string">'master'</span></div><div class="line">Your branch <span class="keyword">is</span> ahead <span class="keyword">of</span> <span class="string">'origin/master'</span> <span class="keyword">by</span> <span class="number">1</span> commit.</div></pre></td></tr></table></figure>
-<p> Git还会自动提示我们当前master分支比远程的master分支要超前1个提交。</p>
-<p>在master分支上把README.md文件的最后一行改为：</p>
-<figure class="highlight ada"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Creating a <span class="keyword">new</span> branch <span class="keyword">is</span> quick <span class="keyword">AND</span> simple.</div></pre></td></tr></table></figure>
-<p>提交：</p>
-<figure class="highlight routeros"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ git <span class="builtin-name">add</span> README.md </div><div class="line">$ git commit -m <span class="string">"&amp; simple"</span></div><div class="line">[master 400b400] &amp; simple</div><div class="line"> 1 file changed, 1 insertion(+), 1 deletion(-)</div></pre></td></tr></table></figure>
-<p>现在，master分支和feature1分支各自都分别有新的提交，变成了这样：</p>
-<p><img src="/images/master_6.png" alt="icon"></p>
-<p>这种情况下，Git无法执行“快速合并”，只能试图把各自的修改合并起来，但这种合并就可能会有冲突，我们试试看：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ git <span class="keyword">merge</span> feature1</div><div class="line"><span class="keyword">Auto</span>-merging README.md</div><div class="line">CONFLICT (<span class="keyword">content</span>): <span class="keyword">Merge</span> conflict <span class="keyword">in</span> README.md</div><div class="line"><span class="keyword">Automatic</span> <span class="keyword">merge</span> <span class="keyword">failed</span>; fix conflicts and then <span class="keyword">commit</span> the result.</div></pre></td></tr></table></figure>
-<p>果然冲突了！Git告诉我们，README.md文件存在冲突，必须手动解决冲突后再提交。git status也可以告诉我们冲突的文件：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span><span class="bash"> git status</span></div><div class="line"><span class="meta">#</span><span class="bash"> On branch master</span></div><div class="line"><span class="meta">#</span><span class="bash"> Your branch is ahead of <span class="string">'origin/master'</span> by 2 commits.</span></div><div class="line"><span class="meta">#</span><span class="bash"></span></div><div class="line"><span class="meta">#</span><span class="bash"> Unmerged paths:</span></div><div class="line"><span class="meta">#</span><span class="bash">   (use <span class="string">"git add/rm &lt;file&gt;..."</span> as appropriate to mark resolution)</span></div><div class="line"><span class="meta">#</span><span class="bash"></span></div><div class="line"><span class="meta">#</span><span class="bash">       both modified:      README.md</span></div><div class="line"><span class="meta">#</span><span class="bash"></span></div><div class="line">no changes added to commit (use "git add" and/or "git commit -a")</div></pre></td></tr></table></figure>
-<p>查看README.md的内容：<br><figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">Git <span class="keyword">is</span> <span class="keyword">a</span> distributed <span class="keyword">version</span> control <span class="built_in">system</span>.</div><div class="line">Git <span class="keyword">is</span> free software distributed under the GPL.</div><div class="line">Git <span class="built_in">has</span> <span class="keyword">a</span> mutable <span class="built_in">index</span> called stage.</div><div class="line">Git tracks <span class="keyword">changes</span> of <span class="keyword">files</span>.</div><div class="line">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</div><div class="line">Creating <span class="keyword">a</span> <span class="keyword">new</span> branch <span class="keyword">is</span> quick &amp; simple.</div><div class="line">=======</div><div class="line">Creating <span class="keyword">a</span> <span class="keyword">new</span> branch <span class="keyword">is</span> quick AND simple.</div><div class="line">&gt;&gt;&gt;&gt;&gt;&gt;&gt; feature1</div></pre></td></tr></table></figure></p>
-<p>Git用&lt;&lt;&lt;&lt;&lt;&lt;&lt;，=======，&gt;&gt;&gt;&gt;&gt;&gt;&gt;标记出不同分支的内容，我们修改如下后保存：<br><figure class="highlight ada"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Creating a <span class="keyword">new</span> branch <span class="keyword">is</span> quick <span class="keyword">and</span> simple.</div></pre></td></tr></table></figure></p>
-<p>再提交：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span><span class="bash"> git add README.md </span></div><div class="line"><span class="meta">$</span><span class="bash"> git commit -m <span class="string">"conflict fixed"</span></span></div><div class="line">[master 59bc1cb] conflict fixed</div></pre></td></tr></table></figure></p>
-<p>现在，master分支和feature1分支变成了下图所示：</p>
-<p><img src="/images/master_7.png" alt="icon"></p>
-<p>用带参数的git log也可以看到分支的合并情况：</p>
-<figure class="highlight applescript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git <span class="built_in">log</span> <span class="comment">--graph --pretty=oneline --abbrev-commit</span></div></pre></td></tr></table></figure>
-<p>最后，删除feature1分支：</p>
-<figure class="highlight armasm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ git <span class="keyword">branch </span>-d feature1</div><div class="line"><span class="symbol">Deleted</span> <span class="keyword">branch </span>feature1 (was <span class="number">75</span>a857c).</div></pre></td></tr></table></figure>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>当Git无法自动合并分支时，就必须首先解决冲突。解决冲突后，再提交，合并完成。</p>
-<p>用git log –graph命令可以看到分支合并图。</p>
+        <p>上篇博客已经讲解了如何提交修改的文件到git版本库，现在，再练习一次，修改README.md文件如下：<br><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Git <span class="keyword">is</span> very good</div><div class="line">Git <span class="keyword">is</span> very nice</div></pre></td></tr></table></figure></p>
+<p>提交：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ git add README.md</div><div class="line">$ git <span class="keyword">commit</span> -m <span class="string">"add Git is very nice"</span></div><div class="line"><span class="keyword">On</span> branch <span class="keyword">master</span></div><div class="line"><span class="keyword">nothing</span> <span class="keyword">to</span> <span class="keyword">commit</span>, working <span class="keyword">directory</span> clean</div></pre></td></tr></table></figure></p>
+<p>现在，我们回顾一下README.md文件一共有几个版本被提交到Git仓库里了：</p>
+<p>版本一：<br><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Git <span class="keyword">is</span> good</div></pre></td></tr></table></figure></p>
+<p>版本二：<br><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Git <span class="keyword">is</span> very good</div></pre></td></tr></table></figure></p>
+<p>版本三：<br><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Git <span class="keyword">is</span> very good </div><div class="line">Git <span class="keyword">is</span> very nice</div></pre></td></tr></table></figure></p>
+<p>在实际项目中，每天都会修改，添加一些东西，提交到版本库中，所以每天都会有好几个版本。版本控制系统肯定有某个命令可以告诉我们历史记录，在Git中，我们用git log命令查看：<br><figure class="highlight llvm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">$ git log</div><div class="line">commit b<span class="number">410</span><span class="keyword">c</span><span class="number">561</span>a<span class="number">196</span><span class="keyword">c</span><span class="number">18</span>bcb<span class="number">254</span>f<span class="number">83</span><span class="keyword">c</span><span class="number">26551001e667</span>dda</div><div class="line">Author: xybCoder &lt;xyb<span class="number">520</span>zly<span class="title">@gmail.com</span>&gt;</div><div class="line">Date:   Sat Mar <span class="number">26</span> <span class="number">11</span>:<span class="number">07</span>:<span class="number">59</span> <span class="number">2016</span> +<span class="number">0800</span></div><div class="line"></div><div class="line">    <span class="keyword">add</span> Git is very nice</div><div class="line"></div><div class="line">commit <span class="number">1</span>d<span class="number">0</span>f<span class="number">9</span>ddbb<span class="number">6</span>cd<span class="number">8</span>df<span class="number">93596</span>ba<span class="number">6</span><span class="keyword">c</span><span class="number">1</span>b<span class="number">6e627357110741</span></div><div class="line">Author: xybCoder &lt;xyb<span class="number">520</span>zly<span class="title">@gmail.com</span>&gt;</div><div class="line">Date:   Fri Mar <span class="number">25</span> <span class="number">23</span>:<span class="number">13</span>:<span class="number">23</span> <span class="number">2016</span> +<span class="number">0800</span></div><div class="line"></div><div class="line">    <span class="keyword">add</span> good word</div><div class="line"></div><div class="line">commit d<span class="number">9</span>ece<span class="number">1</span><span class="keyword">c</span><span class="number">0500789</span>ec<span class="number">379</span>db<span class="number">30262</span><span class="keyword">c</span><span class="number">67e161</span>f<span class="number">53</span>cdf<span class="number">2</span></div><div class="line">Author: xybCoder &lt;xyb<span class="number">520</span>zly<span class="title">@gmail.com</span>&gt;</div><div class="line">Date:   Fri Mar <span class="number">25</span> <span class="number">21</span>:<span class="number">48</span>:<span class="number">56</span> <span class="number">2016</span> +<span class="number">0800</span></div><div class="line"></div><div class="line">    wrote a readme file</div></pre></td></tr></table></figure></p>
+<p>git log命令显示从最近到最远的提交日志，我们可以看到3次提交，最近的一次是add Git is very nice，上一次是add good word，最早的一次是wrote a readme file。</p>
+<p>假如我们想要回到上个版本，把README.md回退到上一个版本，也就是“add good word”的那个版本，怎么做呢？</p>
+<p>首先，Git必须知道当前版本是哪个版本，在Git中，用HEAD表示当前版本，也就是最新的提交b410c561a196c18bcb254f83c26551001e667dda，上一个版本就是HEAD^，上上一个版本就是HEAD^^，当然往上100个版本写100个^比较容易数不过来，所以写成HEAD~100。</p>
+<p>现在，我们要把当前版本回退到上一个版本“add good word”，就可以使用git reset命令：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ git <span class="keyword">reset</span> <span class="comment">--hard HEAD^</span></div><div class="line"><span class="keyword">HEAD</span> <span class="keyword">is</span> <span class="keyword">now</span> <span class="keyword">at</span> <span class="number">1</span>d0f9dd <span class="keyword">add</span> good word</div></pre></td></tr></table></figure></p>
+<p>–hard参数有啥意义？<br>Git在内部有个指向当前版本的HEAD指针</p>
+<p>看看README.md的内容是不是版本add good word：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span><span class="bash"> cat README.md</span></div><div class="line">Git is very good</div></pre></td></tr></table></figure></p>
+<p>还可以继续回退到上一个版本wrote a readme file，不过且慢，然我们用git log再看看现在版本库的状态：<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">Author</span>: xybCoder &lt;xyb520zly@gmail.com&gt;</div><div class="line"><span class="attribute">Date</span>:   Fri Mar 25 23:13:23 2016 +0800</div><div class="line"></div><div class="line">    add good word</div><div class="line"></div><div class="line">commit d9ece1c0500789ec379db30262c67e161f53cdf2</div><div class="line"><span class="attribute">Author</span>: xybCoder &lt;xyb520zly@gmail.com&gt;</div><div class="line"><span class="attribute">Date</span>:   Fri Mar 25 21:48:56 2016 +0800</div><div class="line"></div><div class="line">    wrote a readme file</div></pre></td></tr></table></figure></p>
+<p>最新的那个版本add Git is very nice已经看不到了！如果想回到原来最新版本，怎么办？</p>
+<p>办法其实还是有的，只要上面的命令行窗口还没有被关掉，你可以找到那个add Git is very nice版本的commit id是b410c561a196c18bcb254f83c26551001e667dda，于是就可以指定回到未来的某个版本：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ git <span class="keyword">reset</span> <span class="comment">--hard b410c56</span></div><div class="line"><span class="keyword">HEAD</span> <span class="keyword">is</span> <span class="keyword">now</span> <span class="keyword">at</span> b410c56 <span class="keyword">add</span> Git <span class="keyword">is</span> very nice</div></pre></td></tr></table></figure></p>
+<p>查看下：<br><figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ <span class="keyword">cat</span> README.md</div><div class="line">Git <span class="keyword">is</span> very good</div><div class="line">Git <span class="keyword">is</span> very nice</div></pre></td></tr></table></figure></p>
+<p>现在，你回退到了某个版本，不小心关掉了git bash命令窗，想恢复到新版本怎么办？找不到新版本的commit id怎么办？</p>
+<p>在Git中，如果要回到之前版本就必须找到commit id。Git提供了一个命令git reflog用来记录你的每一次命令：<br><figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">$ git reflog</div><div class="line">b410c56 HEAD@&#123;<span class="number">0</span>&#125;: rese<span class="variable">t:</span> moving <span class="keyword">to</span> b410c56</div><div class="line"><span class="number">1</span>d0f9dd HEAD@&#123;<span class="number">1</span>&#125;: rese<span class="variable">t:</span> moving <span class="keyword">to</span> HEAD^</div><div class="line">b410c56 HEAD@&#123;<span class="number">2</span>&#125;: commi<span class="variable">t:</span> <span class="built_in">add</span> Git <span class="keyword">is</span> very nice</div><div class="line"><span class="number">1</span>d0f9dd HEAD@&#123;<span class="number">3</span>&#125;: commi<span class="variable">t:</span> <span class="built_in">add</span> good word</div><div class="line">d9ece1c HEAD@&#123;<span class="number">4</span>&#125;: commit (initial): wrote <span class="keyword">a</span> readme <span class="keyword">file</span></div></pre></td></tr></table></figure></p>
+<p>##总结一下：</p>
+<p><strong>HEAD指向的版本就是当前版本，因此，Git允许我们在版本的历史之间穿梭，使用命令git reset –hard commit_id。<br>穿梭前，用git log可以查看提交历史，以便确定要回退到哪个版本。<br>要重返未来，用git reflog查看命令历史，以便确定要回到未来的哪个版本。</strong></p>
 
       
     </div>
@@ -399,16 +386,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/04/03/Git用法（删除恢复）/" rel="next" title="删除(恢复)文件">
-                <i class="fa fa-chevron-left"></i> 删除(恢复)文件
+              <a href="/2016/04/03/Git用法（查看修改状态）/" rel="next" title="查看修改状态">
+                <i class="fa fa-chevron-left"></i> 查看修改状态
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/04/03/分支管理（策略和no-ff）/" rel="prev" title="分支管理（策略和no-ff）">
-                分支管理（策略和no-ff） <i class="fa fa-chevron-right"></i>
+              <a href="/2016/04/03/Git用法（撤销修改）/" rel="prev" title="撤销修改">
+                撤销修改 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -438,8 +425,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/04/03/分支管理（解决冲突）/"
-           data-title="分支管理（解决冲突）" data-url="http://yoursite.com/2016/04/03/分支管理（解决冲突）/">
+      <div class="ds-thread" data-thread-key="2016/04/03/Git用法（版本回退）/"
+           data-title="版本回退" data-url="http://yoursite.com/2016/04/03/Git用法（版本回退）/">
       </div>
     
   </div>
@@ -632,7 +619,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">1.</span> <span class="nav-text">总结</span></a></li></ol></div>
+              <p class="post-toc-empty">此文章未包含目录</p>
             
           </div>
         </section>

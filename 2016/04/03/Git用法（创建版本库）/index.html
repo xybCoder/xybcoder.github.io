@@ -64,7 +64,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="git," />
 
 
 
@@ -80,17 +80,20 @@
 
 
 
-<meta name="description" content="声明：本文只是作为IOS开源库的一个汇总，方便自己查找，没有任何商业目的网络1.AFNetworking作者是 NSHipster 的博主, iOS 开发界的大神级人物, 毕业于卡内基·梅隆大学, 开源了许多牛逼的项目, 这个便是其中之一, AFNetworking 采用 NSURLConnection + NSOperation, 主要方便与服务端 API 进行数据交换, 操作简单, 功能强大,">
-<meta property="og:type" content="website">
-<meta property="og:title" content="IOS开源库">
-<meta property="og:url" content="http://yoursite.com/IOS/index.html">
+<meta name="description" content="创建版本库什么是版本库？版本库又名仓库，英文名repository，你可以简单理解成一个目录，这个目录里面的所有文件都可以被Git管理起来，每个文件的修改、删除，Git都能跟踪，以便任何时刻都可以追踪历史，或者在将来某个时刻可以“还原”。 所以，创建一个版本库非常简单，首先，选择一个合适的地方，创建一个空目录：1234$ cd /d    //跳转到D盘目录下$ mkdir learngit //">
+<meta name="keywords" content="git">
+<meta property="og:type" content="article">
+<meta property="og:title" content="创建版本库">
+<meta property="og:url" content="http://yoursite.com/2016/04/03/Git用法（创建版本库）/index.html">
 <meta property="og:site_name" content="xybCoder博客">
-<meta property="og:description" content="声明：本文只是作为IOS开源库的一个汇总，方便自己查找，没有任何商业目的网络1.AFNetworking作者是 NSHipster 的博主, iOS 开发界的大神级人物, 毕业于卡内基·梅隆大学, 开源了许多牛逼的项目, 这个便是其中之一, AFNetworking 采用 NSURLConnection + NSOperation, 主要方便与服务端 API 进行数据交换, 操作简单, 功能强大,">
+<meta property="og:description" content="创建版本库什么是版本库？版本库又名仓库，英文名repository，你可以简单理解成一个目录，这个目录里面的所有文件都可以被Git管理起来，每个文件的修改、删除，Git都能跟踪，以便任何时刻都可以追踪历史，或者在将来某个时刻可以“还原”。 所以，创建一个版本库非常简单，首先，选择一个合适的地方，创建一个空目录：1234$ cd /d    //跳转到D盘目录下$ mkdir learngit //">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2016-04-27T11:40:14.000Z">
+<meta property="og:image" content="http://yoursite.com/images/git_0.jpg">
+<meta property="og:updated_time" content="2016-04-03T09:45:18.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="IOS开源库">
-<meta name="twitter:description" content="声明：本文只是作为IOS开源库的一个汇总，方便自己查找，没有任何商业目的网络1.AFNetworking作者是 NSHipster 的博主, iOS 开发界的大神级人物, 毕业于卡内基·梅隆大学, 开源了许多牛逼的项目, 这个便是其中之一, AFNetworking 采用 NSURLConnection + NSOperation, 主要方便与服务端 API 进行数据交换, 操作简单, 功能强大,">
+<meta name="twitter:title" content="创建版本库">
+<meta name="twitter:description" content="创建版本库什么是版本库？版本库又名仓库，英文名repository，你可以简单理解成一个目录，这个目录里面的所有文件都可以被Git管理起来，每个文件的修改、删除，Git都能跟踪，以便任何时刻都可以追踪历史，或者在将来某个时刻可以“还原”。 所以，创建一个版本库非常简单，首先，选择一个合适的地方，创建一个空目录：1234$ cd /d    //跳转到D盘目录下$ mkdir learngit //">
+<meta name="twitter:image" content="http://yoursite.com/images/git_0.jpg">
 
 
 
@@ -108,13 +111,7 @@
   };
 </script>
 
-  <title>
-  
-
-  
-    IOS开源库 | xybCoder博客
-  
-</title>
+  <title> 创建版本库 | xybCoder博客 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -145,7 +142,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-right  ">
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -251,17 +248,170 @@
 
   <div id="posts" class="posts-expand">
     
-    
-      <h1 id="声明：本文只是作为IOS开源库的一个汇总，方便自己查找，没有任何商业目的"><a href="#声明：本文只是作为IOS开源库的一个汇总，方便自己查找，没有任何商业目的" class="headerlink" title="声明：本文只是作为IOS开源库的一个汇总，方便自己查找，没有任何商业目的"></a>声明：本文只是作为IOS开源库的一个汇总，方便自己查找，没有任何商业目的</h1><h2 id="网络"><a href="#网络" class="headerlink" title="网络"></a>网络</h2><p>1.<a href="https://github.com/AFNetworking/AFNetworking" target="_blank" rel="external">AFNetworking</a><br>作者是 NSHipster 的博主, iOS 开发界的大神级人物, 毕业于卡内基·梅隆大学, 开源了许多牛逼的项目, 这个便是其中之一, AFNetworking 采用 NSURLConnection + NSOperation, 主要方便与服务端 API 进行数据交换, 操作简单, 功能强大, 现在许多人都用它取代 ASIHTTPRequest<br>2.<a href="https://github.com/RestKit/RestKit" target="_blank" rel="external">RestKit</a><br>主要用于 iOS 上网络通信, 允许与 RESTful Web 服务交互, 常用于处理 API, 解析 JSON, 映射响应对象等操作, 简单易用, 方便你把所有精力都放在对数据的操作上<br>3.<a href="https://github.com/MugunthKumar/MKNetworkKit" target="_blank" rel="external">MKNetworkKit</a><br>一个轻量级网络请求框架, 完全基于 ARC, 仅有两个类, 具有自主操作多个网络请求, 更加准确的显示网络活动指标等优点</p>
-<h2 id="Json库"><a href="#Json库" class="headerlink" title="Json库"></a>Json库</h2><p>1.<a href="https://github.com/johnezang/JSONKit" target="_blank" rel="external">JSONKit</a><br>主要用于解析 JSON, 适用于 iOS6 以下环境, 自从 iOS5 开始 Apple 官方给出了 NSJSONSerialization API, 自此大家都用官方的了</p>
-<h2 id="加载网络图片"><a href="#加载网络图片" class="headerlink" title="加载网络图片"></a>加载网络图片</h2><p>1.<a href="https://github.com/rs/SDWebImage" target="_blank" rel="external">SDWebImage</a><br>作者 Olivier Poitrey 是 Dailymotion 的 CTO, 拥有多个不错的开源项目, 此项目常用于对从 Web 端接受到的图片进行缓存, 是 UIImageView 的扩展, 应用起来比较简单</p>
-<h2 id="响应式编程"><a href="#响应式编程" class="headerlink" title="响应式编程"></a>响应式编程</h2><p>2.<a href="https://github.com/ReactiveCocoa/ReactiveCocoa" target="_blank" rel="external">ReactiveCocoa</a><br>由 GitHub 工程师们开发的一个应用于 iOS 和 OS X 开发的函数响应式编程新框架, Matt 称其为 “An open source project that exemplifies this brave new era for Objective-C”</p>
-<h2 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h2><p>1.<a href="https://github.com/ccgus/fmdb" target="_blank" rel="external">FMDB</a><br>一个对 SQLite 进行封装的库, 使用起来方便, 简单</p>
-<h2 id="UI"><a href="#UI" class="headerlink" title="UI"></a>UI</h2><p>1.<a href="https://github.com/Grouper/FlatUIKit" target="_blank" rel="external">FlatUIKit</a><br>收集了很多扁平化 UI 的 iOS 组件, 方便使用<br>2.<a href="https://github.com/SVProgressHUD/SVProgressHUD" target="_blank" rel="external">SVProgressHUD</a><br>又一款轻量级的 iOS 第三方控件, 用于显示任务加载时的动画, 非常轻便, 容易使用<br>3.<a href="https://github.com/romaonthego/RESideMenu" target="_blank" rel="external">RESideMenu</a><br>作者 Roman Efimov 是雅虎的 iOS 工程师, 这个项目实现了 iOS 上的菜单侧滑效果, 创意来源于 Dribbble, 该项目支持 iOS8<br>4.<a href="https://github.com/mutualmobile/MMDrawerController" target="_blank" rel="external">MMDrawerController</a><br>一个轻量级, 易于使用的侧边抽屉导航 iOS 控件<br>5.MWPhotoBrowser<a href="https://github.com/mwaterfall/MWPhotoBrowser" target="_blank" rel="external">12</a><br>一款简单的 iOS 照片浏览控件<br>6.<a href="https://github.com/escoz/QuickDialog" target="_blank" rel="external">QuickDialog</a><br>用于快速创建复杂的 iOS 表单, 自定义了 UITableViewCell, TableView 的样式<br>7.<a href="https://github.com/samvermette/SVPullToRefresh" target="_blank" rel="external">SVPullToRefresh</a><br>一款只需一行代码便可集成上拉刷新和下拉加载的组件<br>8.<a href="https://github.com/PureLayout/PureLayout" target="_blank" rel="external">PureLayout</a><br>一个简单却强大的 AutoLayout API 库, 兼容了 Objective-C 和 Swift, 扩展了 UIView/NSView, NSArray, 和 NSLayoutConstraint</p>
-<h2 id="日志"><a href="#日志" class="headerlink" title="日志"></a>日志</h2><p>1.<a href="https://github.com/CocoaLumberjack/CocoaLumberjack" target="_blank" rel="external">CocoaLumberjack</a><br>这是 Mac 和 iOS 的一款强大的日志框架, 配置简单, 多线程, 提供更高级的 log 功能, 可用于代替默认的 NSLog 语句</p>
-<h2 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h2><p>1.<a href="https://github.com/MacDownApp/macdown" target="_blank" rel="external">MacDown</a><br>Mac OS X 下的一款开源的 Markdown 编辑器, 创意来自与 Mou, 使用 brew cask 即可完成安装</p>
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
 
     
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                创建版本库
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-04-03T17:45:18+08:00" content="2016-04-03">
+              2016-04-03
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/git/" itemprop="url" rel="index">
+                    <span itemprop="name">git</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/04/03/Git用法（创建版本库）/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/03/Git用法（创建版本库）/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+              &nbsp; | &nbsp;
+              <span class="page-pv">本文总阅读量
+              <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+              </span>
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="创建版本库"><a href="#创建版本库" class="headerlink" title="创建版本库"></a>创建版本库</h2><p>什么是版本库？版本库又名仓库，英文名repository，你可以简单理解成一个目录，这个目录里面的所有文件都可以被Git管理起来，每个文件的修改、删除，Git都能跟踪，以便任何时刻都可以追踪历史，或者在将来某个时刻可以“还原”。</p>
+<p>所以，创建一个版本库非常简单，首先，选择一个合适的地方，创建一个空目录：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">cd</span> /d    //跳转到D盘目录下</span></div><div class="line"><span class="meta">$</span><span class="bash"> mkdir learngit //在当前目录下创建一个learngit子目录</span></div><div class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">cd</span> learngit  //跳转到子目录下</span></div><div class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">pwd</span>          //命令用于显示当前目录</span></div></pre></td></tr></table></figure></p>
+<p><strong>如果你使用Windows系统，为了避免遇到各种莫名其妙的问题，请确保目录名（包括父目录）不包含中文</strong></p>
+<p>第二步，通过git init命令把这个目录变成Git可以管理的仓库：<br><figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ git init</div><div class="line">Initialized empty Git repository <span class="keyword">in</span> <span class="string">D:</span><span class="regexp">/learngit/</span>.git/</div></pre></td></tr></table></figure></p>
+<p>Git就把仓库建好了，而且告诉你是一个空的仓库（empty Git repository），细心的读者可以发现当前目录下多了一个.git的目录，这个目录是Git来跟踪管理版本库的，没事不要手动修改这个目录里面的文件，不然改乱了，就把Git仓库给破坏了。</p>
+<h2 id="把文件添加到版本库"><a href="#把文件添加到版本库" class="headerlink" title="把文件添加到版本库"></a>把文件添加到版本库</h2><p>首先这里再明确一下，所有的版本控制系统，其实只能跟踪文本文件的改动，比如TXT文件，网页，所有的程序代码等等，Git也不例外。版本控制系统可以告诉你每次的改动，比如在第5行加了一个单词“Linux”，在第8行删了一个单词“Windows”。而图片、视频这些二进制文件，虽然也能由版本控制系统管理，但没法跟踪文件的变化，只能把二进制文件每次改动串起来，也就是只知道图片从100KB改成了120KB，但到底改了啥，版本控制系统不知道，也没法知道。</p>
+<p>不幸的是，Microsoft的Word格式是二进制格式，因此，版本控制系统是没法跟踪Word文件的改动的，前面我们举的例子只是为了演示，如果要真正使用版本控制系统，就要以纯文本方式编写文件。</p>
+<p><strong>使用Windows的童鞋要特别注意：</strong></p>
+<p>千万不要使用Windows自带的记事本编辑任何文本文件。原因是Microsoft开发记事本的团队使用了一个非常弱智的行为来保存UTF-8编码的文件，他们自作聪明地在每个文件开头添加了0xefbbbf（十六进制）的字符，你会遇到很多不可思议的问题，建议你下载Notepad++代替记事本，不但功能强大，而且免费！记得把Notepad++的默认编码设置为UTF-8 without BOM即可：<br><img src="/images/git_0.jpg" alt="icon"></p>
+<p>现在我们编写一个README.md文件，内容如下：</p>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git <span class="keyword">is</span> good</div></pre></td></tr></table></figure>
+<p>一定要放到learngit目录下（子目录也行），因为这是一个Git仓库，放到其他地方Git再厉害也找不到这个文件</p>
+<p>第一步，用命令git add告诉Git，把文件添加到仓库：<br><figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git <span class="keyword">add</span><span class="bash"> README.md</span></div></pre></td></tr></table></figure></p>
+<p>执行上面的命令，没有任何显示，这就对了，Unix的哲学是“没有消息就是好消息”，说明添加成功。</p>
+<p>第二步，用命令git commit告诉Git，把文件提交到仓库：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ git <span class="keyword">commit</span> -m <span class="string">"wrote a readme file"</span>  //-m后面输入的是本次提交的说明</div><div class="line">[<span class="keyword">master</span> (root-<span class="keyword">commit</span>) d9ece1c] wrote a readme <span class="keyword">file</span></div><div class="line"> <span class="number">1</span> <span class="keyword">file</span> <span class="keyword">changed</span>, <span class="number">1</span> insertion(+)</div><div class="line"> <span class="keyword">create</span> <span class="keyword">mode</span> <span class="number">100644</span> README.md</div></pre></td></tr></table></figure></p>
+<hr>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>第一步，初始化一个Git仓库，使用git init命令。</p>
+<p>添加文件到Git仓库：</p>
+<p>第一，使用命令git add <file>，注意，可反复多次使用，添加多个文件；<br>第二，使用命令git commit，完成。</file></p>
+
+      
+    </div>
+    
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/git/" rel="tag">#git</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/04/03/工作区和暂存区和分支理解/" rel="next" title="工作区和暂存区和分支理解">
+                <i class="fa fa-chevron-left"></i> 工作区和暂存区和分支理解
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/04/03/Git用法（查看修改状态）/" rel="prev" title="查看修改状态">
+                查看修改状态 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
   </div>
 
 
@@ -275,8 +425,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="IOS/index.html"
-           data-title="IOS开源库" data-url="http://yoursite.com/IOS/index.html">
+      <div class="ds-thread" data-thread-key="2016/04/03/Git用法（创建版本库）/"
+           data-title="创建版本库" data-url="http://yoursite.com/2016/04/03/Git用法（创建版本库）/">
       </div>
     
   </div>
@@ -300,8 +450,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.png"
@@ -454,6 +613,17 @@
       </section>
 
       
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#创建版本库"><span class="nav-number">1.</span> <span class="nav-text">创建版本库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#把文件添加到版本库"><span class="nav-number">2.</span> <span class="nav-text">把文件添加到版本库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">3.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
 
     </div>
   </aside>
@@ -565,6 +735,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
 
   
 

@@ -64,7 +64,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="git," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -80,21 +80,13 @@
 
 
 
-<meta name="description" content="分支的合并不是一帆风顺的，下面就来演示下冲突解决。 准备新的feature1分支，继续我们的新分支开发： 12$ git checkout -b feature1Switched to a new branch &apos;feature1&apos; 修改README.md文件，加一句： 1Creating a new branch is quick AND simple.  在feature1分支上提交： 123">
-<meta name="keywords" content="git">
-<meta property="og:type" content="article">
-<meta property="og:title" content="分支管理（解决冲突）">
-<meta property="og:url" content="http://yoursite.com/2016/04/03/分支管理（解决冲突）/index.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="xybCoder博客">
+<meta property="og:url" content="http://yoursite.com/page/2/index.html">
 <meta property="og:site_name" content="xybCoder博客">
-<meta property="og:description" content="分支的合并不是一帆风顺的，下面就来演示下冲突解决。 准备新的feature1分支，继续我们的新分支开发： 12$ git checkout -b feature1Switched to a new branch &apos;feature1&apos; 修改README.md文件，加一句： 1Creating a new branch is quick AND simple.  在feature1分支上提交： 123">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/images/master_6.png">
-<meta property="og:image" content="http://yoursite.com/images/master_7.png">
-<meta property="og:updated_time" content="2016-04-03T10:16:24.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="分支管理（解决冲突）">
-<meta name="twitter:description" content="分支的合并不是一帆风顺的，下面就来演示下冲突解决。 准备新的feature1分支，继续我们的新分支开发： 12$ git checkout -b feature1Switched to a new branch &apos;feature1&apos; 修改README.md文件，加一句： 1Creating a new branch is quick AND simple.  在feature1分支上提交： 123">
-<meta name="twitter:image" content="http://yoursite.com/images/master_6.png">
+<meta name="twitter:title" content="xybCoder博客">
 
 
 
@@ -112,7 +104,7 @@
   };
 </script>
 
-  <title> 分支管理（解决冲突） | xybCoder博客 </title>
+  <title> xybCoder博客 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -143,7 +135,9 @@
     
   
 
-  <div class="container one-collumn sidebar-position-right page-post-detail ">
+  <div class="container one-collumn sidebar-position-right 
+   page-home 
+ ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -246,9 +240,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-
-  <div id="posts" class="posts-expand">
+  <section id="posts" class="posts-expand">
     
+      
 
   
   
@@ -268,7 +262,10 @@
             
             
               
-                分支管理（解决冲突）
+                
+                <a class="post-title-link" href="/2016/04/03/Git用法（查看修改状态）/" itemprop="url">
+                  查看修改状态
+                </a>
               
             
           </h1>
@@ -280,7 +277,7 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-04-03T18:16:24+08:00" content="2016-04-03">
+            <time itemprop="dateCreated" datetime="2016-04-03T17:45:30+08:00" content="2016-04-03">
               2016-04-03
             </time>
           </span>
@@ -310,8 +307,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/04/03/分支管理（解决冲突）/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/03/分支管理（解决冲突）/" itemprop="commentsCount"></span>
+                <a href="/2016/04/03/Git用法（查看修改状态）/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/03/Git用法（查看修改状态）/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -322,11 +319,6 @@
           
           
 
-          
-              &nbsp; | &nbsp;
-              <span class="page-pv">本文总阅读量
-              <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
-              </span>
           
         </div>
       </header>
@@ -339,111 +331,565 @@
       
 
       
-        <p>分支的合并不是一帆风顺的，下面就来演示下冲突解决。</p>
-<p>准备新的feature1分支，继续我们的新分支开发：</p>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ git checkout -<span class="selector-tag">b</span> feature1</div><div class="line">Switched to <span class="selector-tag">a</span> new branch <span class="string">'feature1'</span></div></pre></td></tr></table></figure>
-<p>修改README.md文件，加一句：</p>
-<figure class="highlight ada"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Creating a <span class="keyword">new</span> branch <span class="keyword">is</span> quick <span class="keyword">AND</span> simple.</div></pre></td></tr></table></figure>
-<p> 在feature1分支上提交：</p>
-<figure class="highlight routeros"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ git <span class="builtin-name">add</span> README.md </div><div class="line">$ git commit -m <span class="string">"add new branch 'feature1'"</span></div><div class="line">[feature1 75a857c] <span class="keyword">AND</span> simple</div><div class="line"> 1 file changed, 1 insertion(+), 1 deletion(-)</div></pre></td></tr></table></figure>
-<p> 切换到master分支：</p>
-<figure class="highlight livescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"> $ git checkout master</div><div class="line">Switched <span class="keyword">to</span> branch <span class="string">'master'</span></div><div class="line">Your branch <span class="keyword">is</span> ahead <span class="keyword">of</span> <span class="string">'origin/master'</span> <span class="keyword">by</span> <span class="number">1</span> commit.</div></pre></td></tr></table></figure>
-<p> Git还会自动提示我们当前master分支比远程的master分支要超前1个提交。</p>
-<p>在master分支上把README.md文件的最后一行改为：</p>
-<figure class="highlight ada"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Creating a <span class="keyword">new</span> branch <span class="keyword">is</span> quick <span class="keyword">AND</span> simple.</div></pre></td></tr></table></figure>
-<p>提交：</p>
-<figure class="highlight routeros"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ git <span class="builtin-name">add</span> README.md </div><div class="line">$ git commit -m <span class="string">"&amp; simple"</span></div><div class="line">[master 400b400] &amp; simple</div><div class="line"> 1 file changed, 1 insertion(+), 1 deletion(-)</div></pre></td></tr></table></figure>
-<p>现在，master分支和feature1分支各自都分别有新的提交，变成了这样：</p>
-<p><img src="/images/master_6.png" alt="icon"></p>
-<p>这种情况下，Git无法执行“快速合并”，只能试图把各自的修改合并起来，但这种合并就可能会有冲突，我们试试看：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ git <span class="keyword">merge</span> feature1</div><div class="line"><span class="keyword">Auto</span>-merging README.md</div><div class="line">CONFLICT (<span class="keyword">content</span>): <span class="keyword">Merge</span> conflict <span class="keyword">in</span> README.md</div><div class="line"><span class="keyword">Automatic</span> <span class="keyword">merge</span> <span class="keyword">failed</span>; fix conflicts and then <span class="keyword">commit</span> the result.</div></pre></td></tr></table></figure>
-<p>果然冲突了！Git告诉我们，README.md文件存在冲突，必须手动解决冲突后再提交。git status也可以告诉我们冲突的文件：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span><span class="bash"> git status</span></div><div class="line"><span class="meta">#</span><span class="bash"> On branch master</span></div><div class="line"><span class="meta">#</span><span class="bash"> Your branch is ahead of <span class="string">'origin/master'</span> by 2 commits.</span></div><div class="line"><span class="meta">#</span><span class="bash"></span></div><div class="line"><span class="meta">#</span><span class="bash"> Unmerged paths:</span></div><div class="line"><span class="meta">#</span><span class="bash">   (use <span class="string">"git add/rm &lt;file&gt;..."</span> as appropriate to mark resolution)</span></div><div class="line"><span class="meta">#</span><span class="bash"></span></div><div class="line"><span class="meta">#</span><span class="bash">       both modified:      README.md</span></div><div class="line"><span class="meta">#</span><span class="bash"></span></div><div class="line">no changes added to commit (use "git add" and/or "git commit -a")</div></pre></td></tr></table></figure>
-<p>查看README.md的内容：<br><figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">Git <span class="keyword">is</span> <span class="keyword">a</span> distributed <span class="keyword">version</span> control <span class="built_in">system</span>.</div><div class="line">Git <span class="keyword">is</span> free software distributed under the GPL.</div><div class="line">Git <span class="built_in">has</span> <span class="keyword">a</span> mutable <span class="built_in">index</span> called stage.</div><div class="line">Git tracks <span class="keyword">changes</span> of <span class="keyword">files</span>.</div><div class="line">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</div><div class="line">Creating <span class="keyword">a</span> <span class="keyword">new</span> branch <span class="keyword">is</span> quick &amp; simple.</div><div class="line">=======</div><div class="line">Creating <span class="keyword">a</span> <span class="keyword">new</span> branch <span class="keyword">is</span> quick AND simple.</div><div class="line">&gt;&gt;&gt;&gt;&gt;&gt;&gt; feature1</div></pre></td></tr></table></figure></p>
-<p>Git用&lt;&lt;&lt;&lt;&lt;&lt;&lt;，=======，&gt;&gt;&gt;&gt;&gt;&gt;&gt;标记出不同分支的内容，我们修改如下后保存：<br><figure class="highlight ada"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Creating a <span class="keyword">new</span> branch <span class="keyword">is</span> quick <span class="keyword">and</span> simple.</div></pre></td></tr></table></figure></p>
-<p>再提交：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span><span class="bash"> git add README.md </span></div><div class="line"><span class="meta">$</span><span class="bash"> git commit -m <span class="string">"conflict fixed"</span></span></div><div class="line">[master 59bc1cb] conflict fixed</div></pre></td></tr></table></figure></p>
-<p>现在，master分支和feature1分支变成了下图所示：</p>
-<p><img src="/images/master_7.png" alt="icon"></p>
-<p>用带参数的git log也可以看到分支的合并情况：</p>
-<figure class="highlight applescript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git <span class="built_in">log</span> <span class="comment">--graph --pretty=oneline --abbrev-commit</span></div></pre></td></tr></table></figure>
-<p>最后，删除feature1分支：</p>
-<figure class="highlight armasm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ git <span class="keyword">branch </span>-d feature1</div><div class="line"><span class="symbol">Deleted</span> <span class="keyword">branch </span>feature1 (was <span class="number">75</span>a857c).</div></pre></td></tr></table></figure>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>当Git无法自动合并分支时，就必须首先解决冲突。解决冲突后，再提交，合并完成。</p>
-<p>用git log –graph命令可以看到分支合并图。</p>
+        
+          
+          接着上次git用法（一）创建版本库，我们已经成功地添加并提交了一个README.md文件，现在，我们继续修改README.md文件，改成如下内容：1Git is very good
+现在，运行git status命令看看结果：123456789$ git statusOn branch master
+          ...
 
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/04/03/Git用法（查看修改状态）/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
       
     </div>
     
     <div>
       
-        
-      
     </div>
 
     <div>
-      
-        
       
     </div>
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/git/" rel="tag">#git</a>
-          
-        </div>
+
       
 
       
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2016/04/03/Git用法（删除恢复）/" rel="next" title="删除(恢复)文件">
-                <i class="fa fa-chevron-left"></i> 删除(恢复)文件
-              </a>
-            
-          </div>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/04/03/分支管理（策略和no-ff）/" rel="prev" title="分支管理（策略和no-ff）">
-                分支管理（策略和no-ff） <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
       
-
-      
+        <div class="post-eof"></div>
       
     </footer>
   </article>
 
 
+    
+      
 
-    <div class="post-spread">
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/04/03/Git用法（创建版本库）/" itemprop="url">
+                  创建版本库
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-04-03T17:45:18+08:00" content="2016-04-03">
+              2016-04-03
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/git/" itemprop="url" rel="index">
+                    <span itemprop="name">git</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/04/03/Git用法（创建版本库）/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/03/Git用法（创建版本库）/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          创建版本库什么是版本库？版本库又名仓库，英文名repository，你可以简单理解成一个目录，这个目录里面的所有文件都可以被Git管理起来，每个文件的修改、删除，Git都能跟踪，以便任何时刻都可以追踪历史，或者在将来某个时刻可以“还原”。
+所以，创建一个版本库非常简单，首先，选择一个合适的地方，创建
+          ...
+
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/04/03/Git用法（创建版本库）/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
       
     </div>
-  </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/04/03/工作区和暂存区和分支理解/" itemprop="url">
+                  工作区和暂存区和分支理解
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-04-03T17:42:52+08:00" content="2016-04-03">
+              2016-04-03
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/git/" itemprop="url" rel="index">
+                    <span itemprop="name">git</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/04/03/工作区和暂存区和分支理解/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/03/工作区和暂存区和分支理解/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          Git和其他版本控制系统如SVN的一个不同之处就是有暂存区（stage）的概念。工作区：就是你在电脑里能看到的目录，比如我的learngit文件夹就是一个工作区。
+前面讲了我们把文件往Git版本库里添加的时候，是分两步执行的：
+第一步是用git add把文件添加进去，实际上就是把文件修改添加到暂存区
+          ...
+
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/04/03/工作区和暂存区和分支理解/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/04/03/远程库管理（克隆远程库）/" itemprop="url">
+                  远程库管理（克隆远程库）
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-04-03T17:39:44+08:00" content="2016-04-03">
+              2016-04-03
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/git/" itemprop="url" rel="index">
+                    <span itemprop="name">git</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/04/03/远程库管理（克隆远程库）/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/03/远程库管理（克隆远程库）/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          上次我们讲了先有本地库，并关联远程库learngit,如下图。
+
+现在，假设我们从零开发，那么最好的方式是先从远程库克隆（拉取数据）。
+现在，远程库learngit已经准备好了，下一步是用命令git clone克隆一个本地库：12345678910$ git clone git@github.com
+          ...
+
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/04/03/远程库管理（克隆远程库）/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/04/03/远程库管理（添加远程库）/" itemprop="url">
+                  远程库管理（添加远程库）
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-04-03T17:38:58+08:00" content="2016-04-03">
+              2016-04-03
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/git/" itemprop="url" rel="index">
+                    <span itemprop="name">git</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/04/03/远程库管理（添加远程库）/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/03/远程库管理（添加远程库）/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          我们已经在本地创建了一个Git仓库后，又想在GitHub创建一个Git仓库，并且让这两个仓库进行远程同步，这样，GitHub上的仓库既可以作为备份，又可以让其他人通过该仓库来协作。
+首先，登陆GitHub，然后，在右上角找到“Create a new repo”按钮，创建一个新的仓库：
+在Repos
+          ...
+
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/04/03/远程库管理（添加远程库）/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+  </section>
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+  </nav>
+
 
 
           </div>
           
 
-  <p>热评文章</p>
-  <div class="ds-top-threads" data-range="weekly" data-num-items="4"></div>
-
 
           
-  <div class="comments" id="comments">
-    
-      <div class="ds-thread" data-thread-key="2016/04/03/分支管理（解决冲突）/"
-           data-title="分支管理（解决冲突）" data-url="http://yoursite.com/2016/04/03/分支管理（解决冲突）/">
-      </div>
-    
-  </div>
-
 
         </div>
         
@@ -463,17 +909,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview sidebar-panel ">
+      <section class="site-overview sidebar-panel  sidebar-panel-active ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.png"
@@ -626,17 +1063,6 @@
       </section>
 
       
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-            
-              
-            
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">1.</span> <span class="nav-text">总结</span></a></li></ol></div>
-            
-          </div>
-        </section>
-      
 
     </div>
   </aside>
@@ -748,10 +1174,6 @@
   
 
   
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
-
-
 
   
 
