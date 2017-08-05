@@ -1,0 +1,775 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="声明：本文只是作为Android开源库的一个汇总，方便自己查找，没有任何商业目的事件总线(订阅者模式)通过发布/订阅事件解耦事件发送和接受，从而简化应用程序之间的通信 1.EventBus     作者 greenrobot项目地址：https://github.com/greenrobot/EventBus原理剖析文档：https://github.com/greenrobot/EventBus">
+<meta property="og:type" content="website">
+<meta property="og:title" content="ANDROID 开源汇总">
+<meta property="og:url" content="http://yoursite.com/ANDROID/index.html">
+<meta property="og:site_name" content="xybCoder博客">
+<meta property="og:description" content="声明：本文只是作为Android开源库的一个汇总，方便自己查找，没有任何商业目的事件总线(订阅者模式)通过发布/订阅事件解耦事件发送和接受，从而简化应用程序之间的通信 1.EventBus     作者 greenrobot项目地址：https://github.com/greenrobot/EventBus原理剖析文档：https://github.com/greenrobot/EventBus">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/images/preview.gif">
+<meta property="og:image" content="http://yoursite.com/images/screenshot%20(1">
+<meta property="og:image" content="http://yoursite.com/images/example.gif">
+<meta property="og:image" content="http://yoursite.com/images/art.gif">
+<meta property="og:image" content="http://yoursite.com/images/Demo.gif">
+<meta property="og:image" content="http://yoursite.com/images/687474703a2f2f696d6775722e636f6d2f523931554a716c2e676966.gif">
+<meta property="og:image" content="http://yoursite.com/images/687474703a2f2f692e67697068792e636f6d2f704c57484b734564566c734b412e676966.gif">
+<meta property="og:image" content="http://yoursite.com/images/687474703a2f2f692e67697068792e636f6d2f62765534486357764d68656a6d2e676966.gif">
+<meta property="og:image" content="http://yoursite.com/images/68747470733a2f2f627974656275636b65742e6f72672f6d61727368616c6368656e2f696d616765732f7261772f343462656231363231323163373139656134303934626437656131633966306364376465346330342f756c74696d61746572656379636c6572766965772f756c74.gif">
+<meta property="og:image" content="http://yoursite.com/images/68747470733a2f2f342e62702e626c6f6773706f742e636f6d2f2d657034364a4b70476138342f564a685831706c575743492f4141414141414141585a592f394131417272563361336b2f73313630302f5375706572534c694d2d44656d6f2d736d616c6c2e676966.gif">
+<meta property="og:image" content="http://yoursite.com/images/demo2.gif">
+<meta property="og:image" content="http://yoursite.com/images/demo4.gif">
+<meta property="og:image" content="http://yoursite.com/images/RecyclerViewSwipeDismiss.gif">
+<meta property="og:image" content="http://yoursite.com/images/687474703a2f2f692e737461636b2e696d6775722e636f6d2f68747a30592e676966.gif">
+<meta property="og:image" content="http://yoursite.com/images/687474703a2f2f7777342e73696e61696d672e636e2f6c617267652f3030366c504563396777316633307662396d78767a6a333161793239386b30672e6a7067.jpg">
+<meta property="og:image" content="http://yoursite.com/images/687474703a2f2f7777312e73696e61696d672e636e2f6c617267652f3030366c50456339677731663330763333717365646a33316179323938776d6e2e6a7067.jpg">
+<meta property="og:image" content="http://yoursite.com/images/687474703a2f2f75706c6f61642d696d616765732e6a69616e7368752e696f2f75706c6f61645f696d616765732f3933373835312d326466353066663938333364643338362e6769663f696d6167654d6f6772322f6175746f2d6f7269656e742f7374726970.gif">
+<meta property="og:image" content="http://yoursite.com/images/Screen_20160411141706.png">
+<meta property="og:image" content="http://yoursite.com/images/convenientbannerdemo.gif">
+<meta property="og:image" content="http://yoursite.com/images/chlid_click.gif">
+<meta property="og:image" content="http://yoursite.com/images/animation.gif">
+<meta property="og:image" content="http://yoursite.com/images/multiple_item.gif">
+<meta property="og:image" content="http://yoursite.com/images/drag_grid_overall.png">
+<meta property="og:image" content="http://yoursite.com/images/secondary_functionalities.png">
+<meta property="og:image" content="http://yoursite.com/images/screen111.gif">
+<meta property="og:image" content="http://yoursite.com/images/SceneryDrawable.gif">
+<meta property="og:image" content="http://yoursite.com/images/flow_tag.gif">
+<meta property="og:image" content="http://yoursite.com/images/687474703a2f2f7777332e73696e61696d672e636e2f6d773639302f36313064633033346a77316566797264386e376937673230637a30326d7135662e676966.gif">
+<meta property="og:image" content="http://yoursite.com/images/screen.gif">
+<meta property="og:image" content="http://yoursite.com/images/CircleProgressBar.gif">
+<meta property="og:image" content="http://yoursite.com/images/demo_140.jpg">
+<meta property="og:image" content="http://yoursite.com/images/alertviewdemo.gif">
+<meta property="og:image" content="http://yoursite.com/images/CanDialog.gif">
+<meta property="og:image" content="http://yoursite.com/images/687474703a2f2f6a756e676572722e71696e6975646e2e636f6d2f6772696470617373776f7264766965775f302e322e676966.gif">
+<meta property="og:image" content="http://yoursite.com/images/687474703a2f2f6f6934352e74696e797069632e636f6d2f7673686e32782e6a7067.png">
+<meta property="og:image" content="http://yoursite.com/images/687474703a2f2f692e696d6775722e636f6d2f773934576f53582e706e67.png">
+<meta property="og:image" content="http://yoursite.com/images/68747470733a2f2f7261772e6769746875622e636f6d2f6269626f756e652f6461746574696d657069636b65722f6d61737465722f67726170686963732f696d67312e706e67.png">
+<meta property="og:image" content="http://yoursite.com/images/screen-shot.png">
+<meta property="og:image" content="http://yoursite.com/images/pickerdemo.gif">
+<meta property="og:image" content="http://yoursite.com/images/68747470733a2f2f7261772e6769746875622e636f6d2f5068696c4a61792f4d50416e64726f696443686172742f6d61737465722f73637265656e73686f74732f63616e646c65737469636b63686172742e706e67.png">
+<meta property="og:image" content="http://yoursite.com/images/68747470733a2f2f7261772e6769746875622e636f6d2f5068696c4a61792f4d50416e64726f696443686172742f6d61737465722f73637265656e73686f74732f63616e646c65737469636b63686172742e706e67.png">
+<meta property="og:image" content="http://yoursite.com/images/687474703a2f2f7777312e73696e61696d672e636e2f6c617267652f3639316363313531677731663037677464787935336732306263306830316c312e676966.gif">
+<meta property="og:image" content="http://yoursite.com/images/vertical_stepview.gif">
+<meta property="og:image" content="http://yoursite.com/images/68747470733a2f2f7261772e6769746875622e636f6d2f656c756c6563692f466c617455492f6d61737465722f73616d706c652d696d616765732f73686f77636173652e706e67.png">
+<meta property="og:image" content="http://yoursite.com/images/">
+<meta property="og:image" content="http://yoursite.com/images/screenshot_15113.png">
+<meta property="og:image" content="http://yoursite.com/images/screenshot_15340.png">
+<meta property="og:image" content="http://yoursite.com/images/screenshot_15339.png">
+<meta property="og:image" content="http://yoursite.com/images/screenshot_15338.png">
+<meta property="og:image" content="http://yoursite.com/images/screenshot_14292.png">
+<meta property="og:image" content="http://yoursite.com/images/screenshot_14291.png">
+<meta property="og:image" content="http://yoursite.com/images/screenshot_14290.png">
+<meta property="og:image" content="http://yoursite.com/images/20160311101644127">
+<meta property="og:image" content="http://yoursite.com/images/screenshot_15722.png">
+<meta property="og:image" content="http://yoursite.com/images/screenshot_15723.png">
+<meta property="og:image" content="http://yoursite.com/images/screenshot_15721.png">
+<meta property="og:updated_time" content="2016-09-10T11:18:00.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ANDROID 开源汇总">
+<meta name="twitter:description" content="声明：本文只是作为Android开源库的一个汇总，方便自己查找，没有任何商业目的事件总线(订阅者模式)通过发布/订阅事件解耦事件发送和接受，从而简化应用程序之间的通信 1.EventBus     作者 greenrobot项目地址：https://github.com/greenrobot/EventBus原理剖析文档：https://github.com/greenrobot/EventBus">
+<meta name="twitter:image" content="http://yoursite.com/images/preview.gif">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"right","display":"hide"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 6263412572838430000,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title>
+  
+
+  
+    ANDROID 开源汇总 | xybCoder博客
+  
+</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?2ffc178452e1fcf54c288f14f8c972a1";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right  ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">xybCoder博客</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-android">
+          <a href="/ANDROID" rel="section">
+            
+            Android开源库
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-ios">
+          <a href="/IOS" rel="section">
+            
+            IOS开源库
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+    
+      <h1 id="声明：本文只是作为Android开源库的一个汇总，方便自己查找，没有任何商业目的"><a href="#声明：本文只是作为Android开源库的一个汇总，方便自己查找，没有任何商业目的" class="headerlink" title="声明：本文只是作为Android开源库的一个汇总，方便自己查找，没有任何商业目的"></a>声明：本文只是作为Android开源库的一个汇总，方便自己查找，没有任何商业目的</h1><h2 id="事件总线-订阅者模式"><a href="#事件总线-订阅者模式" class="headerlink" title="事件总线(订阅者模式)"></a>事件总线(订阅者模式)</h2><p>通过发布/订阅事件解耦事件发送和接受，从而简化应用程序之间的通信</p>
+<h3 id="1-EventBus-作者-greenrobot"><a href="#1-EventBus-作者-greenrobot" class="headerlink" title="1.EventBus     作者 greenrobot"></a><strong>1.EventBus     作者 greenrobot</strong></h3><p>项目地址：<a href="https://github.com/greenrobot/EventBus" target="_blank" rel="external">https://github.com/greenrobot/EventBus</a><br>原理剖析文档：<a href="https://github.com/greenrobot/EventBus#general-usage-and-api" target="_blank" rel="external">https://github.com/greenrobot/EventBus#general-usage-and-api</a><br>特点：<br>(1) 支持在不同类型的线程中处理订阅，包括发布所在线程，UI 线程、单一后台线程、异步线程<br>(2) 支持事件优先级定义，支持优先级高的订阅者取消事件继续传递，支持粘性事件，是不是跟系统的有序广播、粘性广播很像啊<br>(3) 不是基于 annotations<br>(4) 性能更优<br>(5) 体积小<br>(6) 支持单例创建或创建多个对象<br>(7) 支持根据事件类型订阅</p>
+<h3 id="2-Otto-开源组织-Square"><a href="#2-Otto-开源组织-Square" class="headerlink" title="2.Otto     开源组织 Square "></a><strong>2.Otto     开源组织 Square </strong></h3><p>项目地址：<a href="https://github.com/square/otto" target="_blank" rel="external">https://github.com/square/otto</a><br>文档介绍：<a href="http://square.github.io/otto/" target="_blank" rel="external">http://square.github.io/otto/</a></p>
+<h2 id="网络请求"><a href="#网络请求" class="headerlink" title="网络请求"></a>网络请求</h2><h3 id="1-Volley-开源组织-Google"><a href="#1-Volley-开源组织-Google" class="headerlink" title="1.Volley    开源组织 Google"></a><strong>1.Volley    开源组织 Google</strong></h3><p>项目地址：<a href="https://android.googlesource.com/platform/frameworks/volley" target="_blank" rel="external">https://android.googlesource.com/platform/frameworks/volley</a><br>文档介绍：<a href="http://commondatastorage.googleapis.com/io-2013/presentations/110%20-%20Volley-%20Easy,%20Fast%20Networking%20for%20Android.pdf" target="_blank" rel="external">http://commondatastorage.googleapis.com/io-2013/presentations/110%20-%20Volley-%20Easy,%20Fast%20Networking%20for%20Android.pdf</a><br>特点：<br>（1）库小，Google 维护，提供的网络通信库，使得网络请求更简单、更快速</p>
+<h3 id="2-okhttp-开源组织-Square"><a href="#2-okhttp-开源组织-Square" class="headerlink" title="2.okhttp    开源组织 Square"></a><strong>2.okhttp    开源组织 Square</strong></h3><p>项目地址：<a href="https://github.com/square/okhttp" target="_blank" rel="external">https://github.com/square/okhttp</a><br>文档介绍：<a href="http://square.github.io/okhttp/" target="_blank" rel="external">http://square.github.io/okhttp/</a><br>特点：<br>(1) 支持 SPDY( <a href="http://zh.wikipedia.org/wiki/SPDY" target="_blank" rel="external">http://zh.wikipedia.org/wiki/SPDY</a> )协议。SPDY 协议是 Google 开发的基于传输控制协议的应用层协议，通过压缩，多路复用(一个 TCP 链接传送网页和图片等资源)和优先级来缩短加载时间。<br>(2) 如果 SPDY 不可用，利用连接池减少请求延迟<br>(3) Gzip 压缩<br>(4) Response 缓存减少不必要的请求</p>
+<h3 id="3-Retrofit-开源组织-Square"><a href="#3-Retrofit-开源组织-Square" class="headerlink" title="3.Retrofit   开源组织 Square"></a><strong>3.Retrofit   开源组织 Square</strong></h3><p>项目地址：<a href="https://github.com/square/retrofit" target="_blank" rel="external">https://github.com/square/retrofit</a><br>文档介绍：<a href="http://square.github.io/retrofit/" target="_blank" rel="external">http://square.github.io/retrofit/</a><br>特点：<br>（1）配合Rx.xxx系列使用代码更加简洁</p>
+<h3 id="4-Asynchronous-Http-Client-for-Android"><a href="#4-Asynchronous-Http-Client-for-Android" class="headerlink" title=" 4.Asynchronous Http Client for Android  "></a><strong> 4.Asynchronous Http Client for Android  </strong></h3><p>项目地址：<a href="https://github.com/loopj/android-async-http" target="_blank" rel="external">https://github.com/loopj/android-async-http</a><br>文档介绍：<a href="http://loopj.com/android-async-http/" target="_blank" rel="external">http://loopj.com/android-async-http/</a><br>特点：<br>(1)异步 Http 请求<br>(2) 在匿名回调中处理请求结果<br>(3) 在 UI 线程外进行 http 请求<br>(4) 文件断点上传<br>(5) 智能重试<br>(6) 默认 gzip 压缩<br>(7) 支持解析成 Json 格式<br>(8) 可将 Cookies 持久化到 SharedPreferences</p>
+<h2 id="图片缓存"><a href="#图片缓存" class="headerlink" title="图片缓存"></a>图片缓存</h2><h3 id="1-Android-Universal-Image-Loader"><a href="#1-Android-Universal-Image-Loader" class="headerlink" title="1.Android-Universal-Image-Loader"></a><strong>1.Android-Universal-Image-Loader</strong></h3><p>项目地址：<a href="https://github.com/nostra13/Android-Universal-Image-Loader" target="_blank" rel="external">https://github.com/nostra13/Android-Universal-Image-Loader</a><br>原理剖析文档：Android-Universal-Image-Loader<br>特点：<br>(1)目前使用最广泛的图片缓存，支持主流图片缓存的绝大多数特性</p>
+<h3 id="2-picasso-开源组织-Square"><a href="#2-picasso-开源组织-Square" class="headerlink" title="2.picasso   开源组织 Square"></a><strong>2.picasso   开源组织 Square</strong></h3><p>项目地址：<a href="https://github.com/square/picasso" target="_blank" rel="external">https://github.com/square/picasso</a><br>文档介绍：<a href="http://square.github.io/picasso/" target="_blank" rel="external">http://square.github.io/picasso/</a><br>特点：<br>(1)可以自动检测 adapter 的重用并取消之前的下载<br>(2)图片变换<br>(3)可以加载本地资源<br>(4)可以设置占位资源<br>(5)支持 debug 模式</p>
+<h3 id="3-Cube-ImageLoader-开源组织-阿里巴巴一淘"><a href="#3-Cube-ImageLoader-开源组织-阿里巴巴一淘" class="headerlink" title="3.Cube ImageLoader  开源组织 阿里巴巴一淘"></a><strong>3.Cube ImageLoader  开源组织 阿里巴巴一淘</strong></h3><p>项目地址：<a href="https://github.com/etao-open-source/cube-sdk" target="_blank" rel="external">https://github.com/etao-open-source/cube-sdk</a><br>Demo 地址：<a href="https://github.com/liaohuqiu/cube-sdk/raw/master/cube-sdk-sample.apk" target="_blank" rel="external">https://github.com/liaohuqiu/cube-sdk/raw/master/cube-sdk-sample.apk</a><br>特点：<br>(1)综合了 Android-Universal-Image-Loader 和 square 等组件优点，简单易用，良好的中文文档支持</p>
+<h3 id="4-fresco-开源组织-Facebook"><a href="#4-fresco-开源组织-Facebook" class="headerlink" title="4.fresco  开源组织  Facebook "></a><strong>4.fresco  开源组织  Facebook </strong></h3><p>项目地址：<a href="https://github.com/facebook/fresco" target="_blank" rel="external">https://github.com/facebook/fresco</a><br>文档介绍：<a href="http://frescolib.org/" target="_blank" rel="external">http://frescolib.org/</a><br>特点：<br>(1) 两个内存缓存加上磁盘缓存构成了三级缓存<br>(2) 支持流式，可以类似网页上模糊渐进式显示图片<br>(3) 对多帧动画图片支持更好，如 Gif、WebP<br>(4) 更多样的显示，如圆角、进度条、点击重试、自定义对焦点<br>(5) 更多样的加载，如支持 EXIF、全面支持 WebP<br>(6) 支持 Android 2.3+</p>
+<h3 id="5-Glide-作者-bumptech"><a href="#5-Glide-作者-bumptech" class="headerlink" title="5.Glide    作者 bumptech"></a><strong>5.Glide    作者 bumptech</strong></h3><p>项目地址：<a href="https://github.com/bumptech/glide" target="_blank" rel="external">https://github.com/bumptech/glide</a><br>特点：<br>(1) GIF 动画的解码<br>(2) 本地视频剧照的解码<br>(3) 支持缩略图<br>(4) Activity 生命周期的集成<br>(5) 转码的支持<br>(6) 动画的支持<br>(7) OkHttp 和 Volley 的支持</p>
+<h2 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h2><h3 id="1-greenDAO-作者greenrobot"><a href="#1-greenDAO-作者greenrobot" class="headerlink" title="1.greenDAO  作者greenrobot"></a><strong>1.greenDAO  作者greenrobot</strong></h3><p>Android Sqlite orm 的 db 工具类<br>项目地址：<a href="https://github.com/greenrobot/greenDAO" target="_blank" rel="external">https://github.com/greenrobot/greenDAO</a><br>文档介绍：<a href="http://greendao-orm.com/documentation/" target="_blank" rel="external">http://greendao-orm.com/documentation/</a><br>特点：<br>(1) 性能佳<br>(2) 简单易用的 API<br>(3) 内存小好小<br>(4) 库大小小</p>
+<h3 id="2-ActiveAndroid"><a href="#2-ActiveAndroid" class="headerlink" title="2.ActiveAndroid "></a><strong>2.ActiveAndroid </strong></h3><p>项目地址：<a href="https://github.com/pardom/ActiveAndroid" target="_blank" rel="external">https://github.com/pardom/ActiveAndroid</a><br>文档介绍：<a href="https://github.com/pardom/ActiveAndroid/wiki/_pages" target="_blank" rel="external">https://github.com/pardom/ActiveAndroid/wiki/_pages</a></p>
+<h2 id="响应式编程Rx-xx"><a href="#响应式编程Rx-xx" class="headerlink" title="响应式编程Rx.xx"></a>响应式编程Rx.xx</h2><p>学习Rx.java 资料：<a href="https://github.com/lzyzsd/Awesome-RxJava" target="_blank" rel="external">https://github.com/lzyzsd/Awesome-RxJava</a></p>
+<h3 id="1-RxJava-开源组织ReactiveX"><a href="#1-RxJava-开源组织ReactiveX" class="headerlink" title="1.RxJava    开源组织ReactiveX"></a><strong>1.RxJava    开源组织ReactiveX</strong></h3><p>项目地址：<a href="https://github.com/ReactiveX/RxJava" target="_blank" rel="external">https://github.com/ReactiveX/RxJava</a></p>
+<h3 id="2-RxAndroid-开源组织ReactiveX"><a href="#2-RxAndroid-开源组织ReactiveX" class="headerlink" title="2.RxAndroid     开源组织ReactiveX "></a><strong>2.RxAndroid     开源组织ReactiveX </strong></h3><p>项目地址：<a href="https://github.com/ReactiveX/RxAndroid" target="_blank" rel="external">https://github.com/ReactiveX/RxAndroid</a><br>特点：RxJava的Android拓展</p>
+<h3 id="3-rx-preferences"><a href="#3-rx-preferences" class="headerlink" title=" 3.rx-preferences "></a><strong> 3.rx-preferences </strong></h3><p>项目地址： <a href="https://github.com/f2prateek/rx-preferences" target="_blank" rel="external">https://github.com/f2prateek/rx-preferences</a><br>特点：(1)使SharedPreferences支持RxJava</p>
+<h3 id="4-RxBinding-作者JakeWharton"><a href="#4-RxBinding-作者JakeWharton" class="headerlink" title="4.RxBinding   作者JakeWharton"></a><strong>4.RxBinding   作者JakeWharton</strong></h3><p>项目地址：<a href="https://github.com/JakeWharton/RxBinding" target="_blank" rel="external">https://github.com/JakeWharton/RxBinding</a><br>特点：(1)安卓UI控件的RxJava绑定API</p>
+<h3 id="5-xBus-作者-mcxiaoke"><a href="#5-xBus-作者-mcxiaoke" class="headerlink" title="5.xBus  作者 mcxiaoke"></a><strong>5.xBus  作者 mcxiaoke</strong></h3><p>项目地址：<a href="https://github.com/mcxiaoke/xBus" target="_blank" rel="external">https://github.com/mcxiaoke/xBus</a><br>特点：(1)简洁的EventBus实现</p>
+<h3 id="6-RxLifecycle-作者-trello"><a href="#6-RxLifecycle-作者-trello" class="headerlink" title="6.RxLifecycle 作者 trello"></a><strong>6.RxLifecycle 作者 trello</strong></h3><p>项目地址：<a href="https://github.com/trello/RxLifecycle" target="_blank" rel="external">https://github.com/trello/RxLifecycle</a><br>特点：帮助使用了RxJava的安卓应用控制生命周期</p>
+<h3 id="7-sqlbrite-开源组织-square"><a href="#7-sqlbrite-开源组织-square" class="headerlink" title="7. sqlbrite  开源组织 square"></a><strong>7. sqlbrite  开源组织 square</strong></h3><p>项目地址： <a href="https://github.com/square/sqlbrite" target="_blank" rel="external">https://github.com/square/sqlbrite</a><br>特点：支持RxJava的sqlite数据库</p>
+<h2 id="依赖注入"><a href="#依赖注入" class="headerlink" title="依赖注入"></a>依赖注入</h2><p>通过依赖注入减少 View、服务、资源简化初始化，事件绑定等重复繁琐工作</p>
+<h3 id="1-AndroidAnnotations-Code-Diet"><a href="#1-AndroidAnnotations-Code-Diet" class="headerlink" title="1.AndroidAnnotations(Code Diet)"></a><strong>1.AndroidAnnotations(Code Diet)</strong></h3><p>项目地址：<a href="https://github.com/excilys/androidannotations" target="_blank" rel="external">https://github.com/excilys/androidannotations</a><br>文档介绍：<a href="https://github.com/excilys/androidannotations/wiki" target="_blank" rel="external">https://github.com/excilys/androidannotations/wiki</a><br>官网网址：<a href="http://androidannotations.org/" target="_blank" rel="external">http://androidannotations.org/</a><br>特点：(1) 依赖注入：包括 view，extras，系统服务，资源等等<br>(2) 简单的线程模型，通过 annotation 表示方法运行在 ui 线程还是后台线程<br>(3) 事件绑定：通过 annotation 表示 view 的响应事件，不用在写内部类<br>(4) REST 客户端：定义客户端接口，自动生成 REST 请求的实现<br>(5) 没有你想象的复杂：AndroidAnnotations 只是在在编译时生成相应子类<br>(6) 不影响应用性能：仅 50kb，在编译时完成，不会对运行时有性能影响。</p>
+<h3 id="2-butterknife-作者JakeWharton"><a href="#2-butterknife-作者JakeWharton" class="headerlink" title="2.butterknife  作者JakeWharton"></a><strong>2.butterknife  作者JakeWharton</strong></h3><p>利用 annotation 帮你快速完成 View 的初始化，减少代码<br>项目地址：<a href="https://github.com/JakeWharton/butterknife" target="_blank" rel="external">https://github.com/JakeWharton/butterknife</a><br>文档介绍：<a href="http://jakewharton.github.io/butterknife/" target="_blank" rel="external">http://jakewharton.github.io/butterknife/</a></p>
+<h3 id="3-Dagger-开源组织square"><a href="#3-Dagger-开源组织square" class="headerlink" title="3.Dagger 开源组织square"></a><strong>3.Dagger 开源组织square</strong></h3><p>依赖注入，适用于 Android 和 Java<br>项目地址：<a href="https://github.com/square/dagger" target="_blank" rel="external">https://github.com/square/dagger</a><br>原理剖析文档：Dagger<br>文档介绍：<a href="http://square.github.io/dagger/" target="_blank" rel="external">http://square.github.io/dagger/</a></p>
+<h3 id="4-Dagger2-开源组织Google"><a href="#4-Dagger2-开源组织Google" class="headerlink" title="4.Dagger2 开源组织Google"></a><strong>4.Dagger2 开源组织Google</strong></h3><p>项目地址：<a href="https://github.com/google/dagger" target="_blank" rel="external">https://github.com/google/dagger</a><br>官网文档：<a href="http://google.github.io/dagger/" target="_blank" rel="external">http://google.github.io/dagger/</a></p>
+<h2 id="图片裁剪库"><a href="#图片裁剪库" class="headerlink" title="图片裁剪库"></a>图片裁剪库</h2><h3 id="1-Yalantis-出品的强大的图片裁剪库-，支持缩放，旋转图片，支持各种比例的裁剪框"><a href="#1-Yalantis-出品的强大的图片裁剪库-，支持缩放，旋转图片，支持各种比例的裁剪框" class="headerlink" title="1.Yalantis 出品的强大的图片裁剪库 ，支持缩放，旋转图片，支持各种比例的裁剪框"></a>1.Yalantis 出品的强大的图片裁剪库 ，支持缩放，旋转图片，支持各种比例的裁剪框</h3><p>项目地址：<a href="https://github.com/Yalantis/uCrop" target="_blank" rel="external">https://github.com/Yalantis/uCrop</a></p>
+<p>效果图：</p>
+<p><img src="/images/preview.gif" alt="icon"></p>
+<h3 id="2-android-crop"><a href="#2-android-crop" class="headerlink" title="2.android-crop"></a>2.android-crop</h3><p>图片裁剪 Activity 项目地址：<a href="https://github.com/jdamcd/android-crop" target="_blank" rel="external">https://github.com/jdamcd/android-crop</a></p>
+<p>效果图：</p>
+<p><img src="/images/screenshot (1" alt="icon">.png)</p>
+<h2 id="Listview"><a href="#Listview" class="headerlink" title="Listview"></a>Listview</h2><p>实现ListItem 点击后置顶并可显示,个性化添加的item的内部View 的ListView</p>
+<p>项目地址：<a href="https://github.com/s8871404/PopupListView" target="_blank" rel="external">https://github.com/s8871404/PopupListView</a></p>
+<p>Demo 地址：<a href="https://play.google.com/store/apps/details?id=com.baobomb.popuplistview_sample" target="_blank" rel="external">https://play.google.com/store/apps/details?id=com.baobomb.popuplistview_sample</a></p>
+<p>效果图：</p>
+<p><img src="/images/example.gif" alt="icon"></p>
+<h2 id="RecyclerView"><a href="#RecyclerView" class="headerlink" title="RecyclerView"></a>RecyclerView</h2><p>###　1.IndexRecyclerView 实现联系人的功能</p>
+<p>1.首字母悬浮在顶部。<br>2.侧滑删除联系人。<br>3.联系人索引。<br>项目地址：<a href="https://github.com/jiang111/IndexRecyclerView" target="_blank" rel="external">https://github.com/jiang111/IndexRecyclerView</a><br>效果图：<br><img src="/images/art.gif" alt="icon"></p>
+<h3 id="2-RecyclerViewEnhanced"><a href="#2-RecyclerViewEnhanced" class="headerlink" title="2.RecyclerViewEnhanced"></a>2.RecyclerViewEnhanced</h3><p>项目地址：<a href="https://github.com/nikhilpanju/RecyclerViewEnhanced" target="_blank" rel="external">https://github.com/nikhilpanju/RecyclerViewEnhanced</a><br>效果图：<br><img src="/images/Demo.gif" alt="icon"></p>
+<h3 id="3-RecyclerViewUndoSwipe"><a href="#3-RecyclerViewUndoSwipe" class="headerlink" title="3.RecyclerViewUndoSwipe"></a>3.RecyclerViewUndoSwipe</h3><p>项目地址：<a href="https://github.com/HoneyNeutrons/RecyclerViewUndoSwipe" target="_blank" rel="external">https://github.com/HoneyNeutrons/RecyclerViewUndoSwipe</a><br>效果图：<br><img src="/images/687474703a2f2f696d6775722e636f6d2f523931554a716c2e676966.gif" alt="icon"></p>
+<h3 id="4-UltimateRecyclerView"><a href="#4-UltimateRecyclerView" class="headerlink" title="4.UltimateRecyclerView"></a>4.UltimateRecyclerView</h3><p>项目地址：<a href="https://github.com/cymcsg/UltimateRecyclerView" target="_blank" rel="external">https://github.com/cymcsg/UltimateRecyclerView</a><br>效果图：<br><img src="/images/687474703a2f2f692e67697068792e636f6d2f704c57484b734564566c734b412e676966.gif" alt="icon"><img src="/images/687474703a2f2f692e67697068792e636f6d2f62765534486357764d68656a6d2e676966.gif" alt="icon"><img src="/images/68747470733a2f2f627974656275636b65742e6f72672f6d61727368616c6368656e2f696d616765732f7261772f343462656231363231323163373139656134303934626437656131633966306364376465346330342f756c74696d61746572656379636c6572766965772f756c74.gif" alt="icon"></p>
+<h3 id="5-android-advancedrecyclerview"><a href="#5-android-advancedrecyclerview" class="headerlink" title="5.android-advancedrecyclerview"></a>5.android-advancedrecyclerview</h3><p>RecyclerView支持各种功能的库</p>
+<p>项目地址：<a href="https://github.com/h6ah4i/android-advancedrecyclerview" target="_blank" rel="external">https://github.com/h6ah4i/android-advancedrecyclerview</a></p>
+<h3 id="6-SuperSLiM"><a href="#6-SuperSLiM" class="headerlink" title="6.SuperSLiM"></a>6.SuperSLiM</h3><p>RecyclerView 的一款layout manager，支持linear，grid以及staggered之间的互换.并支持sticky特性<br>项目地址：<a href="https://github.com/TonicArtos/SuperSLiM" target="_blank" rel="external">https://github.com/TonicArtos/SuperSLiM</a><br>效果图：<br><img src="/images/68747470733a2f2f342e62702e626c6f6773706f742e636f6d2f2d657034364a4b70476138342f564a685831706c575743492f4141414141414141585a592f394131417272563361336b2f73313630302f5375706572534c694d2d44656d6f2d736d616c6c2e676966.gif" alt="icon"></p>
+<h3 id="7-recyclerview-animators"><a href="#7-recyclerview-animators" class="headerlink" title="7.recyclerview-animators"></a>7.recyclerview-animators</h3><p>各种动画库， 添加 itemanimator 到 RecyclerView items<br>项目地址：<a href="https://github.com/wasabeef/recyclerview-animators" target="_blank" rel="external">https://github.com/wasabeef/recyclerview-animators</a><br>效果图：<br><img src="/images/demo2.gif" alt="icon"><img src="/images/demo4.gif" alt="icon"></p>
+<h3 id="8-RecyclerViewSwipeDismiss"><a href="#8-RecyclerViewSwipeDismiss" class="headerlink" title="8.RecyclerViewSwipeDismiss"></a>8.RecyclerViewSwipeDismiss</h3><p>滑动删除的RecyclerView<br>项目地址：<a href="https://github.com/CodeFalling/RecyclerViewSwipeDismiss" target="_blank" rel="external">https://github.com/CodeFalling/RecyclerViewSwipeDismiss</a><br>效果图：<br><img src="/images/RecyclerViewSwipeDismiss.gif" alt="icon"></p>
+<h3 id="9-Searchable-RecyclerView"><a href="#9-Searchable-RecyclerView" class="headerlink" title="9.Searchable RecyclerView"></a>9.Searchable RecyclerView</h3><p>利用SearchView实现的RecyclerView搜索效果，并且充分利用了RecyclerView中的item animations 动画<br>项目地址：<a href="https://github.com/Wrdlbrnft/Searchable-RecyclerView-Demo" target="_blank" rel="external">https://github.com/Wrdlbrnft/Searchable-RecyclerView-Demo</a><br>效果图：<br><img src="/images/687474703a2f2f692e737461636b2e696d6775722e636f6d2f68747a30592e676966.gif" alt="icon"></p>
+<h3 id="10-EasyRecyclerViewSidebar"><a href="#10-EasyRecyclerViewSidebar" class="headerlink" title="10.EasyRecyclerViewSidebar"></a>10.EasyRecyclerViewSidebar</h3><p>实现伦敦眼效果的LayoutManager<br>项目地址：<a href="https://github.com/CaMnter/EasyRecyclerViewSidebar" target="_blank" rel="external">https://github.com/CaMnter/EasyRecyclerViewSidebar</a><br>效果图：<br><img src="/images/687474703a2f2f7777342e73696e61696d672e636e2f6c617267652f3030366c504563396777316633307662396d78767a6a333161793239386b30672e6a7067.jpg" alt="icon"><img src="/images/687474703a2f2f7777312e73696e61696d672e636e2f6c617267652f3030366c50456339677731663330763333717365646a33316179323938776d6e2e6a7067.jpg" alt="icon"></p>
+<h3 id="11-ItemTouchHelperDemo"><a href="#11-ItemTouchHelperDemo" class="headerlink" title="11.ItemTouchHelperDemo"></a>11.ItemTouchHelperDemo</h3><p>使用ItemTouchHelper实现今日头条 网易新闻 的频道排序、频道移动<br>项目地址：<a href="https://github.com/YoKeyword/ItemTouchHelperDemo" target="_blank" rel="external">https://github.com/YoKeyword/ItemTouchHelperDemo</a><br>效果图：<br><img src="/images/687474703a2f2f75706c6f61642d696d616765732e6a69616e7368752e696f2f75706c6f61645f696d616765732f3933373835312d326466353066663938333364643338362e6769663f696d6167654d6f6772322f6175746f2d6f7269656e742f7374726970.gif" alt="icon"></p>
+<h2 id="ViewPager"><a href="#ViewPager" class="headerlink" title="ViewPager"></a>ViewPager</h2><h3 id="1-AdvancedPagerSlidingTabStrip"><a href="#1-AdvancedPagerSlidingTabStrip" class="headerlink" title="1.AdvancedPagerSlidingTabStrip"></a>1.AdvancedPagerSlidingTabStrip</h3><p>一个完美兼容ViewPager的导航栏组件；可以自定义TabView；能动态加载Tab上的Icon图片； 能显示Tab的消息数量和提示小圆点；支持自定义为微博形式的可滑动tab。</p>
+<p>项目地址：<a href="https://github.com/HomHomLin/AdvancedPagerSlidingTabStrip" target="_blank" rel="external">https://github.com/HomHomLin/AdvancedPagerSlidingTabStrip</a></p>
+<p>效果图：</p>
+<p><img src="/images/Screen_20160411141706.png" alt="icon"></p>
+<h3 id="2-ConvenientBanner"><a href="#2-ConvenientBanner" class="headerlink" title="2.ConvenientBanner"></a>2.ConvenientBanner</h3><p>通用的广告栏控件，让你轻松实现广告头效果。支持无限循环，可以设置自动翻页和时间(而且非常智能，手指触碰则暂停翻页，离开自动开始翻页。你也可以设置在界面onPause的时候不进行自动翻页，onResume之后继续自动翻页)，并且提供多种翻页特效。 对比其他广告栏控件，大多都需要对源码进行改动才能加载网络图片，或者帮你集成不是你所需要的图片缓存库。而这个库能让有代码洁癖的你欢喜，不需要对库源码进行修改你就可以使用任何你喜欢的网络图片库进行配合。 </p>
+<p>项目地址：<a href="https://github.com/saiwu-bigkoo/Android-ConvenientBanner" target="_blank" rel="external">https://github.com/saiwu-bigkoo/Android-ConvenientBanner</a></p>
+<p>效果图：</p>
+<p><img src="/images/convenientbannerdemo.gif" alt="icon"></p>
+<h2 id="Adapter"><a href="#Adapter" class="headerlink" title="Adapter"></a>Adapter</h2><h3 id="1-BaseRecyclerViewAdapterHelper"><a href="#1-BaseRecyclerViewAdapterHelper" class="headerlink" title="1.BaseRecyclerViewAdapterHelper"></a>1.BaseRecyclerViewAdapterHelper</h3><ol>
+<li>优化Adapter代码（减少百分之70%代码）</li>
+<li>添加点击item点击、长按事件、以及item子控件的点击事件</li>
+<li>添加加载动画（一行代码轻松切换5种默认动画）</li>
+<li>添加头部、尾部、下拉刷新、上拉加载（感觉又回到ListView时代）</li>
+<li>设置自定义的加载更多布局</li>
+<li>添加分组（随心定义分组头部）</li>
+<li>自定义不同的item类型（简单配置、无需重写额外方法）</li>
+<li>设置空布局（比Listview的setEmptyView还要好用！）</li>
+<li>添加拖拽item<br>项目地址：<a href="https://github.com/CymChad/BaseRecyclerViewAdapterHelper" target="_blank" rel="external">https://github.com/CymChad/BaseRecyclerViewAdapterHelper</a><br>效果图：<br><img src="/images/chlid_click.gif" alt="icon"><img src="/images/animation.gif" alt="icon"><img src="/images/multiple_item.gif" alt="icon">|</li>
+</ol>
+<h3 id="2-FlexibleAdapter"><a href="#2-FlexibleAdapter" class="headerlink" title="2.FlexibleAdapter"></a>2.FlexibleAdapter</h3><p>一款强大的RecyclerView的adapter，支持ViewHolders动画，拖拽，滑动，取消, 伸缩等<br>项目地址：<a href="https://github.com/davideas/FlexibleAdapter" target="_blank" rel="external">https://github.com/davideas/FlexibleAdapter</a><br><img src="/images/drag_grid_overall.png" alt="icon"><img src="/images/secondary_functionalities.png" alt="icon"></p>
+<h2 id="Animations"><a href="#Animations" class="headerlink" title="Animations"></a>Animations</h2><h3 id="1-Android-SpinKit"><a href="#1-Android-SpinKit" class="headerlink" title="1.Android-SpinKit"></a>1.Android-SpinKit</h3><p>Android加载动画库<br>项目地址：<a href="https://github.com/ybq/Android-SpinKit" target="_blank" rel="external">https://github.com/ybq/Android-SpinKit</a><br>效果图：<br><img src="/images/screen111.gif" alt="icon"></p>
+<h3 id="2-LoadingDrawable"><a href="#2-LoadingDrawable" class="headerlink" title="2.LoadingDrawable"></a>2.LoadingDrawable</h3><p>一些酷炫的android加载动画，可以与任何组件配合使用作为加载的组件或者ProgressBar。</p>
+<p>项目地址：<a href="https://github.com/dinuscxj/LoadingDrawable" target="_blank" rel="external">https://github.com/dinuscxj/LoadingDrawable</a> </p>
+<p>效果图：</p>
+<p><img src="/images/SceneryDrawable.gif" alt="icon"></p>
+<h2 id="Layout"><a href="#Layout" class="headerlink" title="Layout"></a>Layout</h2><h3 id="FlowTagLayout"><a href="#FlowTagLayout" class="headerlink" title="FlowTagLayout"></a>FlowTagLayout</h3><p>Android流式布局，支持点击、单选、多选等，适合用于产品标签等，用法采用Adapter模式，和ListView、GridView用法一样<br>项目地址：<a href="https://github.com/hanhailong/FlowTag" target="_blank" rel="external">https://github.com/hanhailong/FlowTag</a><br>效果图：</p>
+<p><img src="/images/flow_tag.gif" alt="icon"></p>
+<h2 id="ImageView"><a href="#ImageView" class="headerlink" title="ImageView"></a>ImageView</h2><h3 id="1-PhotoView"><a href="#1-PhotoView" class="headerlink" title="1.PhotoView"></a>1.PhotoView</h3><p>支持双击或双指缩放的 ImageView，在 ViewPager 等 Scrolling view 中正常使用，相比上面的 AndroidTouchGallery，不仅支持 ViewPager，同时支持单个 ImageView<br>项目地址：<a href="https://github.com/chrisbanes/PhotoView" target="_blank" rel="external">https://github.com/chrisbanes/PhotoView</a><br>原理剖析文档：PhotoView</p>
+<h2 id="ProgressBar"><a href="#ProgressBar" class="headerlink" title="ProgressBar"></a>ProgressBar</h2><h3 id="1-NumberProgressBar"><a href="#1-NumberProgressBar" class="headerlink" title="1.NumberProgressBar"></a>1.NumberProgressBar</h3><p>带数字进度的进度条<br>项目地址：<a href="https://github.com/daimajia/NumberProgressBar" target="_blank" rel="external">https://github.com/daimajia/NumberProgressBar</a><br>效果图：<br><img src="/images/687474703a2f2f7777332e73696e61696d672e636e2f6d773639302f36313064633033346a77316566797264386e376937673230637a30326d7135662e676966.gif" alt="icon"></p>
+<h3 id="2-MaterialLoadingProgressBar"><a href="#2-MaterialLoadingProgressBar" class="headerlink" title="2.MaterialLoadingProgressBar"></a>2.MaterialLoadingProgressBar</h3><p>抽取自 SwipeRefreshLayout 的 Material Design 进度指示器<br>项目地址：<a href="https://github.com/lsjwzh/MaterialLoadingProgressBar" target="_blank" rel="external">https://github.com/lsjwzh/MaterialLoadingProgressBar</a><br>效果图：<br><img src="/images/screen.gif" alt="icon"></p>
+<h3 id="3-CircleProgressBar"><a href="#3-CircleProgressBar" class="headerlink" title="3.CircleProgressBar"></a>3.CircleProgressBar</h3><p>优点</p>
+<p>1.继承ProgressBar， 不必关心当前进度状态的保存， ProgressBar 已经在onSaveInstanceState（）和 onRestoreInstanceState(Parcelable state)中帮我们写好了。<br>2.定制性很强，可以设置两种风格的进度条，设置进度条的颜色和进度文本的颜色和大小， 由于代码中对于进度文本的格化化是使用的String.format(), 所以进度文本可以根据需要随意定制<br>3.代码优雅，代码注释很全面，格式整齐，可以直接在xml中设置相关的属性。<br>项目地址：<a href="https://github.com/dinuscxj/CircleProgressBar" target="_blank" rel="external">https://github.com/dinuscxj/CircleProgressBar</a><br>效果图：<br><img src="/images/CircleProgressBar.gif" alt="icon"></p>
+<h2 id="Button"><a href="#Button" class="headerlink" title="Button"></a>Button</h2><h3 id="SwitchButton"><a href="#SwitchButton" class="headerlink" title="SwitchButton"></a>SwitchButton</h3><p>状态切换的 Button，类似 iOS，拥有良好的用户界面<br>项目地址：<a href="https://github.com/kyleduo/SwitchButton" target="_blank" rel="external">https://github.com/kyleduo/SwitchButton</a><br>效果图：<br><img src="/images/demo_140.jpg" alt="icon"></p>
+<h2 id="Dialog"><a href="#Dialog" class="headerlink" title="Dialog"></a>Dialog</h2><h3 id="1-Android-AlertView"><a href="#1-Android-AlertView" class="headerlink" title="1.Android-AlertView"></a>1.Android-AlertView</h3><p>仿iOS的AlertViewController 几乎完美还原iOS 的 AlertViewController ，同时支持Alert和ActionSheet模式，每一个细节都是精雕细琢，并把api封装成懒到极致模式，一行代码就可以进行弹窗.<br>项目地址：<a href="https://github.com/saiwu-bigkoo/Android-AlertView" target="_blank" rel="external">https://github.com/saiwu-bigkoo/Android-AlertView</a><br>效果图：<br><img src="/images/alertviewdemo.gif" alt="icon"></p>
+<h3 id="2-CanDialog"><a href="#2-CanDialog" class="headerlink" title="2.CanDialog"></a>2.CanDialog</h3><p>仿照系统Dialog所写，继承于FrameLayout，添加一些动画，一些显示类型。<br>项目地址：<a href="https://github.com/canyinghao/CanDialog" target="_blank" rel="external">https://github.com/canyinghao/CanDialog</a><br>效果图：<br><img src="/images/CanDialog.gif" alt="icon"></p>
+<h2 id="EditText"><a href="#EditText" class="headerlink" title="EditText"></a>EditText</h2><h3 id="GridPasswordView"><a href="#GridPasswordView" class="headerlink" title="GridPasswordView"></a>GridPasswordView</h3><p>模仿支付宝输入密码框<br>项目地址：<a href="https://github.com/Jungerr/GridPasswordView" target="_blank" rel="external">https://github.com/Jungerr/GridPasswordView</a><br>效果图：<br><img src="/images/687474703a2f2f6a756e676572722e71696e6975646e2e636f6d2f6772696470617373776f7264766965775f302e322e676966.gif" alt="icon"></p>
+<h2 id="TextView"><a href="#TextView" class="headerlink" title="TextView"></a>TextView</h2><h3 id="1-ATableView"><a href="#1-ATableView" class="headerlink" title="1.ATableView"></a>1.ATableView</h3><p>ios 风格控件</p>
+<p>项目地址：<a href="https://github.com/dmacosta/ATableView" target="_blank" rel="external">https://github.com/dmacosta/ATableView</a><br>效果图：<br><img src="/images/687474703a2f2f6f6934352e74696e797069632e636f6d2f7673686e32782e6a7067.png" alt="icon"></p>
+<h3 id="2-android-uitableview"><a href="#2-android-uitableview" class="headerlink" title="2.android-uitableview"></a>2.android-uitableview</h3><p>ios 风格控件，包括 Button、ListView、TableView<br>项目地址：<a href="https://github.com/Trinea/android-open-project" target="_blank" rel="external">https://github.com/Trinea/android-open-project</a></p>
+<h3 id="3-MultiActionTextView"><a href="#3-MultiActionTextView" class="headerlink" title="3.MultiActionTextView"></a>3.MultiActionTextView</h3><p>可以分别给 TextView 中的某几个字设置点击事件的 TextView</p>
+<p>项目地址：<a href="https://github.com/ajaysahani/MultiActionTextView" target="_blank" rel="external">https://github.com/ajaysahani/MultiActionTextView</a></p>
+<p>效果图：</p>
+<p><img src="/images/687474703a2f2f692e696d6775722e636f6d2f773934576f53582e706e67.png" alt="icon"></p>
+<h2 id="Time-View"><a href="#Time-View" class="headerlink" title="Time View"></a>Time View</h2><h3 id="1-DateTimePicker"><a href="#1-DateTimePicker" class="headerlink" title="1.DateTimePicker"></a>1.DateTimePicker</h3><p>日期选择部件(Google Agenda 的样式风格)<br>项目地址：<a href="https://github.com/flavienlaurent/datetimepicker" target="_blank" rel="external">https://github.com/flavienlaurent/datetimepicker</a><br>效果图：<br><img src="/images/68747470733a2f2f7261772e6769746875622e636f6d2f6269626f756e652f6461746574696d657069636b65722f6d61737465722f67726170686963732f696d67312e706e67.png" alt="icon"></p>
+<h3 id="2-Week-View"><a href="#2-Week-View" class="headerlink" title="2.Week View"></a>2.Week View</h3><p>日期控件，支持周，天视图，支持自定义样式<br>项目地址：<a href="https://github.com/alamkanak/Android-Week-View" target="_blank" rel="external">https://github.com/alamkanak/Android-Week-View</a><br>效果图：<br><img src="/images/screen-shot.png" alt="icon"></p>
+<h3 id="3-PickerView"><a href="#3-PickerView" class="headerlink" title="3.PickerView"></a>3.PickerView</h3><p>仿 iOS 的 PickerView 控件，有时间选择和选项选择并支持一二三级联动效果，TimePopupWindow 时间选择器，支持年月日时分，年月日，时分等格式；OptionsPopupWindow 选项选择器，支持一，二，三级选项选择，并且可以设置是否联动<br>项目地址：<a href="https://github.com/saiwu-bigkoo/Android-PickerView" target="_blank" rel="external">https://github.com/saiwu-bigkoo/Android-PickerView</a><br>效果图：<br><img src="/images/pickerdemo.gif" alt="icon"></p>
+<h2 id="Graph-View"><a href="#Graph-View" class="headerlink" title="Graph View"></a>Graph View</h2><h3 id="1-MPAndroidChart"><a href="#1-MPAndroidChart" class="headerlink" title="1.MPAndroidChart"></a>1.MPAndroidChart</h3><p>强大的图表绘制工具，支持折线图、面积图、散点图、时间图、柱状图、条图、饼图、气泡图、圆环图、范围（高至低）条形图、网状图等；支持图的拖拽缩放；支持 Android 2.2 以上，支持横纵轴缩放，多指缩放，展现动画、高亮、保存到 sdcard、从文件读取图表<br>项目地址：<a href="https://github.com/PhilJay/MPAndroidChart" target="_blank" rel="external">https://github.com/PhilJay/MPAndroidChart</a><br>效果图：<br><img src="/images/68747470733a2f2f7261772e6769746875622e636f6d2f5068696c4a61792f4d50416e64726f696443686172742f6d61737465722f73637265656e73686f74732f63616e646c65737469636b63686172742e706e67.png" alt="icon"><br><img src="/images/68747470733a2f2f7261772e6769746875622e636f6d2f5068696c4a61792f4d50416e64726f696443686172742f6d61737465722f73637265656e73686f74732f63616e646c65737469636b63686172742e706e67.png" alt="icon"></p>
+<h3 id="2-XCL-Charts"><a href="#2-XCL-Charts" class="headerlink" title="2.XCL-Charts"></a>2.XCL-Charts</h3><p>XCL-Charts 基于原生的 Canvas 来绘制各种图表,在设计时，尽量在保证开发效率的同时，给使用者提供足够多的定制化能力。因此使用简便,同时具有相当灵活的定制能力。目前支持 3D/非 3D 柱形图(Bar Chart)、3D/非 3D 饼图(Pie Chart)、堆积图(Stacked Bar Chart)、面积图(Area Chart)、 折线图(Line Chart)、曲线图(Spline Chart)、环形图(Dount Chart)、南丁格尔玫瑰图(Rose Chart)、仪表盘(Dial Chart)、刻度盘(Gauge Chart)、雷达图(Radar Chart)、圆形图(Circle Chart)等图表。其它特性还包括支持图表缩放、手势移动、动画显示效果、高密度柱形显示、图表分界定制线、多图表的混合显示及同数据源不同类型图表切换等。<br>项目地址：<a href="https://github.com/xcltapestry/XCL-Charts" target="_blank" rel="external">https://github.com/xcltapestry/XCL-Charts</a></p>
+<h3 id="3-android-lockpattern"><a href="#3-android-lockpattern" class="headerlink" title="3.android-lockpattern"></a>3.android-lockpattern</h3><p>Android 的图案密码解锁<br>项目地址：<a href="https://code.google.com/p/android-lockpattern/" target="_blank" rel="external">https://code.google.com/p/android-lockpattern/</a><br>Demo 地址：<a href="https://play.google.com/store/apps/details?id=group.pals.android.lib.ui.lockpattern.demo" target="_blank" rel="external">https://play.google.com/store/apps/details?id=group.pals.android.lib.ui.lockpattern.demo</a><br>文档介绍：<a href="https://code.google.com/p/android-lockpattern/wiki/QuickUse" target="_blank" rel="external">https://code.google.com/p/android-lockpattern/wiki/QuickUse</a></p>
+<h2 id="NotifyUtil"><a href="#NotifyUtil" class="headerlink" title="NotifyUtil"></a>NotifyUtil</h2><p>高仿淘宝，网易新闻，微信，应用宝，环聊等等热门App的通知视图，并且完通知工具类的封装，提供多达8种最常见的App通知接口,支持Android 5.0悬浮式通知样式<br>项目地址:<a href="https://github.com/wenmingvs/NotifyUtil" target="_blank" rel="external">https://github.com/wenmingvs/NotifyUtil</a><br>效果图：<br><img src="/images/687474703a2f2f7777312e73696e61696d672e636e2f6c617267652f3639316363313531677731663037677464787935336732306263306830316c312e676966.gif" alt="icon"></p>
+<h2 id="StepView"><a href="#StepView" class="headerlink" title="StepView"></a>StepView</h2><p>超炫的状态流程<br>项目地址：<a href="https://github.com/baoyachi/StepView" target="_blank" rel="external">https://github.com/baoyachi/StepView</a><br>效果图：<br><img src="/images/vertical_stepview.gif" alt="icon"></p>
+<h2 id="扁平UI"><a href="#扁平UI" class="headerlink" title="扁平UI"></a>扁平UI</h2><h3 id="1-FlatUI"><a href="#1-FlatUI" class="headerlink" title="1.FlatUI"></a>1.FlatUI</h3><p>项目地址：<a href="https://github.com/eluleci/FlatUI" target="_blank" rel="external">https://github.com/eluleci/FlatUI</a><br>效果图：<br><img src="/images/68747470733a2f2f7261772e6769746875622e636f6d2f656c756c6563692f466c617455492f6d61737465722f73616d706c652d696d616765732f73686f77636173652e706e67.png" alt="icon"></p>
+<h3 id="2-MaterialDesignLibrary"><a href="#2-MaterialDesignLibrary" class="headerlink" title="2.MaterialDesignLibrary"></a>2.MaterialDesignLibrary</h3><p>Material Design Android Library<br>项目地址：<a href="https://github.com/navasmdc/MaterialDesignLibrary" target="_blank" rel="external">https://github.com/navasmdc/MaterialDesignLibrary</a></p>
+<h2 id="开发插件"><a href="#开发插件" class="headerlink" title="开发插件"></a>开发插件</h2><h3 id="1-GsonFormat"><a href="#1-GsonFormat" class="headerlink" title="1.GsonFormat"></a>1.<a href="https://plugins.jetbrains.com/plugin/7369?pr=androidstudio" target="_blank" rel="external">GsonFormat</a></h3><p>根据Gson库使用的要求,将JSONObject格式的String 解析成实体</p>
+<h3 id="2-android-butterknife-zelezny"><a href="#2-android-butterknife-zelezny" class="headerlink" title="2.android-butterknife-zelezny"></a>2.<a href="https://plugins.jetbrains.com/plugin/7369?pr=androidstudio" target="_blank" rel="external">android-butterknife-zelezny</a></h3><p>配合ButterKnife实现注解，从此不用写findViewById，想着就爽啊。在Activity，Fragment，Adapter中选中布局xml的资源id自动生成butterknife注解。</p>
+<p>效果图：<br><img src="/images/" alt="icon"></p>
+<h3 id="3-Android-Parcelable-code-generator"><a href="#3-Android-Parcelable-code-generator" class="headerlink" title="3.Android Parcelable code generator"></a>3.<a href="https://plugins.jetbrains.com/plugin/7332?pr=androidstudio" target="_blank" rel="external">Android Parcelable code generator</a></h3><p>JavaBean序列化，快速实现Parcelable接口。</p>
+<h3 id="4-Android-Methods-Count"><a href="#4-Android-Methods-Count" class="headerlink" title="4.Android Methods Count"></a>4.<a href="https://plugins.jetbrains.com/plugin/8076?pr=androidstudio" target="_blank" rel="external">Android Methods Count</a></h3><p>显示依赖库中得方法数</p>
+<h3 id="5-JsonOnlineViewer"><a href="#5-JsonOnlineViewer" class="headerlink" title="5.JsonOnlineViewer"></a>5.<a href="https://plugins.jetbrains.com/plugin/7838?pr=androidstudio" target="_blank" rel="external">JsonOnlineViewer</a></h3><p>在Android Studio中请求、调试接口</p>
+<p>效果图：<br><img src="/images/screenshot_15113.png" alt="icon"></p>
+<h3 id="6-Android-Styler"><a href="#6-Android-Styler" class="headerlink" title="6. Android Styler"></a>6. <a href="https://plugins.jetbrains.com/plugin/7972?pr=androidstudio" target="_blank" rel="external">Android Styler</a></h3><p>根据xml自动生成style代码的插件</p>
+<p>效果图：<br><img src="/images/screenshot_15340.png" alt="icon"><br><img src="/images/screenshot_15339.png" alt="icon"><br><img src="/images/screenshot_15338.png" alt="icon"></p>
+<h3 id="7-SelectorChapek-for-Android"><a href="#7-SelectorChapek-for-Android" class="headerlink" title="7.SelectorChapek for Android"></a>7.<a href="https://plugins.jetbrains.com/plugin/7298?pr=androidstudio" target="_blank" rel="external">SelectorChapek for Android</a></h3><p>通过资源文件命名自动生成Selector文件。</p>
+<p>效果图：<br><img src="/images/screenshot_14292.png" alt="icon"><br><img src="/images/screenshot_14291.png" alt="icon"><br><img src="/images/screenshot_14290.png" alt="icon"></p>
+<h3 id="8-gradle-retrolambda"><a href="#8-gradle-retrolambda" class="headerlink" title="8.gradle-retrolambda"></a>8.<a href="https://github.com/evant/gradle-retrolambda" target="_blank" rel="external">gradle-retrolambda</a></h3><p>在java 6 7中使用 lambda表达式插件</p>
+<p>修改编译的jdk为java8:</p>
+<p>效果图：<br><img src="/images/20160311101644127" alt="icon"></p>
+<h3 id="9-Material-Theme-UI"><a href="#9-Material-Theme-UI" class="headerlink" title="9. Material Theme UI"></a>9. <a href="https://plugins.jetbrains.com/plugin/8006?pr=" target="_blank" rel="external">Material Theme UI</a></h3><p>添加Material主题到你的AS</p>
+<p>效果图：<br><img src="/images/screenshot_15722.png" alt="icon"><br><img src="/images/screenshot_15723.png" alt="icon"><br><img src="/images/screenshot_15721.png" alt="icon"></p>
+<h3 id="10-CheckStyle-IDEA"><a href="#10-CheckStyle-IDEA" class="headerlink" title="10. CheckStyle-IDEA"></a>10. <a href="https://plugins.jetbrains.com/plugin/1065?pr=" target="_blank" rel="external">CheckStyle-IDEA</a></h3><p>CheckStyle-IDEA 是一个检查代码风格的插件，比如像命名约定，Javadoc，类设计等方面进行代码规范和风格的检查，你们可以遵从像Google Oracle 的Java 代码指南 ，当然也可以按照自己的规则来设置配置文件，从而有效约束你自己更好地遵循代码编写规范。</p>
+
+    
+  </div>
+
+
+          </div>
+          
+
+  <p>热评文章</p>
+  <div class="ds-top-threads" data-range="weekly" data-num-items="4"></div>
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="ANDROID/index.html"
+           data-title="ANDROID 开源汇总" data-url="http://yoursite.com/ANDROID/index.html">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.png"
+               alt="xybCoder" />
+          <p class="site-author-name" itemprop="name">xybCoder</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">1</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/xybCoder" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/p/1005053745997724/home?is_all=1" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element">
+            <div class="links-of-blogroll-title">
+              <i class="fa fa-globe fa-fw"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://www.woyaovpn.net/index.shtml/" title="51VPN" target="_blank">51VPN</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://androiddevtools.cn/" title="DevTools" target="_blank">DevTools</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.materialpalette.com/" title="MDColor" target="_blank">MDColor</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://blog.daimajia.com/" title="代码家" target="_blank">代码家</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://github.com/lzyzsd/" title="hi大头鬼hi" target="_blank">hi大头鬼hi</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://blog.zhaiyifan.cn/" title="翟一帆" target="_blank">翟一帆</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://liaohuqiu.net/" title="秋百万" target="_blank">秋百万</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://drakeet.me/" title="Drakeet博客" target="_blank">Drakeet博客</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.trinea.cn/" title="Trinea" target="_blank">Trinea</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://p.codekk.com/" title="CodeKK" target="_blank">CodeKK</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://blog.csdn.net/eclipsexys/" title="Tomcat的猫" target="_blank">Tomcat的猫</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.race604.com/" title="android笔记" target="_blank">android笔记</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.androidperformance.com/" title="Gracker" target="_blank">Gracker</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://yanghui.name/" title="杨辉" target="_blank">杨辉</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://hujiaweibujidao.github.io/" title="五道口宅男" target="_blank">五道口宅男</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://blog.csdn.net/singwhatiwanna/" title="任玉刚博客" target="_blank">任玉刚博客</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://blog.fangjie.info/" title="方杰博客" target="_blank">方杰博客</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://blog.isming.me/" title="码农明明桑" target="_blank">码农明明桑</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+      </section>
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xybCoder</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+        
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">本站访客数<span class="busuanzi-value" id="busuanzi_value_site_uv"></span>人次</span>
+  
+
+  
+    <span class="site-pv">本站总访问量<span class="busuanzi-value" id="busuanzi_value_site_pv"></span>次</span>
+  
+  
+</div>
+
+
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"xybcoder"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+      
+      <script src="/vendors/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+      <script src="/js/src/hook-duoshuo.js"></script>
+    
+  
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+<script type="text/javascript" async src="//push.zhanzhang.baidu.com/push.js">
+</script>
+
+
+</body>
+</html>
