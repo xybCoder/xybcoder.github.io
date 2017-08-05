@@ -64,7 +64,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Android," />
 
 
 
@@ -80,21 +80,22 @@
 
 
 
-<meta name="description" content="title:Android中常见的内存泄漏及解决方法从毕业到现在已经做了好几个项目，在项目中经常遇到内存泄漏的问题，于是就想整理开发中比较常见的内存泄漏的问题，查阅，借鉴网上各种博客列举的案例和解决办法，自己整理成笔记方便以后参考。内存泄漏简单的说，就是该被释放的对象没有释放，一直被某个或某些实例所持有却不再被使用导致 GC 不能回收。  ##集合类泄漏在Android开发中经常使用集合类，集合类">
+<meta name="description" content="从毕业到现在已经做了好几个项目，在项目中经常遇到内存泄漏的问题，于是就想整理开发中比较常见的内存泄漏的问题，查阅，借鉴网上各种博客列举的案例和解决办法，自己整理成笔记方便以后参考。内存泄漏简单的说，就是该被释放的对象没有释放，一直被某个或某些实例所持有却不再被使用导致 GC 不能回收。  ##集合类泄漏在Android开发中经常使用集合类，集合类如果仅仅有添加元素的方法，而没有相应的删除机制，导致">
+<meta name="keywords" content="Android">
 <meta property="og:type" content="article">
-<meta property="og:title" content="xybCoder博客">
+<meta property="og:title" content="Android中常见的内存泄漏及解决方法">
 <meta property="og:url" content="http://yoursite.com/2016/09/20/Android中常见的内存泄漏及解决方法/index.html">
 <meta property="og:site_name" content="xybCoder博客">
-<meta property="og:description" content="title:Android中常见的内存泄漏及解决方法从毕业到现在已经做了好几个项目，在项目中经常遇到内存泄漏的问题，于是就想整理开发中比较常见的内存泄漏的问题，查阅，借鉴网上各种博客列举的案例和解决办法，自己整理成笔记方便以后参考。内存泄漏简单的说，就是该被释放的对象没有释放，一直被某个或某些实例所持有却不再被使用导致 GC 不能回收。  ##集合类泄漏在Android开发中经常使用集合类，集合类">
+<meta property="og:description" content="从毕业到现在已经做了好几个项目，在项目中经常遇到内存泄漏的问题，于是就想整理开发中比较常见的内存泄漏的问题，查阅，借鉴网上各种博客列举的案例和解决办法，自己整理成笔记方便以后参考。内存泄漏简单的说，就是该被释放的对象没有释放，一直被某个或某些实例所持有却不再被使用导致 GC 不能回收。  ##集合类泄漏在Android开发中经常使用集合类，集合类如果仅仅有添加元素的方法，而没有相应的删除机制，导致">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://img.blog.csdn.net/20151123144226349?spm=5176.100239.blogcont.9.CtU1c4">
 <meta property="og:image" content="http://img2.tbcdn.cn/L1/461/1/fb05ff6d2e68f309b94dd84352c81acfe0ae839e?spm=5176.100239.blogcont.10.CtU1c4">
 <meta property="og:image" content="https://gw.alicdn.com/tps/TB1U6TNLVXXXXchXFXXXXXXXXXX-644-546.jpg">
 <meta property="og:image" content="https://gw.alicdn.com/tps/TB1oW_FLVXXXXXuaXXXXXXXXXXX-679-717.jpg">
-<meta property="og:updated_time" content="2017-08-05T08:37:21.000Z">
+<meta property="og:updated_time" content="2017-08-05T08:51:26.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="xybCoder博客">
-<meta name="twitter:description" content="title:Android中常见的内存泄漏及解决方法从毕业到现在已经做了好几个项目，在项目中经常遇到内存泄漏的问题，于是就想整理开发中比较常见的内存泄漏的问题，查阅，借鉴网上各种博客列举的案例和解决办法，自己整理成笔记方便以后参考。内存泄漏简单的说，就是该被释放的对象没有释放，一直被某个或某些实例所持有却不再被使用导致 GC 不能回收。  ##集合类泄漏在Android开发中经常使用集合类，集合类">
+<meta name="twitter:title" content="Android中常见的内存泄漏及解决方法">
+<meta name="twitter:description" content="从毕业到现在已经做了好几个项目，在项目中经常遇到内存泄漏的问题，于是就想整理开发中比较常见的内存泄漏的问题，查阅，借鉴网上各种博客列举的案例和解决办法，自己整理成笔记方便以后参考。内存泄漏简单的说，就是该被释放的对象没有释放，一直被某个或某些实例所持有却不再被使用导致 GC 不能回收。  ##集合类泄漏在Android开发中经常使用集合类，集合类如果仅仅有添加元素的方法，而没有相应的删除机制，导致">
 <meta name="twitter:image" content="http://img.blog.csdn.net/20151123144226349?spm=5176.100239.blogcont.9.CtU1c4">
 
 
@@ -113,7 +114,7 @@
   };
 </script>
 
-  <title>  | xybCoder博客 </title>
+  <title> Android中常见的内存泄漏及解决方法 | xybCoder博客 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -269,7 +270,7 @@
             
             
               
-                
+                Android中常见的内存泄漏及解决方法
               
             
           </h1>
@@ -286,6 +287,25 @@
             </time>
           </span>
 
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/android性能优化/" itemprop="url" rel="index">
+                    <span itemprop="name">android性能优化</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
           
 
           
@@ -321,7 +341,7 @@
       
 
       
-        <h2 id="title-Android中常见的内存泄漏及解决方法"><a href="#title-Android中常见的内存泄漏及解决方法" class="headerlink" title="title:Android中常见的内存泄漏及解决方法"></a>title:Android中常见的内存泄漏及解决方法</h2><p>从毕业到现在已经做了好几个项目，在项目中经常遇到内存泄漏的问题，于是就想整理开发中比较常见的内存泄漏的问题，查阅，借鉴网上各种博客列举的案例和解决办法，自己整理成笔记方便以后参考。内存泄漏简单的说，就是该被释放的对象没有释放，一直被某个或某些实例所持有却不再被使用导致 GC 不能回收。</p>
+        <p>从毕业到现在已经做了好几个项目，在项目中经常遇到内存泄漏的问题，于是就想整理开发中比较常见的内存泄漏的问题，查阅，借鉴网上各种博客列举的案例和解决办法，自己整理成笔记方便以后参考。内存泄漏简单的说，就是该被释放的对象没有释放，一直被某个或某些实例所持有却不再被使用导致 GC 不能回收。</p>
 <hr>
 <p>##集合类泄漏<br>在Android开发中经常使用集合类，集合类如果仅仅有添加元素的方法，而没有相应的删除机制，导致内存被占用。如果这个集合类是静态变量 ，如果没有相应的删除机制，很可能导致集合所占用的内存只增不减，最终导致内存泄漏，我们应该在onDestroy() 将集合清空，并将置为null。<br><figure class="highlight scala"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">public <span class="class"><span class="keyword">class</span> <span class="title">SimpleActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> <span class="type">HashMap</span>&lt;<span class="type">String</span>,<span class="type">Object</span>&gt;sMap=<span class="keyword">new</span> <span class="type">HashMap</span>&lt;&gt;();</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="keyword">protected</span> void onCreate(<span class="type">Bundle</span> savedInstanceState) &#123;</div><div class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</div><div class="line">        setContentView(<span class="type">R</span>.layout.activity_simple);</div><div class="line">        <span class="keyword">for</span> (int i = <span class="number">0</span>; i &lt;<span class="number">10</span> ; i++) &#123;</div><div class="line">            <span class="type">Object</span> obj=<span class="keyword">new</span> <span class="type">Object</span>();</div><div class="line">            sMap.put(<span class="string">""</span>+i,obj);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="keyword">protected</span> void onDestroy() &#123;</div><div class="line">        sMap.clear();</div><div class="line">        sMap=<span class="literal">null</span>;</div><div class="line">        <span class="keyword">super</span>.onDestroy();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>##单例造成的内存泄漏</p>
@@ -425,6 +445,12 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/Android/" rel="tag">#Android</a>
+          
+        </div>
+      
 
       
         <div class="post-nav">
@@ -462,12 +488,15 @@
           </div>
           
 
+  <p>热评文章</p>
+  <div class="ds-top-threads" data-range="weekly" data-num-items="4"></div>
+
 
           
   <div class="comments" id="comments">
     
       <div class="ds-thread" data-thread-key="2016/09/20/Android中常见的内存泄漏及解决方法/"
-           data-title="" data-url="http://yoursite.com/2016/09/20/Android中常见的内存泄漏及解决方法/">
+           data-title="Android中常见的内存泄漏及解决方法" data-url="http://yoursite.com/2016/09/20/Android中常见的内存泄漏及解决方法/">
       </div>
     
   </div>
@@ -520,7 +549,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-count">8</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -529,7 +558,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-count">5</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -660,7 +689,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#title-Android中常见的内存泄漏及解决方法"><span class="nav-number">1.</span> <span class="nav-text">title:Android中常见的内存泄漏及解决方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#注册-监听-和取消注册成对使用"><span class="nav-number">2.</span> <span class="nav-text">注册(监听)和取消注册成对使用</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#注册-监听-和取消注册成对使用"><span class="nav-number">1.</span> <span class="nav-text">注册(监听)和取消注册成对使用</span></a></li></ol></div>
             
           </div>
         </section>
