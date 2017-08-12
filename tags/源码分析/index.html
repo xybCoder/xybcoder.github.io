@@ -64,7 +64,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="git," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -80,18 +80,13 @@
 
 
 
-<meta name="description" content="Git和其他版本控制系统如SVN的一个不同之处就是有暂存区（stage）的概念。工作区：就是你在电脑里能看到的目录，比如我的learngit文件夹就是一个工作区。 前面讲了我们把文件往Git版本库里添加的时候，是分两步执行的： 第一步是用git add把文件添加进去，实际上就是把文件修改添加到暂存区（stage）； 第二步是用git commit提交更改，实际上就是把暂存区（stage）的所有内容">
-<meta name="keywords" content="git">
-<meta property="og:type" content="article">
-<meta property="og:title" content="工作区和暂存区和分支理解">
-<meta property="og:url" content="http://yoursite.com/2016/04/03/工作区和暂存区和分支理解/index.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="xybCoder博客">
+<meta property="og:url" content="http://yoursite.com/tags/源码分析/index.html">
 <meta property="og:site_name" content="xybCoder博客">
-<meta property="og:description" content="Git和其他版本控制系统如SVN的一个不同之处就是有暂存区（stage）的概念。工作区：就是你在电脑里能看到的目录，比如我的learngit文件夹就是一个工作区。 前面讲了我们把文件往Git版本库里添加的时候，是分两步执行的： 第一步是用git add把文件添加进去，实际上就是把文件修改添加到暂存区（stage）； 第二步是用git commit提交更改，实际上就是把暂存区（stage）的所有内容">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2016-04-03T09:42:52.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="工作区和暂存区和分支理解">
-<meta name="twitter:description" content="Git和其他版本控制系统如SVN的一个不同之处就是有暂存区（stage）的概念。工作区：就是你在电脑里能看到的目录，比如我的learngit文件夹就是一个工作区。 前面讲了我们把文件往Git版本库里添加的时候，是分两步执行的： 第一步是用git add把文件添加进去，实际上就是把文件修改添加到暂存区（stage）； 第二步是用git commit提交更改，实际上就是把暂存区（stage）的所有内容">
+<meta name="twitter:title" content="xybCoder博客">
 
 
 
@@ -109,7 +104,7 @@
   };
 </script>
 
-  <title> 工作区和暂存区和分支理解 | xybCoder博客 </title>
+  <title> 标签: 源码分析 | xybCoder博客 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -140,7 +135,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-right page-post-detail ">
+  <div class="container one-collumn sidebar-position-right  ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -244,178 +239,53 @@
           <div id="content" class="content">
             
 
-  <div id="posts" class="posts-expand">
-    
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                工作区和暂存区和分支理解
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-04-03T17:42:52+08:00" content="2016-04-03">
-              2016-04-03
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/git/" itemprop="url" rel="index">
-                    <span itemprop="name">git</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/04/03/工作区和暂存区和分支理解/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/03/工作区和暂存区和分支理解/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-              &nbsp; | &nbsp;
-              <span class="page-pv">本文总阅读量
-              <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
-              </span>
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        <h2 id="Git和其他版本控制系统如SVN的一个不同之处就是有暂存区（stage）的概念。"><a href="#Git和其他版本控制系统如SVN的一个不同之处就是有暂存区（stage）的概念。" class="headerlink" title="Git和其他版本控制系统如SVN的一个不同之处就是有暂存区（stage）的概念。"></a>Git和其他版本控制系统如SVN的一个不同之处就是有暂存区（stage）的概念。</h2><p>工作区：就是你在电脑里能看到的目录，比如我的learngit文件夹就是一个工作区。</p>
-<p>前面讲了我们把文件往Git版本库里添加的时候，是分两步执行的：</p>
-<p>第一步是用git add把文件添加进去，实际上就是把文件修改添加到暂存区（stage）；</p>
-<p>第二步是用git commit提交更改，实际上就是把暂存区（stage）的所有内容提交到版本库（master分支），即暂存区（stage）修改的内容同步到版本库（master分支）</p>
-<p>因为我们创建Git版本库时，Git自动为我们创建了唯一一个master分支，所以，现在，git commit就是往master分支上提交更改。</p>
-<p>你可以简单理解为，需要提交的文件修改通通放到暂存区（stage），然后，一次性提交暂存区的所有修改到版本库（master分支）。</p>
-
-      
-    </div>
-    
-    <div>
-      
-        
-      
+  <div id="posts" class="posts-collapse">
+    <div class="collection-title">
+      <h2 >
+        源码分析
+        <small>标签</small>
+      </h2>
     </div>
 
-    <div>
+    
       
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <h1 class="post-title">
         
-      
-    </div>
+            <a class="post-title-link" href="/2016/06/01/LinkedList源码分析/" itemprop="url">
+              
+                <span itemprop="name">LinkedList源码分析</span>
+              
+            </a>
+        
+      </h1>
 
-    <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/git/" rel="tag">#git</a>
-          
-        </div>
-      
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated"
+              datetime="2016-06-01T22:10:00+08:00"
+              content="2016-06-01" >
+          06-01
+        </time>
+      </div>
 
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2016/04/03/远程库管理（克隆远程库）/" rel="next" title="远程库管理（克隆远程库）">
-                <i class="fa fa-chevron-left"></i> 远程库管理（克隆远程库）
-              </a>
-            
-          </div>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/04/03/Git用法（创建版本库）/" rel="prev" title="创建版本库">
-                创建版本库 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
+    </header>
   </article>
 
 
-
-    <div class="post-spread">
-      
-    </div>
+    
   </div>
+
+  
 
 
           </div>
           
 
-  <p>热评文章</p>
-  <div class="ds-top-threads" data-range="weekly" data-num-items="4"></div>
-
 
           
-  <div class="comments" id="comments">
-    
-      <div class="ds-thread" data-thread-key="2016/04/03/工作区和暂存区和分支理解/"
-           data-title="工作区和暂存区和分支理解" data-url="http://yoursite.com/2016/04/03/工作区和暂存区和分支理解/">
-      </div>
-    
-  </div>
-
 
         </div>
         
@@ -435,17 +305,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview sidebar-panel ">
+      <section class="site-overview sidebar-panel  sidebar-panel-active ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.png"
@@ -586,17 +447,6 @@
       </section>
 
       
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-            
-              
-            
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Git和其他版本控制系统如SVN的一个不同之处就是有暂存区（stage）的概念。"><span class="nav-number">1.</span> <span class="nav-text">Git和其他版本控制系统如SVN的一个不同之处就是有暂存区（stage）的概念。</span></a></li></ol></div>
-            
-          </div>
-        </section>
-      
 
     </div>
   </aside>
@@ -708,10 +558,6 @@
   
 
   
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
-
-
 
   
 

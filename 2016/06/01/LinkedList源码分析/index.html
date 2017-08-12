@@ -1,0 +1,787 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="源码分析," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="#成员变量 123transient int size = 0; //LinkedList的大小transient Node&amp;lt;E&amp;gt; first; //链表中第一个节点transient Node&amp;lt;E&amp;gt; last; //链表中最后一个节点 Node类是ListedList的一个内部类，其结构如下： 1234567891011private static class Node&amp;">
+<meta name="keywords" content="源码分析">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LinkedList源码分析">
+<meta property="og:url" content="http://yoursite.com/2016/06/01/LinkedList源码分析/index.html">
+<meta property="og:site_name" content="xybCoder博客">
+<meta property="og:description" content="#成员变量 123transient int size = 0; //LinkedList的大小transient Node&amp;lt;E&amp;gt; first; //链表中第一个节点transient Node&amp;lt;E&amp;gt; last; //链表中最后一个节点 Node类是ListedList的一个内部类，其结构如下： 1234567891011private static class Node&amp;">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-08-12T10:00:33.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="LinkedList源码分析">
+<meta name="twitter:description" content="#成员变量 123transient int size = 0; //LinkedList的大小transient Node&amp;lt;E&amp;gt; first; //链表中第一个节点transient Node&amp;lt;E&amp;gt; last; //链表中最后一个节点 Node类是ListedList的一个内部类，其结构如下： 1234567891011private static class Node&amp;">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"right","display":"hide"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 6263412572838430000,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> LinkedList源码分析 | xybCoder博客 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?2ffc178452e1fcf54c288f14f8c972a1";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">xybCoder博客</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-android">
+          <a href="/ANDROID" rel="section">
+            
+            Android开源库
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-ios">
+          <a href="/IOS" rel="section">
+            
+            IOS开源库
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                LinkedList源码分析
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-06-01T22:10:00+08:00" content="2016-06-01">
+              2016-06-01
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/06/01/LinkedList源码分析/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/01/LinkedList源码分析/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+              &nbsp; | &nbsp;
+              <span class="page-pv">本文总阅读量
+              <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+              </span>
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>#成员变量</p>
+<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">transient int size = <span class="number">0</span>; //LinkedList的大小</div><div class="line">transient <span class="keyword">Node</span><span class="title">&lt;E</span>&gt; first; //链表中第一个节点</div><div class="line">transient <span class="keyword">Node</span><span class="title">&lt;E</span>&gt; last; //链表中最后一个节点</div></pre></td></tr></table></figure>
+<p>Node类是ListedList的一个内部类，其结构如下：</p>
+<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">private static class <span class="keyword">Node</span><span class="title">&lt;E</span>&gt; &#123;</div><div class="line">       E item;</div><div class="line">       <span class="keyword">Node</span><span class="title">&lt;E</span>&gt; next;</div><div class="line">       <span class="keyword">Node</span><span class="title">&lt;E</span>&gt; prev;</div><div class="line"></div><div class="line">       <span class="keyword">Node</span><span class="title">(Node</span><span class="tag">&lt;E&gt;</span> prev, E element, <span class="keyword">Node</span><span class="title">&lt;E</span>&gt; next) &#123;</div><div class="line">           this.item = element;</div><div class="line">           this.next = next;</div><div class="line">           this.prev = prev;</div><div class="line">       &#125;</div><div class="line">   &#125;</div></pre></td></tr></table></figure>
+<p>item表示当前节点的值，next引用指向下一个节点，prev引用指向前一个节点，这就是双向链表的特征</p>
+<p>#构造方法</p>
+<figure class="highlight aspectj"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//构造一个无参</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="title">LinkedList</span><span class="params">()</span> </span>&#123;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="title">LinkedList</span><span class="params">(Collection&lt;? <span class="keyword">extends</span> E&gt; c)</span> </span>&#123;</div><div class="line">    <span class="keyword">this</span>();</div><div class="line">    addAll(c);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>所有实现Collection接口的容器类，都一定有两个构造方法，一个无参，一个有参（参数为所有实现Collection的对象）</p>
+<p>LinkedList(Collection&lt; ? extends E&gt; c) ：构造一个包含指定 collection 中的元素的列表，这些元素按其 collection 的迭代器返回的顺序排列</p>
+<p>首先调用this()生成一个空的LinkedList对象，然后调用addAll，把参数的Collection添加到LinkedList中，addAll（Collection&lt; ? extends E&gt; c）代码如下：</p>
+<figure class="highlight aspectj"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">boolean</span> <span class="title">addAll</span><span class="params">(Collection&lt;? <span class="keyword">extends</span> E&gt; c)</span> </span>&#123;</div><div class="line">       <span class="function"><span class="keyword">return</span> <span class="title">addAll</span><span class="params">(size, c)</span></span>;</div><div class="line">   &#125;</div></pre></td></tr></table></figure>
+<p>addAll方法有两个：<br>addAll(Collection&lt; ? extends E&gt; c) ： 把Collection添加到LinkedList的尾端<br>addAll(int index, Collection&lt; ? extends E&gt; c)：把Collection添加到LinkedList的index位置</p>
+<p>在构造方法中调用一参的addAll，从而调用二参的addAll，此时index为成员变量size，即把Collection添加到LinkedList的尾端</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> boolean addAll(int index, Collection&lt;? extends E&gt; c) &#123;</div><div class="line">       <span class="comment">//检查index位置是否超出边界</span></div><div class="line">       checkPositionIndex(index);</div><div class="line"></div><div class="line">       <span class="comment">//把Collection转为数组   </span></div><div class="line">       Object[] a = c.toArray();</div><div class="line">       int numNew = a.length;</div><div class="line">       <span class="comment">//如果Collection为空，返回false，表示添加失败</span></div><div class="line">       <span class="keyword">if</span> (numNew == <span class="number">0</span>)</div><div class="line">           <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line"></div><div class="line">       <span class="comment">//pred指向前一个节点，succ指向下一个节点</span></div><div class="line">       Node&lt;E&gt; pred, succ;</div><div class="line">       <span class="comment">//如果在链尾添加，下一个节点为空，pred指向当前链表最后一个节点</span></div><div class="line">       <span class="keyword">if</span> (index == size) &#123;</div><div class="line">           succ = <span class="literal">null</span>;</div><div class="line">           pred = last;</div><div class="line">       &#125; <span class="keyword">else</span> &#123;</div><div class="line">           <span class="comment">/**</span></div><div class="line"><span class="comment">           如果不在链尾添加，调用node（index），内部通过遍历离链表取得index位置的节点，并把succ指向index位置的节点，pred指向index位置节点的前一个节点</span></div><div class="line"><span class="comment">           **/</span></div><div class="line">           succ = node(index);</div><div class="line">           pred = succ.prev;</div><div class="line">       &#125;</div><div class="line"></div><div class="line">       <span class="comment">//执行插入，注意pred</span></div><div class="line">       <span class="keyword">for</span> (Object o : <span class="type">a</span>) &#123;</div><div class="line">           @SuppressWarnings(<span class="string">"unchecked"</span>) E e = (E) o;</div><div class="line">           Node&lt;E&gt; <span class="keyword">new</span><span class="type">Node</span> = <span class="keyword">new</span> <span class="type">Node</span>&lt;&gt;(pred, e, <span class="literal">null</span>);</div><div class="line">           <span class="comment">//如果把o插入到链头</span></div><div class="line">           <span class="keyword">if</span> (pred == <span class="literal">null</span>)</div><div class="line">               first = <span class="keyword">new</span><span class="type">Node</span>;</div><div class="line">           <span class="keyword">else</span></div><div class="line">               <span class="comment">//让index位置的前一个节点的next指向包含o的新节点</span></div><div class="line">               pred.next = <span class="keyword">new</span><span class="type">Node</span>;</div><div class="line">           <span class="comment">//把newNode节点作为pred</span></div><div class="line">           pred = <span class="keyword">new</span><span class="type">Node</span>;</div><div class="line">       &#125;</div><div class="line"></div><div class="line">       <span class="comment">//更新pred和succ</span></div><div class="line">       <span class="keyword">if</span> (succ == <span class="literal">null</span>) &#123;</div><div class="line">           last = pred;</div><div class="line">       &#125; <span class="keyword">else</span> &#123;</div><div class="line">           pred.next = succ;</div><div class="line">           succ.prev = pred;</div><div class="line">       &#125;</div><div class="line"></div><div class="line">       <span class="comment">//增加LinkedList的大小</span></div><div class="line">       size += numNew;</div><div class="line">       <span class="comment">//LinkedList用modCount变量来记录链表改变的次数</span></div><div class="line">       modCount++;</div><div class="line">       <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">   &#125;</div></pre></td></tr></table></figure>
+<p>node(index)方法非常重要，LinkedList很多方法都是通过node(index)才取得index位置的节点，从而进一步操作：<br>例如set（int index， E e），就是要通过node（index）取得index位置的node，从而设置node.item = e；</p>
+<figure class="highlight fortran"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">//遍历链表从而取得<span class="built_in">index</span>位置节点</div><div class="line">   Node&lt;E&gt; node(<span class="built_in">int</span> <span class="built_in">index</span>) &#123; //如果<span class="built_in">index</span> 小于 <span class="built_in">size</span>/<span class="number">2</span> 则从头开始查找</div><div class="line">       <span class="keyword">if</span> (<span class="built_in">index</span> &lt; (<span class="built_in">size</span> &gt;&gt; <span class="number">1</span>)) &#123;</div><div class="line">           Node&lt;E&gt; x = first;</div><div class="line">           for (<span class="built_in">int</span> i = <span class="number">0</span>; i &lt; <span class="built_in">index</span>; i++)</div><div class="line">               x = x.next;</div><div class="line">           <span class="keyword">return</span> x;</div><div class="line">       &#125; <span class="keyword">else</span> &#123; //如果<span class="built_in">index</span> 大于 <span class="built_in">size</span>/<span class="number">2</span> 则从尾部开始查找</div><div class="line">           Node&lt;E&gt; x = last;</div><div class="line">           for (<span class="built_in">int</span> i = <span class="built_in">size</span> - <span class="number">1</span>; i &gt; <span class="built_in">index</span>; i--)</div><div class="line">               x = x.prev;</div><div class="line">           <span class="keyword">return</span> x;</div><div class="line">       &#125;</div><div class="line">   &#125;</div></pre></td></tr></table></figure>
+<h1 id="增加方法"><a href="#增加方法" class="headerlink" title="增加方法"></a>增加方法</h1><figure class="highlight n1ql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">add(E e) ：将指定元素添加到此列表的结尾 </div><div class="line">add(int <span class="keyword">index</span>, <span class="built_in">E</span> <span class="keyword">element</span>)：在此列表中指定的位置插入指定的元素 </div><div class="line">当<span class="keyword">index</span> == size时，两个方法等效，都是添加到链表的尾部</div><div class="line"></div><div class="line">接下来看看add(int <span class="keyword">index</span>, <span class="built_in">E</span> <span class="keyword">element</span>)的源码：</div><div class="line"></div><div class="line"> <span class="keyword">public</span> void add(int <span class="keyword">index</span>, <span class="built_in">E</span> <span class="keyword">element</span>) &#123;</div><div class="line">        checkPositionIndex(<span class="keyword">index</span>);</div><div class="line"></div><div class="line">        //当在链尾添加时，调用linkLast(element)，add(E e) 方法内部也是调用linkLast(element)</div><div class="line">        if (<span class="keyword">index</span> == size)</div><div class="line">            linkLast(<span class="keyword">element</span>);</div><div class="line">        else</div><div class="line">            //如果不是在链尾添加，则把element添加到<span class="keyword">index</span>位置节点前</div><div class="line">            linkBefore(<span class="keyword">element</span>, node(<span class="keyword">index</span>));</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//succ是index位置的节点</span></div><div class="line">   void linkBefore(E e, Node&lt;E&gt; succ) &#123;</div><div class="line">       <span class="comment">// assert succ != null;</span></div><div class="line">       <span class="comment">//pred指向要添加的位置的前一个节点</span></div><div class="line">       final Node&lt;E&gt; pred = succ.prev;</div><div class="line">       <span class="comment">//创建一个新节点</span></div><div class="line">       final Node&lt;E&gt; <span class="keyword">new</span><span class="type">Node</span> = <span class="keyword">new</span> <span class="type">Node</span>&lt;&gt;(pred, e, succ);</div><div class="line">       <span class="comment">//把新节点插入到index位置前</span></div><div class="line">       succ.prev = <span class="keyword">new</span><span class="type">Node</span>;</div><div class="line"></div><div class="line">       <span class="comment">//如果是在链表头部添加</span></div><div class="line">       <span class="keyword">if</span> (pred == <span class="literal">null</span>)</div><div class="line">           first = <span class="keyword">new</span><span class="type">Node</span>;</div><div class="line">       <span class="keyword">else</span></div><div class="line">           <span class="comment">//把新节点插入到index位置前一个节点的后面，这样就把新节点插入到了index位置</span></div><div class="line">           pred.next = <span class="keyword">new</span><span class="type">Node</span>;</div><div class="line">       <span class="comment">//容量加1</span></div><div class="line">       size++;</div><div class="line">       <span class="comment">//修改次数加1</span></div><div class="line">       modCount++;</div><div class="line">   &#125;</div></pre></td></tr></table></figure>
+<p>除了linkBefore，linkFirst和linkLast也是其它增加方法的核心<br>例如addFirst内部是调用linkFirst，push()也是调用linkFirst，addLast()内部调用的是linkLast</p>
+<p>#删除方法</p>
+<p>remove(Object o)：从此列表中移除首次出现的指定元素（如果存在）</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">boolean</span> remove(Object o) &#123;</div><div class="line">       <span class="keyword">if</span> (o == <span class="keyword">null</span>) &#123;</div><div class="line">           <span class="keyword">for</span> (Node&lt;E&gt; x = first; x != <span class="keyword">null</span>; x = x.<span class="keyword">next</span>) &#123;</div><div class="line">               <span class="keyword">if</span> (x.item == <span class="keyword">null</span>) &#123;</div><div class="line">                   unlink(x);</div><div class="line">                   <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">               &#125;</div><div class="line">           &#125;</div><div class="line">       &#125; <span class="keyword">else</span> &#123;</div><div class="line">           <span class="keyword">for</span> (Node&lt;E&gt; x = first; x != <span class="keyword">null</span>; x = x.<span class="keyword">next</span>) &#123;</div><div class="line">               <span class="keyword">if</span> (o.equals(x.item)) &#123;</div><div class="line">                   unlink(x);</div><div class="line">                   <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">               &#125;</div><div class="line">           &#125;</div><div class="line">       &#125;</div><div class="line">       <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">   &#125;</div></pre></td></tr></table></figure>
+<p>这段代码很简单，就是遍历链表，把删除掉第一次出现参数值得节点，如果找不到，返回false</p>
+<p>remove调用了unlink(x)方法：</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">E unlink(Node&lt;E&gt; x) &#123;</div><div class="line">       <span class="comment">// assert x != null;</span></div><div class="line">       <span class="keyword">final</span> E element = x.item;</div><div class="line">       <span class="keyword">final</span> Node&lt;E&gt; <span class="keyword">next</span> = x.<span class="keyword">next</span>;</div><div class="line">       <span class="keyword">final</span> Node&lt;E&gt; prev = x.prev;</div><div class="line"></div><div class="line">       <span class="keyword">if</span> (prev == <span class="keyword">null</span>) &#123;</div><div class="line">           first = <span class="keyword">next</span>;</div><div class="line">       &#125; <span class="keyword">else</span> &#123;</div><div class="line">           prev.<span class="keyword">next</span> = <span class="keyword">next</span>;</div><div class="line">           x.prev = <span class="keyword">null</span>;</div><div class="line">       &#125;</div><div class="line"></div><div class="line">       <span class="keyword">if</span> (<span class="keyword">next</span> == <span class="keyword">null</span>) &#123;</div><div class="line">           last = prev;</div><div class="line">       &#125; <span class="keyword">else</span> &#123;</div><div class="line">           <span class="keyword">next</span>.prev = prev;</div><div class="line">           x.<span class="keyword">next</span> = <span class="keyword">null</span>;</div><div class="line">       &#125;</div><div class="line"></div><div class="line">       x.item = <span class="keyword">null</span>;</div><div class="line">       <span class="keyword">size</span>--;</div><div class="line">       modCount++;</div><div class="line">       <span class="keyword">return</span> element;</div><div class="line">   &#125;</div></pre></td></tr></table></figure>
+<p>#总结</p>
+<p>LinkedList的实现是很简单的，数据结构是一个双向链表。</p>
+
+      
+    </div>
+    
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/源码分析/" rel="tag">#源码分析</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/05/28/Observable与Observer源码分析及用法/" rel="next" title="Observable与Observer源码分析及用法">
+                <i class="fa fa-chevron-left"></i> Observable与Observer源码分析及用法
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/07/24/Java反射实践/" rel="prev" title="Java反射实践">
+                Java反射实践 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  <p>热评文章</p>
+  <div class="ds-top-threads" data-range="weekly" data-num-items="4"></div>
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/06/01/LinkedList源码分析/"
+           data-title="LinkedList源码分析" data-url="http://yoursite.com/2016/06/01/LinkedList源码分析/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.png"
+               alt="xybCoder" />
+          <p class="site-author-name" itemprop="name">xybCoder</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">25</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/xybCoder" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/p/1005053745997724/home?is_all=1" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element">
+            <div class="links-of-blogroll-title">
+              <i class="fa fa-globe fa-fw"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://blog.daimajia.com/" title="代码家" target="_blank">代码家</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://github.com/lzyzsd/" title="hi大头鬼hi" target="_blank">hi大头鬼hi</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://blog.zhaiyifan.cn/" title="翟一帆" target="_blank">翟一帆</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://liaohuqiu.net/" title="秋百万" target="_blank">秋百万</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://drakeet.me/" title="Drakeet博客" target="_blank">Drakeet博客</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.trinea.cn/" title="Trinea" target="_blank">Trinea</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://p.codekk.com/" title="CodeKK" target="_blank">CodeKK</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://blog.csdn.net/eclipsexys/" title="Tomcat的猫" target="_blank">Tomcat的猫</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.race604.com/" title="android笔记" target="_blank">android笔记</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.androidperformance.com/" title="Gracker" target="_blank">Gracker</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://yanghui.name/" title="杨辉" target="_blank">杨辉</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://hujiaweibujidao.github.io/" title="五道口宅男" target="_blank">五道口宅男</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://blog.csdn.net/singwhatiwanna/" title="任玉刚博客" target="_blank">任玉刚博客</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://blog.fangjie.info/" title="方杰博客" target="_blank">方杰博客</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://blog.isming.me/" title="码农明明桑" target="_blank">码农明明桑</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#增加方法"><span class="nav-number">1.</span> <span class="nav-text">增加方法</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xybCoder</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+        
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">本站访客数<span class="busuanzi-value" id="busuanzi_value_site_uv"></span>人次</span>
+  
+
+  
+    <span class="site-pv">本站总访问量<span class="busuanzi-value" id="busuanzi_value_site_pv"></span>次</span>
+  
+  
+</div>
+
+
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"xybcoder"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+      
+      <script src="/vendors/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+      <script src="/js/src/hook-duoshuo.js"></script>
+    
+  
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+<script type="text/javascript" async src="//push.zhanzhang.baidu.com/push.js">
+</script>
+
+
+</body>
+</html>
