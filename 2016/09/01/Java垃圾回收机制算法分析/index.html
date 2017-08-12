@@ -64,7 +64,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="git," />
+  <meta name="keywords" content="GC算法," />
 
 
 
@@ -80,22 +80,20 @@
 
 
 
-<meta name="description" content="我们已经在本地创建了一个Git仓库后，又想在GitHub创建一个Git仓库，并且让这两个仓库进行远程同步，这样，GitHub上的仓库既可以作为备份，又可以让其他人通过该仓库来协作。 首先，登陆GitHub，然后，在右上角找到“Create a new repo”按钮，创建一个新的仓库： 在Repository name填入learngit，其他保持默认设置，点击“Create repository">
-<meta name="keywords" content="git">
+<meta name="description" content="#引用计数算法当new一个对象，这个对象就分配了一个引用计数器且计数设为1，当这个对象被其他变量引用时，对象引用计数+1；当一个对象的引用超过生存期或者被设置一个新的值时，这个对象的引用计数减1。当对象的引用计数变为0时，就标记为可回收，通知GC收集器回收。 优点引用计数算法的实现简单，判断效率也很高缺点对象之间相互循环引用的问题，导致对象无法被GC回收 再来看下循环引用事例及解决办法 12345">
+<meta name="keywords" content="GC算法">
 <meta property="og:type" content="article">
-<meta property="og:title" content="远程库管理（添加远程库）">
-<meta property="og:url" content="http://yoursite.com/2016/04/03/远程库管理（添加远程库）/index.html">
+<meta property="og:title" content="Java垃圾回收机制算法分析">
+<meta property="og:url" content="http://yoursite.com/2016/09/01/Java垃圾回收机制算法分析/index.html">
 <meta property="og:site_name" content="xybCoder博客">
-<meta property="og:description" content="我们已经在本地创建了一个Git仓库后，又想在GitHub创建一个Git仓库，并且让这两个仓库进行远程同步，这样，GitHub上的仓库既可以作为备份，又可以让其他人通过该仓库来协作。 首先，登陆GitHub，然后，在右上角找到“Create a new repo”按钮，创建一个新的仓库： 在Repository name填入learngit，其他保持默认设置，点击“Create repository">
+<meta property="og:description" content="#引用计数算法当new一个对象，这个对象就分配了一个引用计数器且计数设为1，当这个对象被其他变量引用时，对象引用计数+1；当一个对象的引用超过生存期或者被设置一个新的值时，这个对象的引用计数减1。当对象的引用计数变为0时，就标记为可回收，通知GC收集器回收。 优点引用计数算法的实现简单，判断效率也很高缺点对象之间相互循环引用的问题，导致对象无法被GC回收 再来看下循环引用事例及解决办法 12345">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/images/github1.png">
-<meta property="og:image" content="http://yoursite.com/images/github2.png">
-<meta property="og:image" content="http://yoursite.com/images/github3.png">
-<meta property="og:updated_time" content="2016-04-03T09:38:58.000Z">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1677338-7b90a7d22e32c767.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2017-08-12T03:38:20.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="远程库管理（添加远程库）">
-<meta name="twitter:description" content="我们已经在本地创建了一个Git仓库后，又想在GitHub创建一个Git仓库，并且让这两个仓库进行远程同步，这样，GitHub上的仓库既可以作为备份，又可以让其他人通过该仓库来协作。 首先，登陆GitHub，然后，在右上角找到“Create a new repo”按钮，创建一个新的仓库： 在Repository name填入learngit，其他保持默认设置，点击“Create repository">
-<meta name="twitter:image" content="http://yoursite.com/images/github1.png">
+<meta name="twitter:title" content="Java垃圾回收机制算法分析">
+<meta name="twitter:description" content="#引用计数算法当new一个对象，这个对象就分配了一个引用计数器且计数设为1，当这个对象被其他变量引用时，对象引用计数+1；当一个对象的引用超过生存期或者被设置一个新的值时，这个对象的引用计数减1。当对象的引用计数变为0时，就标记为可回收，通知GC收集器回收。 优点引用计数算法的实现简单，判断效率也很高缺点对象之间相互循环引用的问题，导致对象无法被GC回收 再来看下循环引用事例及解决办法 12345">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/1677338-7b90a7d22e32c767.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 
 
@@ -113,7 +111,7 @@
   };
 </script>
 
-  <title> 远程库管理（添加远程库） | xybCoder博客 </title>
+  <title> Java垃圾回收机制算法分析 | xybCoder博客 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -269,7 +267,7 @@
             
             
               
-                远程库管理（添加远程库）
+                Java垃圾回收机制算法分析
               
             
           </h1>
@@ -281,8 +279,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-04-03T17:38:58+08:00" content="2016-04-03">
-              2016-04-03
+            <time itemprop="dateCreated" datetime="2016-09-01T22:13:00+08:00" content="2016-09-01">
+              2016-09-01
             </time>
           </span>
 
@@ -295,8 +293,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/git/" itemprop="url" rel="index">
-                    <span itemprop="name">git</span>
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
                   </a>
                 </span>
 
@@ -311,8 +309,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/04/03/远程库管理（添加远程库）/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/03/远程库管理（添加远程库）/" itemprop="commentsCount"></span>
+                <a href="/2016/09/01/Java垃圾回收机制算法分析/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/01/Java垃圾回收机制算法分析/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -340,21 +338,22 @@
       
 
       
-        <p>我们已经在本地创建了一个Git仓库后，又想在GitHub创建一个Git仓库，并且让这两个仓库进行远程同步，这样，GitHub上的仓库既可以作为备份，又可以让其他人通过该仓库来协作。</p>
-<p>首先，登陆GitHub，然后，在右上角找到“Create a new repo”按钮，创建一个新的仓库：<br><img src="/images/github1.png" alt="icon"></p>
-<p>在Repository name填入learngit，其他保持默认设置，点击“Create repository”按钮，就成功地创建了一个新的Git仓库：<br><img src="/images/github2.png" alt="icon"></p>
-<p>目前，在GitHub上的这个learngit仓库还是空的，可以从这个仓库克隆出新的仓库，也可以把一个已有的本地仓库与之关联，然后，把本地仓库的内容推送到GitHub仓库。</p>
-<p>现在，我们根据GitHub的提示，在本地的learngit仓库下运行命令：<br><figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git remote <span class="keyword">add</span><span class="bash"> origin git@github.com:xybCoder/learngit.git</span></div></pre></td></tr></table></figure></p>
-<p>请千万注意，把上面的xybCoder替换成你自己的GitHub账户名，就是将本地git库和github远程库关联。</p>
-<p>添加后，远程库的名字就是origin，这是Git默认的叫法，也可以改成别的，但是origin这个名字一看就知道是远程库。</p>
-<p>下一步，就可以把本地库的所有内容推送到远程库上：<br><figure class="highlight crmsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">$ git remote add origin git@github.com:xybCoder/learngit.git</div><div class="line">$ git push -u origin <span class="literal">master</span></div><div class="line">Counting objects: <span class="number">24</span>, done.</div><div class="line">Delta compression using up to <span class="number">4</span> threads.</div><div class="line">Compressing objects: <span class="number">100</span>% (<span class="number">14</span>/<span class="number">14</span>), done.</div><div class="line">Writing objects: <span class="number">100</span>% (<span class="number">24</span>/<span class="number">24</span>), <span class="number">1.91</span> KiB | <span class="number">0</span> bytes/s, done.</div><div class="line">Total <span class="number">24</span> (delta <span class="number">3</span>), reused <span class="number">0</span> (delta <span class="number">0</span>)</div><div class="line">To git@github.com:xybCoder/learngit.git</div><div class="line"> * [new branch]      <span class="keyword">master</span> <span class="title">-&gt; master</span></div><div class="line">Branch <span class="keyword">master</span> <span class="title">set</span> up to track remote branch <span class="keyword">master</span> <span class="title">from</span> origin.</div></pre></td></tr></table></figure></p>
-<p>把本地库的内容推送到远程，用git push命令，实际上是把当前分支master推送到远程。</p>
-<p>由于远程库是空的，我们第一次推送master分支时，加上了-u参数，Git不但会把本地的master分支内容推送的远程新的master分支，还会把本地的master分支和远程的master分支关联起来，在以后的推送或者拉取时就可以简化命令。</p>
-<p>推送成功后，可以立刻在GitHub页面中看到远程库的内容已经和本地一模一样：<br><img src="/images/github3.png" alt="icon"></p>
-<p>从现在起，只要本地作了提交，就可以通过命令：<br><figure class="highlight maxima"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git <span class="built_in">push</span> <span class="built_in">origin</span> master</div></pre></td></tr></table></figure></p>
-<h3 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h3><p>要关联一个远程库，使用命令git remote add origin git@server-name:path/repo-name.git；</p>
-<p>关联后，使用命令git push -u origin master第一次推送master分支的所有内容；</p>
-<p>此后，每次本地提交后，只要有必要，就可以使用命令git push origin master推送最新修改.</p>
+        <p>#引用计数算法<br>当new一个对象，这个对象就分配了一个引用计数器且计数设为1，当这个对象被其他变量引用时，对象引用计数+1；当一个对象的引用超过生存期或者被设置一个新的值时，这个对象的引用计数减1。当对象的引用计数变为0时，就标记为可回收，通知GC收集器回收。</p>
+<p><strong>优点</strong><br>引用计数算法的实现简单，判断效率也很高<br><strong>缺点</strong><br>对象之间相互循环引用的问题，导致对象无法被GC回收</p>
+<p><strong>再来看下循环引用事例及解决办法</strong></p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"> <span class="keyword">public</span> <span class="keyword">static</span> void main(<span class="keyword">String</span>[] args) &#123;  </div><div class="line">        GcObject objA = <span class="keyword">new</span> <span class="type">GcObject</span>();  </div><div class="line">        GcObject objB = <span class="keyword">new</span> <span class="type">GcObject</span>();  </div><div class="line">        objA.instance = objB;  </div><div class="line">        objB.instance = objA;  </div><div class="line">        objA = <span class="literal">null</span>;  </div><div class="line">        objB = <span class="literal">null</span>;  </div><div class="line">    &#125;  </div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">GcObject</span></span>&#123;</div><div class="line"></div><div class="line"><span class="keyword">public</span> Object instance=<span class="literal">null</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>第2行代码  objA引用计数为1<br>第3行代码 objB 引用计数为1<br>第4行代码 objB应用计数为2<br>第5行代码 objA引用计数为2<br>第6行代码 objA引用计数减1，引用计数为1<br>第7行代码 objB引用计数减1，引用计数为1</p>
+<p>到此objA，objB引用计数都不为0，实例分配的内存都不能释放，造成内存泄漏。</p>
+<p><strong>解决的办法</strong><br>可以通过弱引用解决循环引用的问题，弱引用是不会使引用计数+1的，这种特殊的弱引用被称为归零弱引用，这里假设objA弱引用的话，第5行代码后 objA引用计数仍然为1，第6行代码后 objA引用计数为0，objA被GC回收后objB引用计数为1，第7行代码后objB引用计数为0，被GC回收。</p>
+<h1 id="可达性算法"><a href="#可达性算法" class="headerlink" title="可达性算法"></a>可达性算法</h1><p>通过一系列的被称为“gc roots”的对象作为起始点，从这些节点开始向下搜索，搜索所走过的路径称为引用链，当一个对象到“gc roots”没有任何引用链相连时，则证明此对象是不可用的。</p>
+<p>可以作为“gc roots”的对象<br>（1）虚拟机栈（栈针中的局部变量表）中引用的对象<br>（2）方法区中类静态属性引用的对象。<br>（3）方法区中常量引用的对象<br>（4）本地方法栈中JNI引用的对象。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1677338-7b90a7d22e32c767.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="22f72b18415405c3e0207925a8de74fa_b.png"></p>
+<p>从上图可以reference1,reference2,reference3都是GC Roots,可以看出：<br>reference1-&gt;对象实例1<br>reference2-&gt;对象实例2<br>reference3-&gt;对象实例4<br>reference3-&gt;对象实例4-&gt;对象实例6<br>可以得出对象实例1，2，4，6都具有GC Roots可达性，不能被GC回收的对象，而对于对象实例3，5直接虽然连通，但并没有任何一个GC Roots与之连通，这便是GC Roots不可达对象，GC回收的对象。</p>
+<h1 id="复制算法"><a href="#复制算法" class="headerlink" title="复制算法"></a>复制算法</h1><p>  原理：它将可用内存按容量划分为大小相等的两块，每次只使用其中的一块。当这一块的内存用完了，就将还存活着的对象复制到另外一块上面，然后再把已使用过的内存空间一次清理掉。</p>
+<p><strong>优点：</strong>不会出现碎片问题。<br><strong>缺点：</strong>暂停整个应用，需要2倍的内存空间。</p>
+<h1 id="标记-清除算法"><a href="#标记-清除算法" class="headerlink" title="标记 -清除算法"></a>标记 -清除算法</h1><p> 原理：对于“活”的对象，一定可以追溯到其存活在堆栈、静态存储区之中的引用。这个引用链条可能会穿过数个对象层次。第一阶段：从GC roots开始遍历所有的引用，对有活的对象进行标记。第二阶段：对堆进行遍历，把未标记的对象进行清除。这个解决了循环引用的问题。<br>    <strong>缺点：</strong>1、暂停整个应用；2、会产生内存碎片。</p>
+<p>#记-压缩算法<br>原理：第一阶段标记活的对象，第二阶段把为标记的对象压缩到堆的其中一块，按顺序放。<br><strong>优点：</strong>1、避免标记扫描的碎片问题；2、避免停止复制的空间问题。</p>
+<h1 id="分代收集算法"><a href="#分代收集算法" class="headerlink" title="分代收集算法"></a>分代收集算法</h1><p> 原理：基于对象生命周期分析得出的垃圾回收算法。把对象分为年轻代、年老代、持久代，对不同的生命周期使用不同的算法进行回收。</p>
 
       
     </div>
@@ -375,7 +374,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/git/" rel="tag">#git</a>
+            <a href="/tags/GC算法/" rel="tag">#GC算法</a>
           
         </div>
       
@@ -384,12 +383,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2016/07/31/Java动态代理实践/" rel="next" title="Java动态代理实践">
+                <i class="fa fa-chevron-left"></i> Java动态代理实践
+              </a>
+            
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/04/03/远程库管理（克隆远程库）/" rel="prev" title="远程库管理（克隆远程库）">
-                远程库管理（克隆远程库） <i class="fa fa-chevron-right"></i>
+              <a href="/2016/09/07/HashMap原理分析/" rel="prev" title="HashMap原理分析">
+                HashMap原理分析 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -419,8 +422,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/04/03/远程库管理（添加远程库）/"
-           data-title="远程库管理（添加远程库）" data-url="http://yoursite.com/2016/04/03/远程库管理（添加远程库）/">
+      <div class="ds-thread" data-thread-key="2016/09/01/Java垃圾回收机制算法分析/"
+           data-title="Java垃圾回收机制算法分析" data-url="http://yoursite.com/2016/09/01/Java垃圾回收机制算法分析/">
       </div>
     
   </div>
@@ -601,7 +604,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#小结"><span class="nav-number">1.</span> <span class="nav-text">小结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#可达性算法"><span class="nav-number">1.</span> <span class="nav-text">可达性算法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#复制算法"><span class="nav-number">2.</span> <span class="nav-text">复制算法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#标记-清除算法"><span class="nav-number">3.</span> <span class="nav-text">标记 -清除算法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#分代收集算法"><span class="nav-number">4.</span> <span class="nav-text">分代收集算法</span></a></li></ol></div>
             
           </div>
         </section>
