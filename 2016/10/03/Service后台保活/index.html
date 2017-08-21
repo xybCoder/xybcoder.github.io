@@ -64,7 +64,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="git," />
+  <meta name="keywords" content="Service," />
 
 
 
@@ -80,21 +80,18 @@
 
 
 
-<meta name="description" content="分支的合并不是一帆风顺的，下面就来演示下冲突解决。 准备新的feature1分支，继续我们的新分支开发： 12$ git checkout -b feature1Switched to a new branch &apos;feature1&apos; 修改README.md文件，加一句： 1Creating a new branch is quick AND simple.  在feature1分支上提交： 123">
-<meta name="keywords" content="git">
+<meta name="description" content="对于这种流氓行为我是拒绝的，在产品中最好不要这样做，应对面试可以。  Service设置成START_STICKY，kill 后会被重启（等待5秒左右），重传Intent，保持与重启前一样 ​通过 startForeground将进程设置为前台进程，做前台服务，优先级和前台应用一个级别​，除非在系统内存非常缺，否则此进程不会被 kill 双进程Service：让2个进程互相保护，其中一个Servi">
+<meta name="keywords" content="Service">
 <meta property="og:type" content="article">
-<meta property="og:title" content="分支管理（解决冲突）">
-<meta property="og:url" content="http://yoursite.com/2016/04/03/分支管理（解决冲突）/index.html">
+<meta property="og:title" content="Service后台保活">
+<meta property="og:url" content="http://yoursite.com/2016/10/03/Service后台保活/index.html">
 <meta property="og:site_name" content="xybCoder博客">
-<meta property="og:description" content="分支的合并不是一帆风顺的，下面就来演示下冲突解决。 准备新的feature1分支，继续我们的新分支开发： 12$ git checkout -b feature1Switched to a new branch &apos;feature1&apos; 修改README.md文件，加一句： 1Creating a new branch is quick AND simple.  在feature1分支上提交： 123">
+<meta property="og:description" content="对于这种流氓行为我是拒绝的，在产品中最好不要这样做，应对面试可以。  Service设置成START_STICKY，kill 后会被重启（等待5秒左右），重传Intent，保持与重启前一样 ​通过 startForeground将进程设置为前台进程，做前台服务，优先级和前台应用一个级别​，除非在系统内存非常缺，否则此进程不会被 kill 双进程Service：让2个进程互相保护，其中一个Servi">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/images/master_6.png">
-<meta property="og:image" content="http://yoursite.com/images/master_7.png">
-<meta property="og:updated_time" content="2016-04-03T10:16:24.000Z">
+<meta property="og:updated_time" content="2017-08-21T14:01:12.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="分支管理（解决冲突）">
-<meta name="twitter:description" content="分支的合并不是一帆风顺的，下面就来演示下冲突解决。 准备新的feature1分支，继续我们的新分支开发： 12$ git checkout -b feature1Switched to a new branch &apos;feature1&apos; 修改README.md文件，加一句： 1Creating a new branch is quick AND simple.  在feature1分支上提交： 123">
-<meta name="twitter:image" content="http://yoursite.com/images/master_6.png">
+<meta name="twitter:title" content="Service后台保活">
+<meta name="twitter:description" content="对于这种流氓行为我是拒绝的，在产品中最好不要这样做，应对面试可以。  Service设置成START_STICKY，kill 后会被重启（等待5秒左右），重传Intent，保持与重启前一样 ​通过 startForeground将进程设置为前台进程，做前台服务，优先级和前台应用一个级别​，除非在系统内存非常缺，否则此进程不会被 kill 双进程Service：让2个进程互相保护，其中一个Servi">
 
 
 
@@ -112,7 +109,7 @@
   };
 </script>
 
-  <title> 分支管理（解决冲突） | xybCoder博客 </title>
+  <title> Service后台保活 | xybCoder博客 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -268,7 +265,7 @@
             
             
               
-                分支管理（解决冲突）
+                Service后台保活
               
             
           </h1>
@@ -280,8 +277,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-04-03T18:16:24+08:00" content="2016-04-03">
-              2016-04-03
+            <time itemprop="dateCreated" datetime="2016-10-03T21:10:00+08:00" content="2016-10-03">
+              2016-10-03
             </time>
           </span>
 
@@ -294,8 +291,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/git/" itemprop="url" rel="index">
-                    <span itemprop="name">git</span>
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
                   </a>
                 </span>
 
@@ -310,8 +307,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/04/03/分支管理（解决冲突）/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/03/分支管理（解决冲突）/" itemprop="commentsCount"></span>
+                <a href="/2016/10/03/Service后台保活/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/10/03/Service后台保活/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -339,37 +336,20 @@
       
 
       
-        <p>分支的合并不是一帆风顺的，下面就来演示下冲突解决。</p>
-<p>准备新的feature1分支，继续我们的新分支开发：</p>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ git checkout -<span class="selector-tag">b</span> feature1</div><div class="line">Switched to <span class="selector-tag">a</span> new branch <span class="string">'feature1'</span></div></pre></td></tr></table></figure>
-<p>修改README.md文件，加一句：</p>
-<figure class="highlight ada"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Creating a <span class="keyword">new</span> branch <span class="keyword">is</span> quick <span class="keyword">AND</span> simple.</div></pre></td></tr></table></figure>
-<p> 在feature1分支上提交：</p>
-<figure class="highlight routeros"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ git <span class="builtin-name">add</span> README.md </div><div class="line">$ git commit -m <span class="string">"add new branch 'feature1'"</span></div><div class="line">[feature1 75a857c] <span class="keyword">AND</span> simple</div><div class="line"> 1 file changed, 1 insertion(+), 1 deletion(-)</div></pre></td></tr></table></figure>
-<p> 切换到master分支：</p>
-<figure class="highlight livescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"> $ git checkout master</div><div class="line">Switched <span class="keyword">to</span> branch <span class="string">'master'</span></div><div class="line">Your branch <span class="keyword">is</span> ahead <span class="keyword">of</span> <span class="string">'origin/master'</span> <span class="keyword">by</span> <span class="number">1</span> commit.</div></pre></td></tr></table></figure>
-<p> Git还会自动提示我们当前master分支比远程的master分支要超前1个提交。</p>
-<p>在master分支上把README.md文件的最后一行改为：</p>
-<figure class="highlight ada"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Creating a <span class="keyword">new</span> branch <span class="keyword">is</span> quick <span class="keyword">AND</span> simple.</div></pre></td></tr></table></figure>
-<p>提交：</p>
-<figure class="highlight routeros"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ git <span class="builtin-name">add</span> README.md </div><div class="line">$ git commit -m <span class="string">"&amp; simple"</span></div><div class="line">[master 400b400] &amp; simple</div><div class="line"> 1 file changed, 1 insertion(+), 1 deletion(-)</div></pre></td></tr></table></figure>
-<p>现在，master分支和feature1分支各自都分别有新的提交，变成了这样：</p>
-<p><img src="/images/master_6.png" alt="icon"></p>
-<p>这种情况下，Git无法执行“快速合并”，只能试图把各自的修改合并起来，但这种合并就可能会有冲突，我们试试看：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ git <span class="keyword">merge</span> feature1</div><div class="line"><span class="keyword">Auto</span>-merging README.md</div><div class="line">CONFLICT (<span class="keyword">content</span>): <span class="keyword">Merge</span> conflict <span class="keyword">in</span> README.md</div><div class="line"><span class="keyword">Automatic</span> <span class="keyword">merge</span> <span class="keyword">failed</span>; fix conflicts and then <span class="keyword">commit</span> the result.</div></pre></td></tr></table></figure>
-<p>果然冲突了！Git告诉我们，README.md文件存在冲突，必须手动解决冲突后再提交。git status也可以告诉我们冲突的文件：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span><span class="bash"> git status</span></div><div class="line"><span class="meta">#</span><span class="bash"> On branch master</span></div><div class="line"><span class="meta">#</span><span class="bash"> Your branch is ahead of <span class="string">'origin/master'</span> by 2 commits.</span></div><div class="line"><span class="meta">#</span><span class="bash"></span></div><div class="line"><span class="meta">#</span><span class="bash"> Unmerged paths:</span></div><div class="line"><span class="meta">#</span><span class="bash">   (use <span class="string">"git add/rm &lt;file&gt;..."</span> as appropriate to mark resolution)</span></div><div class="line"><span class="meta">#</span><span class="bash"></span></div><div class="line"><span class="meta">#</span><span class="bash">       both modified:      README.md</span></div><div class="line"><span class="meta">#</span><span class="bash"></span></div><div class="line">no changes added to commit (use "git add" and/or "git commit -a")</div></pre></td></tr></table></figure>
-<p>查看README.md的内容：<br><figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">Git <span class="keyword">is</span> <span class="keyword">a</span> distributed <span class="keyword">version</span> control <span class="built_in">system</span>.</div><div class="line">Git <span class="keyword">is</span> free software distributed under the GPL.</div><div class="line">Git <span class="built_in">has</span> <span class="keyword">a</span> mutable <span class="built_in">index</span> called stage.</div><div class="line">Git tracks <span class="keyword">changes</span> of <span class="keyword">files</span>.</div><div class="line">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</div><div class="line">Creating <span class="keyword">a</span> <span class="keyword">new</span> branch <span class="keyword">is</span> quick &amp; simple.</div><div class="line">=======</div><div class="line">Creating <span class="keyword">a</span> <span class="keyword">new</span> branch <span class="keyword">is</span> quick AND simple.</div><div class="line">&gt;&gt;&gt;&gt;&gt;&gt;&gt; feature1</div></pre></td></tr></table></figure></p>
-<p>Git用&lt;&lt;&lt;&lt;&lt;&lt;&lt;，=======，&gt;&gt;&gt;&gt;&gt;&gt;&gt;标记出不同分支的内容，我们修改如下后保存：<br><figure class="highlight ada"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Creating a <span class="keyword">new</span> branch <span class="keyword">is</span> quick <span class="keyword">and</span> simple.</div></pre></td></tr></table></figure></p>
-<p>再提交：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span><span class="bash"> git add README.md </span></div><div class="line"><span class="meta">$</span><span class="bash"> git commit -m <span class="string">"conflict fixed"</span></span></div><div class="line">[master 59bc1cb] conflict fixed</div></pre></td></tr></table></figure></p>
-<p>现在，master分支和feature1分支变成了下图所示：</p>
-<p><img src="/images/master_7.png" alt="icon"></p>
-<p>用带参数的git log也可以看到分支的合并情况：</p>
-<figure class="highlight applescript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git <span class="built_in">log</span> <span class="comment">--graph --pretty=oneline --abbrev-commit</span></div></pre></td></tr></table></figure>
-<p>最后，删除feature1分支：</p>
-<figure class="highlight armasm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ git <span class="keyword">branch </span>-d feature1</div><div class="line"><span class="symbol">Deleted</span> <span class="keyword">branch </span>feature1 (was <span class="number">75</span>a857c).</div></pre></td></tr></table></figure>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>当Git无法自动合并分支时，就必须首先解决冲突。解决冲突后，再提交，合并完成。</p>
-<p>用git log –graph命令可以看到分支合并图。</p>
+        <p>对于这种流氓行为我是拒绝的，在产品中最好不要这样做，应对面试可以。</p>
+<ul>
+<li>Service设置成START_STICKY，kill 后会被重启（等待5秒左右），重传Intent，保持与重启前一样</li>
+<li>​通过 startForeground将进程设置为前台进程，做前台服务，优先级和前台应用一个级别​，除非在系统内存非常缺，否则此进程不会被 kill</li>
+<li>双进程Service：让2个进程互相保护，其中一个Service被清理后，另外没被清理的进程可以立即重启进程</li>
+<li>QQ黑科技:在应用退到后台后，另起一个只有 1 像素的页面停留在桌面上，让自己保持前台状态，保护自己不被后台清理工具杀死</li>
+<li>在已经root的设备下，修改相应的权限文件，将App伪装成系统级的应用（Android4.0系列的一个漏洞，已经确认可行）</li>
+<li>Android系统中当前进程(Process)fork出来的子进程，被系统认为是两个不同的进程。当父进程被杀死的时候，子进程仍然可以存活，并不受影响。<br>  鉴于目前提到的在Android-Service层做双守护都会失败，我们可以fork出c进程，多进程守护。死循环在那检查是否还存在，<br>  具体的思路如下（Android5.0以下可行）<ul>
+<li>用C编写守护进程(即子进程)，守护进程做的事情就是循环检查目标进程是否存在，不存在则启动它。</li>
+<li>在NDK环境中将1中编写的C代码编译打包成可执行文件(BUILD_EXECUTABLE)。</li>
+<li>主进程启动时将守护进程放入私有目录下，赋予可执行权限，启动它即可。</li>
+</ul>
+</li>
+</ul>
 
       
     </div>
@@ -390,7 +370,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/git/" rel="tag">#git</a>
+            <a href="/tags/Service/" rel="tag">#Service</a>
           
         </div>
       
@@ -399,16 +379,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/04/03/Git用法（删除恢复）/" rel="next" title="删除(恢复)文件">
-                <i class="fa fa-chevron-left"></i> 删除(恢复)文件
+              <a href="/2016/09/20/Android中常见的内存泄漏及解决方法/" rel="next" title="Android中常见的内存泄漏及解决方法">
+                <i class="fa fa-chevron-left"></i> Android中常见的内存泄漏及解决方法
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/04/03/分支管理（策略和no-ff）/" rel="prev" title="分支管理（策略和no-ff）">
-                分支管理（策略和no-ff） <i class="fa fa-chevron-right"></i>
+              <a href="/2017/03/03/约瑟夫问题/" rel="prev" title="约瑟夫问题">
+                约瑟夫问题 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -438,8 +418,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/04/03/分支管理（解决冲突）/"
-           data-title="分支管理（解决冲突）" data-url="http://yoursite.com/2016/04/03/分支管理（解决冲突）/">
+      <div class="ds-thread" data-thread-key="2016/10/03/Service后台保活/"
+           data-title="Service后台保活" data-url="http://yoursite.com/2016/10/03/Service后台保活/">
       </div>
     
   </div>
@@ -620,7 +600,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">1.</span> <span class="nav-text">总结</span></a></li></ol></div>
+              <p class="post-toc-empty">此文章未包含目录</p>
             
           </div>
         </section>
