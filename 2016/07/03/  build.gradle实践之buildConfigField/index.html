@@ -64,7 +64,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="面试," />
+  <meta name="keywords" content="Gradle," />
 
 
 
@@ -80,18 +80,18 @@
 
 
 
-<meta name="description" content="最近面试遇到的一个算法：标号1-n的n个人首尾相接，1到3报数，报到3的退出，求最后一个人的标号。 思路：1.把所有人先放入数组中，多出一个下标为0，所以size为n+12.当报到m的人，且dead不等于n-1时，此人退出游戏，这时候把数组中这个值置为0，报数从新开始3.如果这个人报数等于m，并且已经死了n-1个人，说明当前这个人就是最后的一个 12345678910111213141516171">
-<meta name="keywords" content="面试">
+<meta name="description" content="AndroidStudio进行开发，其中很重要的一个文件就是build.gradle,在项目开发中我们经常需要将同一变量在不同环境下（release，debug，test）赋予不同的值,手动更改不仅容易出错且费时，我们可以通过buildTypes节点下使用buildConfigField来解决，在项目的编译阶段根据不同的环境给BuildConfig里面变量赋值。 12345678910111213">
+<meta name="keywords" content="Gradle">
 <meta property="og:type" content="article">
-<meta property="og:title" content="约瑟夫问题">
-<meta property="og:url" content="http://yoursite.com/2017/03/03/约瑟夫问题/index.html">
+<meta property="og:title" content="build.gradle实践之buildConfigField">
+<meta property="og:url" content="http://yoursite.com/2016/07/03/  build.gradle实践之buildConfigField/index.html">
 <meta property="og:site_name" content="xybCoder博客">
-<meta property="og:description" content="最近面试遇到的一个算法：标号1-n的n个人首尾相接，1到3报数，报到3的退出，求最后一个人的标号。 思路：1.把所有人先放入数组中，多出一个下标为0，所以size为n+12.当报到m的人，且dead不等于n-1时，此人退出游戏，这时候把数组中这个值置为0，报数从新开始3.如果这个人报数等于m，并且已经死了n-1个人，说明当前这个人就是最后的一个 12345678910111213141516171">
+<meta property="og:description" content="AndroidStudio进行开发，其中很重要的一个文件就是build.gradle,在项目开发中我们经常需要将同一变量在不同环境下（release，debug，test）赋予不同的值,手动更改不仅容易出错且费时，我们可以通过buildTypes节点下使用buildConfigField来解决，在项目的编译阶段根据不同的环境给BuildConfig里面变量赋值。 12345678910111213">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-08-13T02:48:53.000Z">
+<meta property="og:updated_time" content="2017-08-30T08:28:57.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="约瑟夫问题">
-<meta name="twitter:description" content="最近面试遇到的一个算法：标号1-n的n个人首尾相接，1到3报数，报到3的退出，求最后一个人的标号。 思路：1.把所有人先放入数组中，多出一个下标为0，所以size为n+12.当报到m的人，且dead不等于n-1时，此人退出游戏，这时候把数组中这个值置为0，报数从新开始3.如果这个人报数等于m，并且已经死了n-1个人，说明当前这个人就是最后的一个 12345678910111213141516171">
+<meta name="twitter:title" content="build.gradle实践之buildConfigField">
+<meta name="twitter:description" content="AndroidStudio进行开发，其中很重要的一个文件就是build.gradle,在项目开发中我们经常需要将同一变量在不同环境下（release，debug，test）赋予不同的值,手动更改不仅容易出错且费时，我们可以通过buildTypes节点下使用buildConfigField来解决，在项目的编译阶段根据不同的环境给BuildConfig里面变量赋值。 12345678910111213">
 
 
 
@@ -109,7 +109,7 @@
   };
 </script>
 
-  <title> 约瑟夫问题 | xybCoder博客 </title>
+  <title> build.gradle实践之buildConfigField | xybCoder博客 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -265,7 +265,7 @@
             
             
               
-                约瑟夫问题
+                build.gradle实践之buildConfigField
               
             
           </h1>
@@ -277,8 +277,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-03-03T20:03:00+08:00" content="2017-03-03">
-              2017-03-03
+            <time itemprop="dateCreated" datetime="2016-07-03T22:00:00+08:00" content="2016-07-03">
+              2016-07-03
             </time>
           </span>
 
@@ -291,8 +291,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/算法/" itemprop="url" rel="index">
-                    <span itemprop="name">算法</span>
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
                   </a>
                 </span>
 
@@ -307,8 +307,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2017/03/03/约瑟夫问题/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/03/约瑟夫问题/" itemprop="commentsCount"></span>
+                <a href="/2016/07/03/  build.gradle实践之buildConfigField/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/03/  build.gradle实践之buildConfigField/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -336,9 +336,13 @@
       
 
       
-        <p>最近面试遇到的一个算法：标号1-n的n个人首尾相接，1到3报数，报到3的退出，求最后一个人的标号。</p>
-<p>思路：<br>1.把所有人先放入数组中，多出一个下标为0，所以size为n+1<br>2.当报到m的人，且dead不等于n-1时，此人退出游戏，这时候把数组中这个值置为0，报数从新开始<br>3.如果这个人报数等于m，并且已经死了n-1个人，说明当前这个人就是最后的一个</p>
-<figure class="highlight dart"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line">public <span class="class"><span class="keyword">class</span> <span class="title">demo</span></span>&#123;</div><div class="line">    public <span class="keyword">static</span> <span class="keyword">void</span>  main(<span class="built_in">String</span> arg[])</div><div class="line">    &#123;   </div><div class="line">        <span class="built_in">int</span> arr[] = <span class="keyword">new</span> <span class="built_in">int</span>[<span class="number">101</span>];<span class="comment">//报数从1开始所以数组大小为n+1</span></div><div class="line">        <span class="built_in">int</span> n=<span class="number">100</span>, m=<span class="number">3</span>;</div><div class="line">        <span class="built_in">int</span> i;</div><div class="line">        <span class="built_in">int</span> dead = <span class="number">0</span>;   <span class="comment">//表示已经死了多少人</span></div><div class="line">        <span class="built_in">int</span> <span class="built_in">num</span> = <span class="number">0</span>;    <span class="comment">//num模拟报数</span></div><div class="line">        <span class="keyword">for</span> (i = <span class="number">1</span>;i&lt;= n; i++) &#123;</div><div class="line">            <span class="comment">//开始时每个人都可以报数，为了能得到最后一个人的编号，我们让初始值为i下标</span></div><div class="line">            arr[i] = i;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">for</span> (i = <span class="number">1</span>;; i++)&#123;</div><div class="line">            <span class="keyword">if</span> (i &gt; n) &#123;</div><div class="line">                <span class="comment">//如果大于总人数，我们就从头开始</span></div><div class="line">                i = i%n;                 </div><div class="line">            &#125;</div><div class="line"></div><div class="line">            <span class="keyword">if</span> (arr[i] &gt; <span class="number">0</span>)&#123;</div><div class="line">                <span class="comment">//如果当前这个人没有死，就报数</span></div><div class="line">                <span class="built_in">num</span>++;</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            <span class="keyword">if</span> (m == <span class="built_in">num</span> &amp;&amp; dead != n<span class="number">-1</span>)&#123;</div><div class="line">                <span class="comment">//如果当前这个人报的数等于m 并且没有已经死亡n-1个人</span></div><div class="line">                <span class="built_in">num</span> = <span class="number">0</span>;</div><div class="line">                arr[i] = <span class="number">0</span>;</div><div class="line">                dead++;</div><div class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span>(m == <span class="built_in">num</span> &amp;&amp; dead == n<span class="number">-1</span>)&#123;</div><div class="line">                <span class="comment">//如果这个人报数等于m，并且已经死了n-1个人，说明当前这个人就是最后的一个活着的了。</span></div><div class="line">                System.out.<span class="built_in">print</span>(arr[i]+<span class="string">""</span>);</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">            &#125;</div><div class="line"></div><div class="line">        &#125;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+        <p>AndroidStudio进行开发，其中很重要的一个文件就是build.gradle,在项目开发中我们经常需要将同一变量在不同环境下（release，debug，test）赋予不同的值,手动更改不仅容易出错且费时，我们可以通过buildTypes节点下使用buildConfigField来解决，在项目的编译阶段根据不同的环境给BuildConfig里面变量赋值。</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line"><span class="section">buildTypes</span> &#123;</div><div class="line">        <span class="section">release</span> &#123;</div><div class="line">            <span class="attribute">minifyEnabled</span> <span class="literal">true</span></div><div class="line">            multiDexKeepFile file(<span class="string">'maindexlist.txt'</span>)</div><div class="line">            signingConfig signingConfigs.release</div><div class="line">            proguardFiles getDefaultProguardFile(<span class="string">'proguard-android.txt'</span>), <span class="string">'proguard-rules.pro'</span></div><div class="line">            shrinkResources <span class="literal">true</span></div><div class="line">            buildConfigField(<span class="string">"boolean"</span>, <span class="string">'IS_DEBUG'</span>, <span class="string">"false"</span>)</div><div class="line">            buildConfigField(<span class="string">"String"</span>, <span class="string">'SERVE_URL'</span>, releaseProps.getProperty(<span class="string">"server_url"</span>))</div><div class="line">            buildConfigField(<span class="string">"String"</span>, <span class="string">'RONG_CLOUD_APP_KEY'</span>, releaseProps.getProperty(<span class="string">"rong_cloud_app_key"</span>))</div><div class="line">            buildConfigField(<span class="string">"String"</span>, <span class="string">'BUGLY_APP_ID'</span>, releaseProps.getProperty(<span class="string">"bugly_app_id"</span>))</div><div class="line">            buildConfigField(<span class="string">"String"</span>, <span class="string">'CUSTOMER_SERVICE_ID'</span>, releaseProps.getProperty(<span class="string">"customer_service_id"</span>))</div><div class="line">            buildConfigField(<span class="string">"String"</span>, <span class="string">'MI_PUSH_APP_ID'</span>, releaseProps.getProperty(<span class="string">"mi_push_app_id"</span>))</div><div class="line">            buildConfigField(<span class="string">"String"</span>, <span class="string">'MI_PUSH_APP_KEY'</span>, releaseProps.getProperty(<span class="string">"mi_push_app_key"</span>))</div><div class="line">            buildConfigField(<span class="string">"String"</span>, <span class="string">'roomId'</span>, releaseProps.getProperty(<span class="string">"room_id"</span>))</div><div class="line">            buildConfigField(<span class="string">"String"</span>, <span class="string">'WILDDOG_URL'</span>, releaseProps.getProperty(<span class="string">"wilddog_url"</span>))</div><div class="line">            buildConfigField(<span class="string">"String"</span>, <span class="string">'TEMPLATE_TABLE_URL'</span>, releaseProps.getProperty(<span class="string">"template_table_url"</span>))</div><div class="line">            buildConfigField(<span class="string">"String"</span>, <span class="string">'TALKING_DATA_APP_ID'</span>, releaseProps.getProperty(<span class="string">"talking_data_app_id"</span>))</div><div class="line">        &#125;</div><div class="line">        <span class="literal">debug</span> &#123;</div><div class="line">            <span class="attribute">debuggable</span> <span class="literal">true</span></div><div class="line">            minifyEnabled <span class="literal">false</span></div><div class="line">            multiDexKeepFile file(<span class="string">'maindexlist.txt'</span>)</div><div class="line">            signingConfig signingConfigs.<span class="literal">debug</span></div><div class="line">            buildConfigField(<span class="string">"boolean"</span>, <span class="string">'IS_DEBUG'</span>, <span class="string">"true"</span>)</div><div class="line">            buildConfigField(<span class="string">"String"</span>, <span class="string">'SERVE_URL'</span>, <span class="literal">debug</span>Props.getProperty(<span class="string">"server_url"</span>))</div><div class="line">            buildConfigField(<span class="string">"String"</span>, <span class="string">'RONG_CLOUD_APP_KEY'</span>, <span class="literal">debug</span>Props.getProperty(<span class="string">"rong_cloud_app_key"</span>))</div><div class="line">            buildConfigField(<span class="string">"String"</span>, <span class="string">'BUGLY_APP_ID'</span>, <span class="literal">debug</span>Props.getProperty(<span class="string">"bugly_app_id"</span>))</div><div class="line">            buildConfigField(<span class="string">"String"</span>, <span class="string">'CUSTOMER_SERVICE_ID'</span>, <span class="literal">debug</span>Props.getProperty(<span class="string">"customer_service_id"</span>))</div><div class="line">            buildConfigField(<span class="string">"String"</span>, <span class="string">'MI_PUSH_APP_ID'</span>, <span class="literal">debug</span>Props.getProperty(<span class="string">"mi_push_app_id"</span>))</div><div class="line">            buildConfigField(<span class="string">"String"</span>, <span class="string">'MI_PUSH_APP_KEY'</span>, <span class="literal">debug</span>Props.getProperty(<span class="string">"mi_push_app_key"</span>))</div><div class="line">            buildConfigField(<span class="string">"String"</span>, <span class="string">'roomId'</span>, <span class="literal">debug</span>Props.getProperty(<span class="string">"room_id"</span>))</div><div class="line">            buildConfigField(<span class="string">"String"</span>, <span class="string">'WILDDOG_URL'</span>, <span class="literal">debug</span>Props.getProperty(<span class="string">"wilddog_url"</span>))</div><div class="line">            buildConfigField(<span class="string">"String"</span>, <span class="string">'TEMPLATE_TABLE_URL'</span>, <span class="literal">debug</span>Props.getProperty(<span class="string">"template_table_url"</span>))</div><div class="line">            buildConfigField(<span class="string">"String"</span>, <span class="string">'TALKING_DATA_APP_ID'</span>, <span class="literal">debug</span>Props.getProperty(<span class="string">"talking_data_app_id"</span>))</div><div class="line">        &#125;</div></pre></td></tr></table></figure>
+<p>在Project下添加不同环境变量的配置，例如release.properties</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="attr">keystroe_file</span>=./keystore/xxx.jks</div><div class="line"><span class="attr">keystroe_storePassword</span>=xxxxxxx</div><div class="line"><span class="attr">keystroe_keyAlias</span>=xxxx</div><div class="line"><span class="attr">keystroe_keyPassword</span>=xxxxxxx</div><div class="line"><span class="attr">server_url</span>=<span class="string">"https://api.xyb.com/v1/"</span></div><div class="line"><span class="attr">rong_cloud_app_key</span>=<span class="string">"xxxxxx"</span></div><div class="line"><span class="attr">bugly_app_id</span>=<span class="string">"xxxxx"</span></div><div class="line"><span class="attr">customer_service_id</span>=<span class="string">"xxxxxxx"</span></div><div class="line"><span class="attr">mi_push_app_id</span>=<span class="string">"xxxxx"</span></div><div class="line"><span class="attr">mi_push_app_key</span>=<span class="string">"xxxxx"</span></div><div class="line"><span class="attr">room_id</span>=<span class="string">"xx-xx"</span></div><div class="line"><span class="attr">wilddog_url</span>=<span class="string">"https://xxx.xxx.com"</span></div><div class="line"><span class="attr">template_table_url</span>=<span class="string">"http://xxxxxx"</span></div></pre></td></tr></table></figure>
+<p>可以看到在上面指定了一个key为IS_DEBUG的field,在release type下为false，在debug type下为true，具体在代码中就可以这样使用。</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span>(BuildConfig. IS_DEBUG)&#123;</div><div class="line">   <span class="built_in">..</span><span class="built_in">..</span><span class="built_in">..</span><span class="built_in">..</span></div><div class="line">&#125;<span class="keyword">else</span>&#123;</div><div class="line">    <span class="built_in">..</span><span class="built_in">..</span><span class="built_in">..</span><span class="built_in">..</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>可以看到在build.gradle中设置的属性IS_DEBUG，在这里可以直接通过BuildConfig这个类进行访问，此时就可以动态的控制处理逻辑，这里当然可以指定更多的关键字，自己根据项目需求发挥即可。</p>
 
       
     </div>
@@ -359,7 +363,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/面试/" rel="tag">#面试</a>
+            <a href="/tags/Gradle/" rel="tag">#Gradle</a>
           
         </div>
       
@@ -368,16 +372,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/10/03/Service后台保活/" rel="next" title="Service后台保活">
-                <i class="fa fa-chevron-left"></i> Service后台保活
+              <a href="/2016/06/07/volatile关键字解析/" rel="next" title="volatile关键字解析">
+                <i class="fa fa-chevron-left"></i> volatile关键字解析
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/03/03/求第一个不重复字符/" rel="prev" title="给定一个字符串，求第一个不重复的字符">
-                给定一个字符串，求第一个不重复的字符 <i class="fa fa-chevron-right"></i>
+              <a href="/2016/07/24/Java反射实践/" rel="prev" title="Java反射实践">
+                Java反射实践 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -407,8 +411,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2017/03/03/约瑟夫问题/"
-           data-title="约瑟夫问题" data-url="http://yoursite.com/2017/03/03/约瑟夫问题/">
+      <div class="ds-thread" data-thread-key="2016/07/03/  build.gradle实践之buildConfigField/"
+           data-title="build.gradle实践之buildConfigField" data-url="http://yoursite.com/2016/07/03/  build.gradle实践之buildConfigField/">
       </div>
     
   </div>

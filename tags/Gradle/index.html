@@ -64,7 +64,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="面试," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -80,18 +80,13 @@
 
 
 
-<meta name="description" content="最近面试遇到的一个算法：标号1-n的n个人首尾相接，1到3报数，报到3的退出，求最后一个人的标号。 思路：1.把所有人先放入数组中，多出一个下标为0，所以size为n+12.当报到m的人，且dead不等于n-1时，此人退出游戏，这时候把数组中这个值置为0，报数从新开始3.如果这个人报数等于m，并且已经死了n-1个人，说明当前这个人就是最后的一个 12345678910111213141516171">
-<meta name="keywords" content="面试">
-<meta property="og:type" content="article">
-<meta property="og:title" content="约瑟夫问题">
-<meta property="og:url" content="http://yoursite.com/2017/03/03/约瑟夫问题/index.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="xybCoder博客">
+<meta property="og:url" content="http://yoursite.com/tags/Gradle/index.html">
 <meta property="og:site_name" content="xybCoder博客">
-<meta property="og:description" content="最近面试遇到的一个算法：标号1-n的n个人首尾相接，1到3报数，报到3的退出，求最后一个人的标号。 思路：1.把所有人先放入数组中，多出一个下标为0，所以size为n+12.当报到m的人，且dead不等于n-1时，此人退出游戏，这时候把数组中这个值置为0，报数从新开始3.如果这个人报数等于m，并且已经死了n-1个人，说明当前这个人就是最后的一个 12345678910111213141516171">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-08-13T02:48:53.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="约瑟夫问题">
-<meta name="twitter:description" content="最近面试遇到的一个算法：标号1-n的n个人首尾相接，1到3报数，报到3的退出，求最后一个人的标号。 思路：1.把所有人先放入数组中，多出一个下标为0，所以size为n+12.当报到m的人，且dead不等于n-1时，此人退出游戏，这时候把数组中这个值置为0，报数从新开始3.如果这个人报数等于m，并且已经死了n-1个人，说明当前这个人就是最后的一个 12345678910111213141516171">
+<meta name="twitter:title" content="xybCoder博客">
 
 
 
@@ -109,7 +104,7 @@
   };
 </script>
 
-  <title> 约瑟夫问题 | xybCoder博客 </title>
+  <title> 标签: Gradle | xybCoder博客 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -140,7 +135,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-right page-post-detail ">
+  <div class="container one-collumn sidebar-position-right  ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -244,175 +239,53 @@
           <div id="content" class="content">
             
 
-  <div id="posts" class="posts-expand">
-    
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                约瑟夫问题
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-03-03T20:03:00+08:00" content="2017-03-03">
-              2017-03-03
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/算法/" itemprop="url" rel="index">
-                    <span itemprop="name">算法</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2017/03/03/约瑟夫问题/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/03/约瑟夫问题/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-              &nbsp; | &nbsp;
-              <span class="page-pv">本文总阅读量
-              <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
-              </span>
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        <p>最近面试遇到的一个算法：标号1-n的n个人首尾相接，1到3报数，报到3的退出，求最后一个人的标号。</p>
-<p>思路：<br>1.把所有人先放入数组中，多出一个下标为0，所以size为n+1<br>2.当报到m的人，且dead不等于n-1时，此人退出游戏，这时候把数组中这个值置为0，报数从新开始<br>3.如果这个人报数等于m，并且已经死了n-1个人，说明当前这个人就是最后的一个</p>
-<figure class="highlight dart"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line">public <span class="class"><span class="keyword">class</span> <span class="title">demo</span></span>&#123;</div><div class="line">    public <span class="keyword">static</span> <span class="keyword">void</span>  main(<span class="built_in">String</span> arg[])</div><div class="line">    &#123;   </div><div class="line">        <span class="built_in">int</span> arr[] = <span class="keyword">new</span> <span class="built_in">int</span>[<span class="number">101</span>];<span class="comment">//报数从1开始所以数组大小为n+1</span></div><div class="line">        <span class="built_in">int</span> n=<span class="number">100</span>, m=<span class="number">3</span>;</div><div class="line">        <span class="built_in">int</span> i;</div><div class="line">        <span class="built_in">int</span> dead = <span class="number">0</span>;   <span class="comment">//表示已经死了多少人</span></div><div class="line">        <span class="built_in">int</span> <span class="built_in">num</span> = <span class="number">0</span>;    <span class="comment">//num模拟报数</span></div><div class="line">        <span class="keyword">for</span> (i = <span class="number">1</span>;i&lt;= n; i++) &#123;</div><div class="line">            <span class="comment">//开始时每个人都可以报数，为了能得到最后一个人的编号，我们让初始值为i下标</span></div><div class="line">            arr[i] = i;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">for</span> (i = <span class="number">1</span>;; i++)&#123;</div><div class="line">            <span class="keyword">if</span> (i &gt; n) &#123;</div><div class="line">                <span class="comment">//如果大于总人数，我们就从头开始</span></div><div class="line">                i = i%n;                 </div><div class="line">            &#125;</div><div class="line"></div><div class="line">            <span class="keyword">if</span> (arr[i] &gt; <span class="number">0</span>)&#123;</div><div class="line">                <span class="comment">//如果当前这个人没有死，就报数</span></div><div class="line">                <span class="built_in">num</span>++;</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            <span class="keyword">if</span> (m == <span class="built_in">num</span> &amp;&amp; dead != n<span class="number">-1</span>)&#123;</div><div class="line">                <span class="comment">//如果当前这个人报的数等于m 并且没有已经死亡n-1个人</span></div><div class="line">                <span class="built_in">num</span> = <span class="number">0</span>;</div><div class="line">                arr[i] = <span class="number">0</span>;</div><div class="line">                dead++;</div><div class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span>(m == <span class="built_in">num</span> &amp;&amp; dead == n<span class="number">-1</span>)&#123;</div><div class="line">                <span class="comment">//如果这个人报数等于m，并且已经死了n-1个人，说明当前这个人就是最后的一个活着的了。</span></div><div class="line">                System.out.<span class="built_in">print</span>(arr[i]+<span class="string">""</span>);</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">            &#125;</div><div class="line"></div><div class="line">        &#125;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-
-      
-    </div>
-    
-    <div>
-      
-        
-      
+  <div id="posts" class="posts-collapse">
+    <div class="collection-title">
+      <h2 >
+        Gradle
+        <small>标签</small>
+      </h2>
     </div>
 
-    <div>
+    
       
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <h1 class="post-title">
         
-      
-    </div>
+            <a class="post-title-link" href="/2016/07/03/  build.gradle实践之buildConfigField/" itemprop="url">
+              
+                <span itemprop="name">build.gradle实践之buildConfigField</span>
+              
+            </a>
+        
+      </h1>
 
-    <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/面试/" rel="tag">#面试</a>
-          
-        </div>
-      
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated"
+              datetime="2016-07-03T22:00:00+08:00"
+              content="2016-07-03" >
+          07-03
+        </time>
+      </div>
 
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2016/10/03/Service后台保活/" rel="next" title="Service后台保活">
-                <i class="fa fa-chevron-left"></i> Service后台保活
-              </a>
-            
-          </div>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/03/03/求第一个不重复字符/" rel="prev" title="给定一个字符串，求第一个不重复的字符">
-                给定一个字符串，求第一个不重复的字符 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
+    </header>
   </article>
 
 
-
-    <div class="post-spread">
-      
-    </div>
+    
   </div>
+
+  
 
 
           </div>
           
 
-  <p>热评文章</p>
-  <div class="ds-top-threads" data-range="weekly" data-num-items="4"></div>
-
 
           
-  <div class="comments" id="comments">
-    
-      <div class="ds-thread" data-thread-key="2017/03/03/约瑟夫问题/"
-           data-title="约瑟夫问题" data-url="http://yoursite.com/2017/03/03/约瑟夫问题/">
-      </div>
-    
-  </div>
-
 
         </div>
         
@@ -432,17 +305,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview sidebar-panel ">
+      <section class="site-overview sidebar-panel  sidebar-panel-active ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.png"
@@ -583,17 +447,6 @@
       </section>
 
       
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-            
-              
-            
-            
-              <p class="post-toc-empty">此文章未包含目录</p>
-            
-          </div>
-        </section>
-      
 
     </div>
   </aside>
@@ -705,10 +558,6 @@
   
 
   
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
-
-
 
   
 
