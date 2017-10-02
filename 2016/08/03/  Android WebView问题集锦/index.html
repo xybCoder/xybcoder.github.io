@@ -1,0 +1,887 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="webview," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="android 实际项目中经常使用到webview，在使用过程中会遇到的一些问题。这些问题主要是webview在使用过程中我已经趟过的坑，希望通过这篇文章的介绍能够帮助大家更好的使用webview。  webview的性能优化  webview注入cookie信息  webview退出activity异常  webview中native与js交互  webview下载文件  腾讯X5优势   we">
+<meta name="keywords" content="webview">
+<meta property="og:type" content="article">
+<meta property="og:title" content="webview的问题集锦">
+<meta property="og:url" content="http://yoursite.com/2016/08/03/  Android WebView问题集锦/index.html">
+<meta property="og:site_name" content="xybCoder博客">
+<meta property="og:description" content="android 实际项目中经常使用到webview，在使用过程中会遇到的一些问题。这些问题主要是webview在使用过程中我已经趟过的坑，希望通过这篇文章的介绍能够帮助大家更好的使用webview。  webview的性能优化  webview注入cookie信息  webview退出activity异常  webview中native与js交互  webview下载文件  腾讯X5优势   we">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://img.blog.csdn.net/20160705155834541">
+<meta property="og:updated_time" content="2017-10-02T15:26:40.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="webview的问题集锦">
+<meta name="twitter:description" content="android 实际项目中经常使用到webview，在使用过程中会遇到的一些问题。这些问题主要是webview在使用过程中我已经趟过的坑，希望通过这篇文章的介绍能够帮助大家更好的使用webview。  webview的性能优化  webview注入cookie信息  webview退出activity异常  webview中native与js交互  webview下载文件  腾讯X5优势   we">
+<meta name="twitter:image" content="http://img.blog.csdn.net/20160705155834541">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"right","display":"hide"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 6263412572838430000,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> webview的问题集锦 | xybCoder博客 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?2ffc178452e1fcf54c288f14f8c972a1";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">xybCoder博客</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-android">
+          <a href="/ANDROID" rel="section">
+            
+            Android开源库
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-ios">
+          <a href="/IOS" rel="section">
+            
+            IOS开源库
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                webview的问题集锦
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-08-03T21:12:00+08:00" content="2016-08-03">
+              2016-08-03
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/08/03/  Android WebView问题集锦/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/03/  Android WebView问题集锦/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+              &nbsp; | &nbsp;
+              <span class="page-pv">本文总阅读量
+              <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+              </span>
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>android 实际项目中经常使用到webview，在使用过程中会遇到的一些问题。这些问题主要是webview在使用过程中我已经趟过的坑，希望通过这篇文章的介绍能够帮助大家更好的使用webview。</p>
+<ul>
+<li><p>webview的性能优化</p>
+</li>
+<li><p>webview注入cookie信息</p>
+</li>
+<li><p>webview退出activity异常</p>
+</li>
+<li><p>webview中native与js交互</p>
+</li>
+<li><p>webview下载文件</p>
+</li>
+<li><p>腾讯X5优势</p>
+</li>
+</ul>
+<p><strong>webview的性能问题</strong></p>
+<p>在讲解webview的性能问题之前，我们先来了解一下android webview的缓存机制。</p>
+<ul>
+<li>Android WebView缓存机制</li>
+</ul>
+<p>WebView中存在着两种缓存：网页数据缓存（网页数据，url等）、H5缓存（H5代码缓存数据）</p>
+<p>不同的缓存数据会保存在不同的文件目录下，这里引用一下其他blog的说法：</p>
+<blockquote>
+<p>当我们加载Html时候，会在我们data/应用package下生成database与cache两个文件夹:<br>我们请求的Url记录是保存在webviewCache.db里，而url的内容是保存在webviewCache文件夹下。<br><img src="http://img.blog.csdn.net/20160705155834541" alt="这里写图片描述"></p>
+</blockquote>
+<p>webview中也是可以设置缓存是否可用的，一般是通过WebSettings对象设置，下面我们就来看一下WebSettings对象的使用。</p>
+<ul>
+<li>android中webview组件有几个重要的方法</li>
+</ul>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">WebSettings webSettings = mWebView.getSettings();</div><div class="line">webSettings.setJavaScriptEnabled(<span class="literal">true</span>);</div><div class="line">webSettings.setLoadWithOverviewMode(<span class="literal">true</span>);</div><div class="line">webSettings.setAllowFileAccess(<span class="literal">false</span>);</div><div class="line">webSettings.setUseWideViewPort(<span class="literal">false</span>);</div><div class="line">webSettings.setCacheMode(WebSettings.LOAD_NO_CACHE);</div><div class="line">webSettings.setDatabaseEnabled(<span class="literal">false</span>);</div><div class="line">webSettings.setAppCacheEnabled(<span class="literal">false</span>);</div><div class="line">webSettings.setBlockNetworkImage(<span class="literal">true</span>);</div><div class="line"><span class="comment">// 设置WebView的Client</span></div><div class="line">mWebView.setWebViewClient(<span class="keyword">new</span> <span class="type">CustomWebViewClient</span>(<span class="built_in">this</span>));</div><div class="line"><span class="comment">// 设置可现实js的alert弹窗</span></div><div class="line">mWebView.setWebChromeClient(<span class="keyword">new</span> <span class="type">WebChromeClient</span>());</div></pre></td></tr></table></figure>
+<p>可以看到我们可以使用WebSettings对象设置缓存是否可用，缓存DB是否可用等。我们需要首先确保这里设置了缓存可用，才可以继续设置使用何种缓存策略。</p>
+<p>下面我们来看一下webview的五种缓存模式：<br>LOAD_CACHE_ONLY:  不使用网络，只读取本地缓存数据<br>LOAD_DEFAULT:  根据cache-control决定是否从网络上取数据。<br>LOAD_CACHE_NORMAL: API level 17中已经废弃, 从API level 11开始作用同LOAD_DEFAULT模式<br>LOAD_NO_CACHE: 不使用缓存，只从网络获取数据.<br>LOAD_CACHE_ELSE_NETWORK，只要本地有，无论是否过期，或者no-cache，都使用缓存中的数据。</p>
+<ul>
+<li>几种缓存方式的实现</li>
+</ul>
+<p>（1）使用LOAD_CACHE_ELSE_NETWORK缓存模式，这样需要在APP退出的时候清除webview缓存，但是这样做有一个弊端就是如果当前App已经是打开状态，网页内容有更新的话不会看到；</p>
+<p>（2）使用LOAD_DEFAULT这种缓存方式，数据从缓存中获取还是从网络中获取根据H5页面的参数判断，这样做的好处是可以动态的处理更新内容；</p>
+<ul>
+<li>设置缓存</li>
+</ul>
+<figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">mWebView.getSettings<span class="params">()</span><span class="string">.setJavaScriptEnabled</span><span class="params">(true)</span>; </div><div class="line">     mWebView.getSettings<span class="params">()</span><span class="string">.setRenderPriority</span><span class="params">(RenderPriority.HIGH)</span>;  mWebView.getSettings<span class="params">()</span><span class="string">.setCacheMode</span><span class="params">(WebSettings.LOAD_DEFAULT)</span>;  <span class="string">//</span>设置 缓存模式 </div><div class="line">        <span class="string">//</span> 开启 DOM storage API 功能 </div><div class="line">        mWebView.getSettings<span class="params">()</span><span class="string">.setDomStorageEnabled</span><span class="params">(true)</span>; </div><div class="line">        <span class="string">//</span>开启 database storage API 功能 </div><div class="line">        mWebView.getSettings<span class="params">()</span><span class="string">.setDatabaseEnabled</span><span class="params">(true)</span>;  </div><div class="line">        String cacheDirPath = getFilesDir<span class="params">()</span><span class="string">.getAbsolutePath</span><span class="params">()</span>+APP_CACAHE_DIRNAME; </div><div class="line"><span class="string">//</span>      String cacheDirPath = getCacheDir<span class="params">()</span><span class="string">.getAbsolutePath</span><span class="params">()</span>+Constant.APP_DB_DIRNAME; </div><div class="line">        Log.i<span class="params">(TAG, "<span class="attr">cacheDirPath</span>="+cacheDirPath)</span>; </div><div class="line">        <span class="string">//</span>设置数据库缓存路径 </div><div class="line">        mWebView.getSettings<span class="params">()</span><span class="string">.setDatabasePath</span><span class="params">(cacheDirPath)</span>; </div><div class="line">        <span class="string">//</span>设置  Application Caches 缓存目录 </div><div class="line">        mWebView.getSettings<span class="params">()</span><span class="string">.setAppCachePath</span><span class="params">(cacheDirPath)</span>; </div><div class="line">        <span class="string">//</span>开启 Application Caches 功能 </div><div class="line">        mWebView.getSettings<span class="params">()</span><span class="string">.setAppCacheEnabled</span><span class="params">(true)</span>;</div></pre></td></tr></table></figure>
+<ul>
+<li>退出App时清除缓存</li>
+</ul>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//清理Webview缓存数据库 </span></div><div class="line">        <span class="built_in">try</span> &#123; </div><div class="line">            deleteDatabase(<span class="string">"webview.db"</span>);  </div><div class="line">            deleteDatabase(<span class="string">"webviewCache.db"</span>); </div><div class="line">        &#125; <span class="built_in">catch</span> (Exception e) &#123; </div><div class="line">            e.printStackTrace(); </div><div class="line">        &#125; </div><div class="line">           </div><div class="line">        <span class="comment">//WebView 缓存文件 </span></div><div class="line">        <span class="built_in">File</span> appCacheDir = <span class="keyword">new</span> <span class="built_in">File</span>(getFilesDir().getAbsolutePath()+APP_CACAHE_DIRNAME); </div><div class="line">        Log.e(TAG, <span class="string">"appCacheDir path="</span>+appCacheDir.getAbsolutePath()); </div><div class="line">           </div><div class="line">        <span class="built_in">File</span> webviewCacheDir = <span class="keyword">new</span> <span class="built_in">File</span>(getCacheDir().getAbsolutePath()+<span class="string">"/webviewCache"</span>); </div><div class="line">        Log.e(TAG, <span class="string">"webviewCacheDir path="</span>+webviewCacheDir.getAbsolutePath()); </div><div class="line">           </div><div class="line">        <span class="comment">//删除webview 缓存目录 </span></div><div class="line">        <span class="built_in">if</span>(webviewCacheDir.<span class="built_in">exists</span>())&#123; </div><div class="line">            deleteFile(webviewCacheDir); </div><div class="line">        &#125; </div><div class="line">        <span class="comment">//删除webview 缓存 缓存目录 </span></div><div class="line">        <span class="built_in">if</span>(appCacheDir.<span class="built_in">exists</span>())&#123; </div><div class="line">            deleteFile(appCacheDir); </div><div class="line">        &#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>其他的缓存策略</li>
+</ul>
+<p>网页在加载的时候暂时不加载图片，当所有的HTML标签加载完成时在加载图片具体的做法如下初始化webview的时候设置不加载图片</p>
+<figure class="highlight abnf"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">webSettings.setBlockNetworkImage(true)<span class="comment">;</span></div></pre></td></tr></table></figure>
+<p>然后在html标签加载完成之后在加载图片内容:<br><figure class="highlight aspectj"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Override</span></div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">onPageFinished</span><span class="params">(WebView view, String url)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onPageFinished(view, url);</div><div class="line">        mWebView.getSettings().setBlockNetworkImage(<span class="keyword">false</span>);   </div><div class="line">    &#125;</div></pre></td></tr></table></figure></p>
+<p>O(∩_∩)O哈哈~，这样做的好处就是可以给人的感觉网页加载速度很快…</p>
+<ul>
+<li>将网页内容中需要的js，css引用文件保存在App本地</li>
+</ul>
+<p>加载网页内容时，在加载完成html后替换页面内容引用的地址改为本地的资源文件地址，这样可以直接加载本地的资源文件加快资源的访问速度，目前主流的新闻客户端访问webview时多采用这种方式。</p>
+<p>好吧，讲解完了webview的性能优化问题之后我们在讲解一下如何在H5页面种入Cookie信息。</p>
+<p><strong>H5页面种入Cookie问题</strong></p>
+<p>app中存在webview控件，既可以通过Native与js代码交互的方式实现信息的交互也可以通过cookie的方式与实现Native与H5端的交互，查询的好多资料各种各样的实现方式都有，最终不断尝试基本实现了需求，现说明一下最终的实现方式；</p>
+<figure class="highlight qml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment">     * 客户端将cookie种入H5页面中，H5页面可以通过js代码实现对native种入cookie信息的读取操作</span></div><div class="line"><span class="comment">     */</span></div><div class="line">    public static <span class="keyword">void</span> synCookies(Context context, <span class="built_in">String</span> <span class="built_in">url</span>, <span class="built_in">String</span> cookie) &#123;</div><div class="line">        CookieSyncManager.createInstance(context);</div><div class="line">        CookieManager cookieManager = CookieManager.getInstance();</div><div class="line">        cookieManager.setAcceptCookie(<span class="literal">true</span>);</div><div class="line"></div><div class="line">        Uri uri = <span class="literal">null</span>;</div><div class="line">        <span class="built_in">String</span> domain = <span class="string">""</span>;</div><div class="line">        <span class="title">try</span> &#123;</div><div class="line">            uri = Uri.parse(URLDecoder.decode(<span class="built_in">url</span>, <span class="string">"utf-8"</span>));</div><div class="line">            domain = uri.getHost();</div><div class="line">        &#125; <span class="keyword">catch</span> (UnsupportedEncodingException e) &#123;</div><div class="line">            e.printStackTrace();</div><div class="line">        &#125;</div><div class="line">        <span class="built_in">String</span> cookieStr = cookieManager.getCookie(<span class="built_in">url</span>);</div><div class="line">        <span class="comment">// 判断token是否发生变化，发生变化的话则更新cookie</span></div><div class="line">        L.i(<span class="string">"cookieEquce:"</span> + cookie.equals(H5Constant.TOKEN + <span class="string">"="</span>));</div><div class="line">        <span class="keyword">if</span> (!TextUtils.isEmpty(cookieStr) &amp;&amp; cookieStr.contains(cookie) &amp;&amp; !cookie.equals(H5Constant.TOKEN + <span class="string">"="</span>)) &#123;</div><div class="line">            <span class="keyword">return</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="comment">// 更新domain(不再从UserInfo中获取，更改为从UrlInfo中获取)</span></div><div class="line">        <span class="keyword">if</span> (!TextUtils.isEmpty(URLConfig.getUrlInfo().getB4Domain())) &#123;</div><div class="line">            domain = URLConfig.getUrlInfo().getB4Domain();</div><div class="line">        &#125;</div><div class="line">        List&lt;<span class="built_in">String</span>&gt; uaList = SysConfig.getSystemUa(context);</div><div class="line">        <span class="built_in">String</span> md = <span class="string">";domain="</span> + domain;</div><div class="line">        <span class="comment">// 添加经纬度信息到Cookie中</span></div><div class="line">        cookieManager.setCookie(<span class="built_in">url</span>, <span class="string">"lat="</span> + Config.lat + md);</div><div class="line">        cookieManager.setCookie(<span class="built_in">url</span>, <span class="string">"lng="</span> + Config.lng + md);</div><div class="line">        cookieManager.setCookie(<span class="built_in">url</span>, cookie + <span class="string">";"</span> + md);</div><div class="line">        <span class="keyword">if</span> (uaList != <span class="literal">null</span> &amp;&amp; uaList.size() &gt; <span class="number">0</span>) &#123;</div><div class="line">            <span class="keyword">for</span> (<span class="built_in">String</span> <span class="attribute">coo</span> : uaList) &#123;</div><div class="line">                cookieManager.setCookie(<span class="built_in">url</span>, coo + md);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        CookieSyncManager.getInstance().sync();</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<p>其中CookieManager是cookie的管理对象，主要实现对网页cookie的注入与清除等工作。注入字符串的形式是：key=value;domain=url的形式（其中url为需要注入cookie的url链接地址）</p>
+<p>那么如何移除cookie呢？</p>
+<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment">     * 移除cookie</span></div><div class="line"><span class="comment">     */</span></div><div class="line">    public static void removeCookies(<span class="built_in">Context</span> <span class="built_in">context</span>) &#123;</div><div class="line">        CookieSyncManager.createInstance(<span class="built_in">context</span>)<span class="comment">;</span></div><div class="line">        CookieManager cookieManager = CookieManager.getInstance()<span class="comment">;</span></div><div class="line">        cookieManager.removeSessionCookie()<span class="comment">;</span></div><div class="line"></div><div class="line">        CookieSyncManager.getInstance().<span class="keyword">sync();</span></div><div class="line"><span class="keyword"> </span>   &#125;</div></pre></td></tr></table></figure>
+<p>一般情况下都是在打开H5页面的时候种入Cookie信息，然后在离开H5页面的时候清除cookie信息。当然了通过cookie实现native与js的交互只是实现信息交互的一种方式，我们还可以通过js与java代码相互调用的方式实现相互交互，文章的后面会有介绍。</p>
+<p>而下面我们再来讲解一下activity退出时webview报错的问题。</p>
+<p><strong>Activity退出时webview报错的问题</strong></p>
+<p>前段时间在调试代码的时候，有一段关于webview的代码，即退出Fragment的时候清除webview，这时候大部分手机是没有问题的，但是有一些手机上就报错，而其报错信息是：</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">java<span class="selector-class">.lang</span><span class="selector-class">.Throwable</span>: Error: WebView.destroy() called while still attached!</div><div class="line">at android<span class="selector-class">.webkit</span><span class="selector-class">.WebViewClassic</span><span class="selector-class">.destroy</span>(WebViewClassic<span class="selector-class">.java</span>:<span class="number">4173</span>)</div><div class="line">at android<span class="selector-class">.webkit</span><span class="selector-class">.WebView</span><span class="selector-class">.destroy</span>(WebView<span class="selector-class">.java</span>:<span class="number">707</span>)</div><div class="line">at com<span class="selector-class">.youyou</span><span class="selector-class">.uuelectric</span><span class="selector-class">.renter</span><span class="selector-class">.UI</span><span class="selector-class">.web</span><span class="selector-class">.H5Fragment</span><span class="selector-class">.onDestroyView</span>(H5Fragment<span class="selector-class">.java</span>:<span class="number">202</span>)</div><div class="line">at android<span class="selector-class">.support</span><span class="selector-class">.v4</span><span class="selector-class">.app</span><span class="selector-class">.Fragment</span><span class="selector-class">.performDestroyView</span>(Fragment<span class="selector-class">.java</span>:<span class="number">2167</span>)</div><div class="line">at android<span class="selector-class">.support</span><span class="selector-class">.v4</span><span class="selector-class">.app</span><span class="selector-class">.FragmentManagerImpl</span><span class="selector-class">.moveToState</span>(FragmentManager<span class="selector-class">.java</span>:<span class="number">1141</span>)</div><div class="line">at android<span class="selector-class">.support</span><span class="selector-class">.v4</span><span class="selector-class">.app</span><span class="selector-class">.FragmentManagerImpl</span><span class="selector-class">.moveToState</span>(FragmentManager<span class="selector-class">.java</span>:<span class="number">1248</span>)</div><div class="line">at android<span class="selector-class">.support</span><span class="selector-class">.v4</span><span class="selector-class">.app</span><span class="selector-class">.FragmentManagerImpl</span><span class="selector-class">.moveToState</span>(FragmentManager<span class="selector-class">.java</span>:<span class="number">1230</span>)</div><div class="line">at android<span class="selector-class">.support</span><span class="selector-class">.v4</span><span class="selector-class">.app</span><span class="selector-class">.FragmentManagerImpl</span><span class="selector-class">.dispatchDestroy</span>(FragmentManager<span class="selector-class">.java</span>:<span class="number">2079</span>)</div><div class="line">at android<span class="selector-class">.support</span><span class="selector-class">.v4</span><span class="selector-class">.app</span><span class="selector-class">.FragmentController</span><span class="selector-class">.dispatchDestroy</span>(FragmentController<span class="selector-class">.java</span>:<span class="number">235</span>)</div><div class="line"> at android<span class="selector-class">.support</span><span class="selector-class">.v4</span><span class="selector-class">.app</span><span class="selector-class">.FragmentActivity</span><span class="selector-class">.onDestroy</span>(FragmentActivity<span class="selector-class">.java</span>:<span class="number">326</span>)</div><div class="line">at android<span class="selector-class">.support</span><span class="selector-class">.v7</span><span class="selector-class">.app</span><span class="selector-class">.AppCompatActivity</span><span class="selector-class">.onDestroy</span>(AppCompatActivity<span class="selector-class">.java</span>:<span class="number">161</span>)</div><div class="line">at com<span class="selector-class">.youyou</span><span class="selector-class">.uuelectric</span><span class="selector-class">.renter</span><span class="selector-class">.UI</span><span class="selector-class">.base</span><span class="selector-class">.BaseActivity</span><span class="selector-class">.onDestroy</span>(BaseActivity<span class="selector-class">.java</span>:<span class="number">136</span>)</div><div class="line">at android<span class="selector-class">.app</span><span class="selector-class">.Activity</span><span class="selector-class">.performDestroy</span>(Activity<span class="selector-class">.java</span>:<span class="number">5543</span>)</div><div class="line">at android<span class="selector-class">.app</span><span class="selector-class">.Instrumentation</span><span class="selector-class">.callActivityOnDestroy</span>(Instrumentation<span class="selector-class">.java</span>:<span class="number">1134</span>)</div><div class="line">at android<span class="selector-class">.app</span><span class="selector-class">.ActivityThread</span><span class="selector-class">.performDestroyActivity</span>(ActivityThread<span class="selector-class">.java</span>:<span class="number">3637</span>)</div><div class="line">at android<span class="selector-class">.app</span><span class="selector-class">.ActivityThread</span><span class="selector-class">.handleDestroyActivity</span>(ActivityThread<span class="selector-class">.java</span>:<span class="number">3672</span>)</div><div class="line">at android<span class="selector-class">.app</span><span class="selector-class">.ActivityThread</span><span class="selector-class">.access</span>$<span class="number">1300</span>(ActivityThread<span class="selector-class">.java</span>:<span class="number">168</span>)</div><div class="line">at android<span class="selector-class">.app</span><span class="selector-class">.ActivityThread</span><span class="variable">$H</span>.handleMessage(ActivityThread<span class="selector-class">.java</span>:<span class="number">1382</span>)</div><div class="line">at android<span class="selector-class">.os</span><span class="selector-class">.Handler</span><span class="selector-class">.dispatchMessage</span>(Handler<span class="selector-class">.java</span>:<span class="number">99</span>)</div><div class="line">at android<span class="selector-class">.os</span><span class="selector-class">.Looper</span><span class="selector-class">.loop</span>(Looper<span class="selector-class">.java</span>:<span class="number">176</span>)</div><div class="line">at android<span class="selector-class">.app</span><span class="selector-class">.ActivityThread</span><span class="selector-class">.main</span>(ActivityThread<span class="selector-class">.java</span>:<span class="number">5493</span>)</div><div class="line">at java<span class="selector-class">.lang</span><span class="selector-class">.reflect</span><span class="selector-class">.Method</span><span class="selector-class">.invokeNative</span>(Native Method)</div><div class="line">at java<span class="selector-class">.lang</span><span class="selector-class">.reflect</span><span class="selector-class">.Method</span><span class="selector-class">.invoke</span>(Method<span class="selector-class">.java</span>:<span class="number">525</span>)</div><div class="line">at com<span class="selector-class">.android</span><span class="selector-class">.internal</span><span class="selector-class">.os</span><span class="selector-class">.ZygoteInit</span><span class="variable">$MethodAndArgsCaller</span>.run(ZygoteInit<span class="selector-class">.java</span>:<span class="number">1225</span>)</div><div class="line">at com<span class="selector-class">.android</span><span class="selector-class">.internal</span><span class="selector-class">.os</span><span class="selector-class">.ZygoteInit</span><span class="selector-class">.main</span>(ZygoteInit<span class="selector-class">.java</span>:<span class="number">1041</span>)</div><div class="line">at dalvik<span class="selector-class">.system</span><span class="selector-class">.NativeStart</span><span class="selector-class">.main</span>(Native Method)</div></pre></td></tr></table></figure>
+<p>程序也没有异常退出之类的动作，清除webview的代码是这样写的：</p>
+<figure class="highlight aspectj"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Override</span></div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">onDestroyView</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onDestroyView();</div><div class="line">        mWebView.removeAllViews();</div><div class="line">        mWebView.destroy();</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<p>这个错误大概的意思是：当你结束webview的时候，webview还依附在其父控件之下，应当在调用webview.destory()方法之前接触他们之间的依附关系，那么既然错误提示信息已经很明显了，我们就根据错误信息尝试着首先执行webview父控件的清除工作，然后在执行webview控件的清除操作，所以代码中应该这样实现：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">@<span class="keyword">Override</span></div><div class="line">    public void onDestroyView() &#123;</div><div class="line">        <span class="selector-tag">super</span><span class="selector-class">.onDestroyView</span>();</div><div class="line">        <span class="selector-tag">swipeRefreshLayout</span><span class="selector-class">.removeView</span>(<span class="selector-tag">mWebView</span>);</div><div class="line">        <span class="selector-tag">mWebView</span><span class="selector-class">.removeAllViews</span>();</div><div class="line">        <span class="selector-tag">mWebView</span><span class="selector-class">.destroy</span>();</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<p>这样经过修改之后特定机型上关于webview的错误就不在了。</p>
+<p><strong>webview中实现Native与js相互调用</strong></p>
+<p>上面我们介绍的通过cookie实现android native与H5的信息交互只是一种方式，我们也可以通过java代码与js代码直接相互调用的方式实现android native与H5信息的相互，这里简单的介绍一下使用方式</p>
+<ul>
+<li>native代码调用H5的js代码</li>
+</ul>
+<p>（1）在H5页面中添加一个js函数</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="undefined"></span></div><div class="line"><span class="actionscript"><span class="function"><span class="keyword">function</span> <span class="title">btn_click</span><span class="params">(clicked_id)</span> </span>&#123;</span></div><div class="line"><span class="undefined">    alert(clicked_id);</span></div><div class="line"><span class="undefined">&#125;</span></div></pre></td></tr></table></figure>
+<p>（2）在Native中通过java代码调用<br>若这时候H5页面已经被加载到webview中,则可以通过java代码直接调用js函数：</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">h5Fragment</span><span class="selector-class">.mWebView</span><span class="selector-class">.loadUrl</span>(<span class="string">"javascript:btn_click"</span> + <span class="string">"('"</span> + clickId + <span class="string">"')"</span>);</div></pre></td></tr></table></figure>
+<p>是的，没错就是这么简单，这样就实现了java代码对js代码的调用，但是需要指出的是这里无法调用含有返回值的js函数。</p>
+<ul>
+<li>js代码调用java函数</li>
+</ul>
+<p>（1）首先在java端编写能够被js代码调用的java函数</p>
+<ul>
+<li>native方法的实现<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment"> * 自定义实现的native函数，可被js代码调用</span></div><div class="line"><span class="comment"> */</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">JsInteration</span> &#123;</span></div><div class="line">	...</div><div class="line">	@JavascriptInterface</div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">toastMessage</span><span class="params">(String message)</span> </span>&#123;</div><div class="line">            Toast.makeText(getActivity(), message, Toast.LENGTH_LONG).show();</div><div class="line">        &#125;</div><div class="line">	...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>（2）在native中注入本地方法，供js调用；</p>
+<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mWebView.<span class="keyword">addJavascriptInterface(new </span><span class="keyword">JsInteration(), </span><span class="string">"control"</span>)<span class="comment">;</span></div></pre></td></tr></table></figure>
+<p>（3）在js代码中调用java代码：</p>
+<figure class="highlight lisp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">function reply_click(<span class="name">clicked_id</span> &#123;</div><div class="line">	window.control.toastMessage(<span class="name">clicked_id</span>)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>以上就是webview中使用js代码与java代码相互调用的简单例子。</p>
+<p><strong>webview下载文件</strong></p>
+<p>在使用webview开发中还遇到一个问题，app中webview中存在下载链接，但是在手机浏览器中点击下载是没有问题的，在webview中怎么都不好使。查询了好久，原来是因为WebView默认没有开启文件下载的功能，如果要实现文件下载的功能，需要设置WebView的DownloadListener，通过实现自己的DownloadListener来实现文件的下载。</p>
+<ul>
+<li>设置webview的setDownloadListener方法</li>
+</ul>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">mWebView.setDownloadListener(<span class="keyword">new</span> DownloadListener() &#123;</div><div class="line">            @Override</div><div class="line">            <span class="keyword">public</span> <span class="keyword">void</span> onDownloadStart(<span class="keyword">String</span> url, <span class="keyword">String</span> userAgent, <span class="keyword">String</span> contentDisposition, <span class="keyword">String</span> mimetype, <span class="keyword">long</span> contentLength) &#123;</div><div class="line">                L.i(<span class="string">"tag"</span>, <span class="string">"this is a message!!!"</span>);</div><div class="line">            &#125;</div><div class="line">        &#125;);</div></pre></td></tr></table></figure>
+<ul>
+<li>重写onDownloadStart回调方法，实现下载文件的逻辑</li>
+</ul>
+<p>比如在浏览器中实现下载：</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Override</span>  </div><div class="line">        public <span class="keyword">void</span> onDownloadStart(<span class="built_in">String</span> url, <span class="built_in">String</span> userAgent, <span class="built_in">String</span> contentDisposition, <span class="built_in">String</span> mimetype,  </div><div class="line">                                    long contentLength) &#123;  </div><div class="line">            <span class="built_in">Uri</span> uri = <span class="built_in">Uri</span>.parse(url);  </div><div class="line">            Intent intent = <span class="keyword">new</span> Intent(Intent.ACTION_VIEW, uri);  </div><div class="line">            startActivity(intent);  </div><div class="line">        &#125;</div></pre></td></tr></table></figure>
+<p>这样我们的webview中如果包含了下载链接就可以通过打开浏览器的方式实现下载了。</p>
+<p>注：个人感觉webview没有默认实现下载链接的功能更多的可能是考虑权限，安全方面的问题。</p>
+<p><strong>腾讯X5优势</strong>：</p>
+<p>1) 速度快：相比系统webView的网页加载速度有近30%的提升。<br>2) 省流量：云端优化技术使流量节省20%<br>3) 更安全：24小时安全问题解决机制<br>4) 更稳定：经过亿级用户的使用考验，CRASH率0.15%<br>5) 集成强大的视频播放器，支持各种视频格式直接打开<br>6) 适屏排版、字体设置等浏览增强功能的提供<br>7) Html5更完整支持。<br>8) 无系统内核的碎片化问题，更少的兼容性问题</p>
+<p><strong>总结：</strong></p>
+<ul>
+<li><p>webview的有一定的性能问题，可以设置不同的缓存策略提高webview的加载速率</p>
+</li>
+<li><p>webview与native可以通过cookie的方式实现信息交互</p>
+</li>
+<li><p>webview下载文件，需要重写自己的native的DownloadListener类，以及其回调方法</p>
+</li>
+<li><p>实现Native与H5端信息的交互既可以使用cookie的方式也可以通过java代码与js代码实现</p>
+</li>
+<li><p>原生的webview在不同手机上可能存在不同的表现，建议可以使用腾讯的X5浏览服务屏蔽的不同手机的差别，添加了不少特色的小功能</p>
+</li>
+</ul>
+<p>参考：<a href="http://blog.csdn.net/t12x3456/article/details/13769731/" target="_blank" rel="external">Android WebView常见问题及解决方案汇总</a></p>
+
+      
+    </div>
+    
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/webview/" rel="tag">#webview</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/07/31/Java动态代理实践/" rel="next" title="Java动态代理实践">
+                <i class="fa fa-chevron-left"></i> Java动态代理实践
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/09/01/Java垃圾回收机制算法分析/" rel="prev" title="Java垃圾回收机制算法分析">
+                Java垃圾回收机制算法分析 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  <p>热评文章</p>
+  <div class="ds-top-threads" data-range="weekly" data-num-items="4"></div>
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/08/03/  Android WebView问题集锦/"
+           data-title="webview的问题集锦" data-url="http://yoursite.com/2016/08/03/  Android WebView问题集锦/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.png"
+               alt="xybCoder" />
+          <p class="site-author-name" itemprop="name">xybCoder</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">36</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">21</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/xybCoder" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/p/1005053745997724/home?is_all=1" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element">
+            <div class="links-of-blogroll-title">
+              <i class="fa fa-globe fa-fw"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://blog.daimajia.com/" title="代码家" target="_blank">代码家</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://github.com/lzyzsd/" title="hi大头鬼hi" target="_blank">hi大头鬼hi</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://blog.zhaiyifan.cn/" title="翟一帆" target="_blank">翟一帆</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://liaohuqiu.net/" title="秋百万" target="_blank">秋百万</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://drakeet.me/" title="Drakeet博客" target="_blank">Drakeet博客</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.trinea.cn/" title="Trinea" target="_blank">Trinea</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://p.codekk.com/" title="CodeKK" target="_blank">CodeKK</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://blog.csdn.net/eclipsexys/" title="Tomcat的猫" target="_blank">Tomcat的猫</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.race604.com/" title="android笔记" target="_blank">android笔记</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.androidperformance.com/" title="Gracker" target="_blank">Gracker</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://yanghui.name/" title="杨辉" target="_blank">杨辉</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://hujiaweibujidao.github.io/" title="五道口宅男" target="_blank">五道口宅男</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://blog.csdn.net/singwhatiwanna/" title="任玉刚博客" target="_blank">任玉刚博客</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://blog.fangjie.info/" title="方杰博客" target="_blank">方杰博客</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://blog.isming.me/" title="码农明明桑" target="_blank">码农明明桑</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <p class="post-toc-empty">此文章未包含目录</p>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xybCoder</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+        
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">本站访客数<span class="busuanzi-value" id="busuanzi_value_site_uv"></span>人次</span>
+  
+
+  
+    <span class="site-pv">本站总访问量<span class="busuanzi-value" id="busuanzi_value_site_pv"></span>次</span>
+  
+  
+</div>
+
+
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"xybcoder"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+      
+      <script src="/vendors/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+      <script src="/js/src/hook-duoshuo.js"></script>
+    
+  
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+<script type="text/javascript" async src="//push.zhanzhang.baidu.com/push.js">
+</script>
+
+
+</body>
+</html>
