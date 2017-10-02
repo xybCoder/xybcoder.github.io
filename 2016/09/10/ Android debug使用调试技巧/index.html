@@ -64,7 +64,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="git," />
+  <meta name="keywords" content="debug调试技巧," />
 
 
 
@@ -80,20 +80,26 @@
 
 
 
-<meta name="description" content="上次我们讲了先有本地库，并关联远程库learngit,如下图。  现在，假设我们从零开发，那么最好的方式是先从远程库克隆（拉取数据）。 现在，远程库learngit已经准备好了，下一步是用命令git clone克隆一个本地库：12345678910$ git clone git@github.com:xybCoder/learngit.gitCloning into &apos;learngit&apos;...re">
-<meta name="keywords" content="git">
+<meta name="description" content="android开发日常除了打印日志信息，debug调试也是非常重要，debug用好了效率可以大大的提高；那么你的调试技术停留在哪一阶段呢？仅仅是下个断点单步执行吗？你是否知道求值调试，条件断点，日志断点，方法断点，异常断点等调试技巧么？ 调试基础 一般来说我们有两种办法调试一个debuggable的apk；  设置好断点，然后用debug模式编译安装这个app；  执行attach debugge">
+<meta name="keywords" content="debug调试技巧">
 <meta property="og:type" content="article">
-<meta property="og:title" content="远程库管理（克隆远程库）">
-<meta property="og:url" content="http://yoursite.com/2016/04/03/远程库管理（克隆远程库）/index.html">
+<meta property="og:title" content="Android debug使用调试技巧">
+<meta property="og:url" content="http://yoursite.com/2016/09/10/ Android debug使用调试技巧/index.html">
 <meta property="og:site_name" content="xybCoder博客">
-<meta property="og:description" content="上次我们讲了先有本地库，并关联远程库learngit,如下图。  现在，假设我们从零开发，那么最好的方式是先从远程库克隆（拉取数据）。 现在，远程库learngit已经准备好了，下一步是用命令git clone克隆一个本地库：12345678910$ git clone git@github.com:xybCoder/learngit.gitCloning into &apos;learngit&apos;...re">
+<meta property="og:description" content="android开发日常除了打印日志信息，debug调试也是非常重要，debug用好了效率可以大大的提高；那么你的调试技术停留在哪一阶段呢？仅仅是下个断点单步执行吗？你是否知道求值调试，条件断点，日志断点，方法断点，异常断点等调试技巧么？ 调试基础 一般来说我们有两种办法调试一个debuggable的apk；  设置好断点，然后用debug模式编译安装这个app；  执行attach debugge">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/images/github3.png">
-<meta property="og:updated_time" content="2016-04-03T09:39:44.000Z">
+<meta property="og:image" content="http://img.blog.csdn.net/20160718145459117">
+<meta property="og:image" content="http://img.blog.csdn.net/20160718150241495">
+<meta property="og:image" content="http://img.blog.csdn.net/20160718150451731">
+<meta property="og:image" content="http://img.blog.csdn.net/20160718150735060">
+<meta property="og:image" content="http://img.blog.csdn.net/20160718151943887">
+<meta property="og:image" content="http://img.blog.csdn.net/20160718152045815">
+<meta property="og:image" content="http://img.blog.csdn.net/20160718152336957">
+<meta property="og:updated_time" content="2017-10-02T15:52:37.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="远程库管理（克隆远程库）">
-<meta name="twitter:description" content="上次我们讲了先有本地库，并关联远程库learngit,如下图。  现在，假设我们从零开发，那么最好的方式是先从远程库克隆（拉取数据）。 现在，远程库learngit已经准备好了，下一步是用命令git clone克隆一个本地库：12345678910$ git clone git@github.com:xybCoder/learngit.gitCloning into &apos;learngit&apos;...re">
-<meta name="twitter:image" content="http://yoursite.com/images/github3.png">
+<meta name="twitter:title" content="Android debug使用调试技巧">
+<meta name="twitter:description" content="android开发日常除了打印日志信息，debug调试也是非常重要，debug用好了效率可以大大的提高；那么你的调试技术停留在哪一阶段呢？仅仅是下个断点单步执行吗？你是否知道求值调试，条件断点，日志断点，方法断点，异常断点等调试技巧么？ 调试基础 一般来说我们有两种办法调试一个debuggable的apk；  设置好断点，然后用debug模式编译安装这个app；  执行attach debugge">
+<meta name="twitter:image" content="http://img.blog.csdn.net/20160718145459117">
 
 
 
@@ -111,7 +117,7 @@
   };
 </script>
 
-  <title> 远程库管理（克隆远程库） | xybCoder博客 </title>
+  <title> Android debug使用调试技巧 | xybCoder博客 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -267,7 +273,7 @@
             
             
               
-                远程库管理（克隆远程库）
+                Android debug使用调试技巧
               
             
           </h1>
@@ -279,8 +285,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-04-03T17:39:44+08:00" content="2016-04-03">
-              2016-04-03
+            <time itemprop="dateCreated" datetime="2016-09-10T22:37:00+08:00" content="2016-09-10">
+              2016-09-10
             </time>
           </span>
 
@@ -293,8 +299,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/git/" itemprop="url" rel="index">
-                    <span itemprop="name">git</span>
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
                   </a>
                 </span>
 
@@ -309,8 +315,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/04/03/远程库管理（克隆远程库）/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/03/远程库管理（克隆远程库）/" itemprop="commentsCount"></span>
+                <a href="/2016/09/10/ Android debug使用调试技巧/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/10/ Android debug使用调试技巧/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -338,14 +344,45 @@
       
 
       
-        <p>上次我们讲了先有本地库，并关联远程库learngit,如下图。</p>
-<p><img src="/images/github3.png" alt="icon"></p>
-<p>现在，假设我们从零开发，那么最好的方式是先从远程库克隆（拉取数据）。</p>
-<p>现在，远程库learngit已经准备好了，下一步是用命令git clone克隆一个本地库：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span><span class="bash"> git <span class="built_in">clone</span> git@github.com:xybCoder/learngit.git</span></div><div class="line">Cloning into 'learngit'...</div><div class="line">remote: Counting objects: 3, done.</div><div class="line">remote: Total 3 (delta 0), reused 0 (delta 0)</div><div class="line">Receiving objects: 100% (3/3), done.</div><div class="line"></div><div class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">cd</span> learngit</span></div><div class="line"><span class="meta">$</span><span class="bash"> ls</span></div><div class="line">README.md</div><div class="line">test.txt</div></pre></td></tr></table></figure></p>
-<p>如果有多个人协作开发，那么每个人各自从远程克隆一份就可以了。</p>
-<p>你也许注意到，GitHub给出了SSH和HTTPS两种协议，所以还可以用 <a href="https://github.com/xybCoder/learngit.git" target="_blank" rel="external">https://github.com/xybCoder/learngit.git</a>   地址。实际上，Git支持多种协议，默认的git://使用ssh，但也可以使用https等其他协议。</p>
-<h3 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h3><p>要克隆一个仓库，首先必须知道仓库的地址，然后使用git clone命令克隆。</p>
-<p>Git支持多种协议，包括https，但通过ssh支持的原生git协议速度最快。</p>
+        <p>android开发日常除了打印日志信息，debug调试也是非常重要，debug用好了效率可以大大的提高；那么你的调试技术停留在哪一阶段呢？仅仅是下个断点单步执行吗？你是否知道求值调试，条件断点，日志断点，方法断点，异常断点等调试技巧么？</p>
+<p><strong>调试基础</strong></p>
+<p>一般来说我们有两种办法调试一个debuggable的apk；</p>
+<ul>
+<li><p>设置好断点，然后用debug模式编译安装这个app；</p>
+</li>
+<li><p>执行attach debugger to android process，即将debug进程添加到当前进程中。</p>
+</li>
+</ul>
+<p>一般比较常使用的debug方式是attach debugger to android process:</p>
+<p><img src="http://img.blog.csdn.net/20160718145459117" alt="image"></p>
+<p>在执行按钮右侧两个的带有小虫子的按钮其实就是Attach Debugger to android process按钮。</p>
+<p>我们可以在启动apk之后，直接下断点，然后attach process到指定进程，条件触发之后就可以直接进入调试模式。</p>
+<p><strong>断点调试</strong></p>
+<p>断点调试是最基本操作，基恩的断点调试有以下的几个常用的调试命令：</p>
+<ul>
+<li><p>F5跳转内部执行</p>
+</li>
+<li><p>F6跳转下一步</p>
+</li>
+<li><p>F8跳转到下一个断点</p>
+</li>
+</ul>
+<p><strong>如何添加断点？</strong></p>
+<p>直接在android studio中的java源代码左侧，想调试某一行代码的话，直接单击若左侧出现了一个小红圈，则说明断点已经添加好了：<br><img src="http://img.blog.csdn.net/20160718150241495" alt="image"></p>
+<p>当代码处于debug模式，并且执行到此处的时候就会卡住在这里。</p>
+<p><strong>执行断点调试</strong></p>
+<p>执行attach debugger to android process，当代码执行到含有断点的时候就可以将程序卡到断点的代码了：<br><img src="http://img.blog.csdn.net/20160718150451731" alt="image"></p>
+<p>这时候我们可以看到在该行代码中可以看到相应的局部变量值，执行F6走到下一步，执行F8，调试到下一个断点。</p>
+<p><strong>添加观察变量</strong><br>在调试模式下，选择变量，并右击：<br><img src="http://img.blog.csdn.net/20160718150735060" alt="image"></p>
+<p>这时候选择Add to watches，就可以将变量添加到观察列表了。</p>
+<p><strong>表达式调试：Evaluate Expression</strong></p>
+<p>这个调试功能非常的实用，也是我最喜欢的功能，使用ctrl + u快捷键可以弹窗表达式调试弹窗：<br><img src="http://img.blog.csdn.net/20160718151943887" alt="image"></p>
+<p>这个功能非常实用，可以在断点处直接进入一个求值环境，在这里你可以执行任何你感兴趣的表达式可以在表达式调试弹窗中写任何java表达式，比如：<br><img src="http://img.blog.csdn.net/20160718152045815" alt="image"></p>
+<p>其他的比如在断点处有一个对象object，如果你要查看它的某个属性很简单，在Debug窗口就能看到，但是如果你想要执行它的某个方法看看结果是什么呢？借助这个可以实现。当然它的功能远不止这么多，相当于直接进入了一个 REPL环境，非常实用。</p>
+<p><strong>条件断点</strong></p>
+<p>假设你的断点在一个列表的循环里面，可是你只对这个列表的某一个元素感兴趣，只想在遇到这个元素的时候才断下来；你是一直人肉 F9 直到满足条件吗？条件断点就是满足这种需求的，顾名思义，在特定条件下的断点。使用起来也非常简单，在你的断点上鼠标右键会出现一个小窗口，写上条件即可。<br><img src="http://img.blog.csdn.net/20160718152336957" alt="image"></p>
+<p><strong>其他断点调试方式</strong></p>
+<p>除了这里的求值断点，条件断点，还有日志断点，异常断点，方法断点等，具体的可自行google哈。</p>
 
       
     </div>
@@ -366,7 +403,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/git/" rel="tag">#git</a>
+            <a href="/tags/debug调试技巧/" rel="tag">#debug调试技巧</a>
           
         </div>
       
@@ -375,16 +412,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/04/03/远程库管理（添加远程库）/" rel="next" title="远程库管理（添加远程库）">
-                <i class="fa fa-chevron-left"></i> 远程库管理（添加远程库）
+              <a href="/2016/09/01/Java垃圾回收机制算法分析/" rel="next" title="Java垃圾回收机制算法分析">
+                <i class="fa fa-chevron-left"></i> Java垃圾回收机制算法分析
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/04/03/工作区和暂存区和分支理解/" rel="prev" title="工作区和暂存区和分支理解">
-                工作区和暂存区和分支理解 <i class="fa fa-chevron-right"></i>
+              <a href="/2016/09/20/Android中常见的内存泄漏及解决方法/" rel="prev" title="Android中常见的内存泄漏及解决方法">
+                Android中常见的内存泄漏及解决方法 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -414,8 +451,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/04/03/远程库管理（克隆远程库）/"
-           data-title="远程库管理（克隆远程库）" data-url="http://yoursite.com/2016/04/03/远程库管理（克隆远程库）/">
+      <div class="ds-thread" data-thread-key="2016/09/10/ Android debug使用调试技巧/"
+           data-title="Android debug使用调试技巧" data-url="http://yoursite.com/2016/09/10/ Android debug使用调试技巧/">
       </div>
     
   </div>
@@ -596,7 +633,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#小结"><span class="nav-number">1.</span> <span class="nav-text">小结</span></a></li></ol></div>
+              <p class="post-toc-empty">此文章未包含目录</p>
             
           </div>
         </section>
