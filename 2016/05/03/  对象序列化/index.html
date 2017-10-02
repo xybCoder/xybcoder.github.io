@@ -64,7 +64,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="对象序列化," />
 
 
 
@@ -80,13 +80,18 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="xybCoder博客">
-<meta property="og:url" content="http://yoursite.com/tags/源码分析/index.html">
+<meta name="description" content="android中数据传输中需要了解的数据序列化，我们知道android开发过程中不同Activity之间传输数据可以通过Intent对象的put**方法传递，对于java的八大基本数据类型(char int float double long short boolean byte)传递是没有问题的，但是如果传递比较复杂的对象类型（比如对象，比如集合等），那么就可能存在问题，而这时候也就引入了数据序">
+<meta name="keywords" content="对象序列化">
+<meta property="og:type" content="article">
+<meta property="og:title" content="对象序列化">
+<meta property="og:url" content="http://yoursite.com/2016/05/03/  对象序列化/index.html">
 <meta property="og:site_name" content="xybCoder博客">
+<meta property="og:description" content="android中数据传输中需要了解的数据序列化，我们知道android开发过程中不同Activity之间传输数据可以通过Intent对象的put**方法传递，对于java的八大基本数据类型(char int float double long short boolean byte)传递是没有问题的，但是如果传递比较复杂的对象类型（比如对象，比如集合等），那么就可能存在问题，而这时候也就引入了数据序">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-10-02T14:44:55.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="xybCoder博客">
+<meta name="twitter:title" content="对象序列化">
+<meta name="twitter:description" content="android中数据传输中需要了解的数据序列化，我们知道android开发过程中不同Activity之间传输数据可以通过Intent对象的put**方法传递，对于java的八大基本数据类型(char int float double long short boolean byte)传递是没有问题的，但是如果传递比较复杂的对象类型（比如对象，比如集合等），那么就可能存在问题，而这时候也就引入了数据序">
 
 
 
@@ -104,7 +109,7 @@
   };
 </script>
 
-  <title> 标签: 源码分析 | xybCoder博客 </title>
+  <title> 对象序列化 | xybCoder博客 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -135,7 +140,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-right  ">
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -239,53 +244,218 @@
           <div id="content" class="content">
             
 
-  <div id="posts" class="posts-collapse">
-    <div class="collection-title">
-      <h2 >
-        源码分析
-        <small>标签</small>
-      </h2>
-    </div>
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
 
     
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                对象序列化
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-05-03T22:10:00+08:00" content="2016-05-03">
+              2016-05-03
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/05/03/  对象序列化/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/03/  对象序列化/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+              &nbsp; | &nbsp;
+              <span class="page-pv">本文总阅读量
+              <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+              </span>
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
       
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+      
+        <p>android中数据传输中需要了解的数据序列化，我们知道android开发过程中不同Activity之间传输数据可以通过Intent对象的put**方法传递，对于java的八大基本数据类型(char int float double long short boolean byte)传递是没有问题的，但是如果传递比较复杂的对象类型（比如对象，比如集合等），那么就可能存在问题，而这时候也就引入了数据序列化的概念。</p>
+<p><strong>序列化的定义：</strong></p>
+<blockquote>
+<p>序列化 (Serialization)将对象的状态信息转换为可以存储或传输的形式的过程。在序列化期间，对象将其当前状态写入到临时或持久性存储区。以后，可以通过从存储区中读取或反序列化对象的状态，重新创建该对象。</p>
+</blockquote>
+<p>简单来说就是我们的数据在传输的时候需要将信息转化为可以传输的数据，然后在传输的目标方能够反序列化将数据还原回来，这里的将对象状态信息转换为可传输数据的过程就是序列化（简单说序列化就是将java 对象转成字节流），将可传输的数据逆还原为对象的过程就是反序列化（反序列化就是将传输字节流转成java 对象）。</p>
+<p><strong>为什么需要序列化：</strong></p>
+<p>知道前面的序列化定义，内存对象什么需要实现序列化呢？</p>
+<ul>
+<li><p>永久性保存对象，保存对象的字节序列到本地文件。</p>
+</li>
+<li><p>通过序列化对象在网络中传递对象。</p>
+</li>
+<li><p>通过序列化对象在进程间传递对象。</p>
+</li>
+</ul>
+<p><strong>实现序列化的两种方式：</strong></p>
+<p>那么我们如何实现序列化的操作呢？在android开发中我们实现序列化有两种方式：</p>
+<ul>
+<li><p>实现Serializable接口</p>
+</li>
+<li><p>实现parcelable接口</p>
+</li>
+</ul>
+<p><strong>两种序列化方式的区别：</strong></p>
+<p>都知道在android studio中序列化有两种方式：serializable与parcelable。那么这两种实现序列化的方式有什么区别呢？下面是这两种实现序列化方式的区别：</p>
+<ol>
+<li><p>Serializeble是java的序列化方式，Parcelable是android特有的序列化方式；</p>
+</li>
+<li><p>在使用内存的时候，Parcelable比Serializable性能高，所以推荐使用Parcelable。</p>
+</li>
+<li><p>Serializable在序列化的时候会产生大量的临时变量，从而引起频繁的GC。</p>
+</li>
+<li><p>Parcelable不能使用在要将数据存储在磁盘上的情况，因为Parcelable不能很好的保证数据的持续性在外界有变化的情况下。尽管Serializable效率低点， 也不提倡用，但在这种情况下，还是建议你用Serializable。</p>
+</li>
+</ol>
+<p>最后还有一点就是Serializeble序列化的方式比较简单，直接集成一个接口就好了，而parcelable方式比较复杂，不仅需要集成Parcelable接口还需要重写里面的方法。</p>
+<p><strong>总结：</strong></p>
+<ul>
+<li><p>可以通过实现Serializable和Parcelable接口的方式实现序列化</p>
+</li>
+<li><p>实现Serializable接口是java中实现序列化的方式，而实现Parcelable是android中特有的实现序列化的方式，更适合android环境</p>
+</li>
+<li><p>实现Serializable接口只需要实现该接口即可无需其他操作，而实现Parcelable接口需要重写相应的方法</p>
+</li>
+</ul>
 
-      <h1 class="post-title">
+      
+    </div>
+    
+    <div>
+      
         
-            <a class="post-title-link" href="/2016/06/01/LinkedList源码分析/" itemprop="url">
-              
-                <span itemprop="name">LinkedList源码分析</span>
-              
-            </a>
+      
+    </div>
+
+    <div>
+      
         
-      </h1>
+      
+    </div>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-06-01T22:10:00+08:00"
-              content="2016-06-01" >
-          06-01
-        </time>
-      </div>
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/对象序列化/" rel="tag">#对象序列化</a>
+          
+        </div>
+      
 
-    </header>
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/05/03/Java泛型理解/" rel="next" title="Java泛型理解">
+                <i class="fa fa-chevron-left"></i> Java泛型理解
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/05/28/Observable与Observer源码分析及用法/" rel="prev" title="Observable与Observer源码分析及用法">
+                Observable与Observer源码分析及用法 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </article>
 
 
-    
-  </div>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
           
 
+  <p>热评文章</p>
+  <div class="ds-top-threads" data-range="weekly" data-num-items="4"></div>
+
 
           
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/05/03/  对象序列化/"
+           data-title="对象序列化" data-url="http://yoursite.com/2016/05/03/  对象序列化/">
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -305,8 +475,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.png"
@@ -447,6 +626,17 @@
       </section>
 
       
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <p class="post-toc-empty">此文章未包含目录</p>
+            
+          </div>
+        </section>
+      
 
     </div>
   </aside>
@@ -558,6 +748,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
 
   
 
