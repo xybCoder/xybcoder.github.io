@@ -80,18 +80,18 @@
 
 
 
-<meta name="description" content="##什么是 URL Scheme？  android中的scheme是一种页面内跳转协议，通过定义自己的scheme协议，可以跳转app中的各个页面；通过scheme协议，服务器可以定制化告诉App跳转那个页面，可以通过通知栏消息定制化跳转页面，可以通过H5页面跳转页面等。 URL Scheme应用场景 客户端应用可以向操作系统注册一个 URL scheme，该 scheme 用于从浏览器或其他应">
+<meta name="description" content="什么是 URL Scheme？ android中的scheme是一种页面内跳转协议，通过定义自己的scheme协议，可以跳转app中的各个页面；通过scheme协议，服务器可以定制化告诉App跳转那个页面，可以通过通知栏消息定制化跳转页面，可以通过H5页面跳转页面等。 URL Scheme应用场景 客户端应用可以向操作系统注册一个 URL scheme，该 scheme 用于从浏览器或其他应用中启">
 <meta name="keywords" content="组件化">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Android组件化开发之路(二)URL Scheme使用">
 <meta property="og:url" content="http://yoursite.com/2017/05/13/Android组件化开发之路(二)URL Scheme使用/index.html">
 <meta property="og:site_name" content="xybCoder博客">
-<meta property="og:description" content="##什么是 URL Scheme？  android中的scheme是一种页面内跳转协议，通过定义自己的scheme协议，可以跳转app中的各个页面；通过scheme协议，服务器可以定制化告诉App跳转那个页面，可以通过通知栏消息定制化跳转页面，可以通过H5页面跳转页面等。 URL Scheme应用场景 客户端应用可以向操作系统注册一个 URL scheme，该 scheme 用于从浏览器或其他应">
+<meta property="og:description" content="什么是 URL Scheme？ android中的scheme是一种页面内跳转协议，通过定义自己的scheme协议，可以跳转app中的各个页面；通过scheme协议，服务器可以定制化告诉App跳转那个页面，可以通过通知栏消息定制化跳转页面，可以通过H5页面跳转页面等。 URL Scheme应用场景 客户端应用可以向操作系统注册一个 URL scheme，该 scheme 用于从浏览器或其他应用中启">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-11-02T14:41:11.000Z">
+<meta property="og:updated_time" content="2017-11-05T09:13:35.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android组件化开发之路(二)URL Scheme使用">
-<meta name="twitter:description" content="##什么是 URL Scheme？  android中的scheme是一种页面内跳转协议，通过定义自己的scheme协议，可以跳转app中的各个页面；通过scheme协议，服务器可以定制化告诉App跳转那个页面，可以通过通知栏消息定制化跳转页面，可以通过H5页面跳转页面等。 URL Scheme应用场景 客户端应用可以向操作系统注册一个 URL scheme，该 scheme 用于从浏览器或其他应">
+<meta name="twitter:description" content="什么是 URL Scheme？ android中的scheme是一种页面内跳转协议，通过定义自己的scheme协议，可以跳转app中的各个页面；通过scheme协议，服务器可以定制化告诉App跳转那个页面，可以通过通知栏消息定制化跳转页面，可以通过H5页面跳转页面等。 URL Scheme应用场景 客户端应用可以向操作系统注册一个 URL scheme，该 scheme 用于从浏览器或其他应用中启">
 
 
 
@@ -336,8 +336,7 @@
       
 
       
-        <p>##什么是 URL Scheme？</p>
-<p> android中的scheme是一种页面内跳转协议，通过定义自己的scheme协议，可以跳转app中的各个页面；通过scheme协议，服务器可以定制化告诉App跳转那个页面，可以通过通知栏消息定制化跳转页面，可以通过H5页面跳转页面等。</p>
+        <h2 id="什么是-URL-Scheme？"><a href="#什么是-URL-Scheme？" class="headerlink" title="什么是 URL Scheme？"></a>什么是 URL Scheme？</h2><p> android中的scheme是一种页面内跳转协议，通过定义自己的scheme协议，可以跳转app中的各个页面；通过scheme协议，服务器可以定制化告诉App跳转那个页面，可以通过通知栏消息定制化跳转页面，可以通过H5页面跳转页面等。</p>
 <h2 id="URL-Scheme应用场景"><a href="#URL-Scheme应用场景" class="headerlink" title="URL Scheme应用场景"></a>URL Scheme应用场景</h2><p> 客户端应用可以向操作系统注册一个 URL scheme，该 scheme 用于从浏览器或其他应用中启动本应用。通过指定的 URL 字段，可以让应用在被调起后直接打开某些特定页面，比如商品详情页、活动详情页等等。也可以执行某些指定动作，如完成支付等。也可以在应用内通过 html 页来直接调用显示 app 内的某个页面。综上URL Scheme使用场景大致分以下几种：</p>
 <ol>
 <li>服务器下发跳转路径，客户端根据服务器下发跳转路径跳转相应的页面</li>
@@ -614,7 +613,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#URL-Scheme应用场景"><span class="nav-number">1.</span> <span class="nav-text">URL Scheme应用场景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#URL-Scheme协议格式"><span class="nav-number">2.</span> <span class="nav-text">URL Scheme协议格式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#URL-Scheme如何使用"><span class="nav-number">3.</span> <span class="nav-text">URL Scheme如何使用</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是-URL-Scheme？"><span class="nav-number">1.</span> <span class="nav-text">什么是 URL Scheme？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#URL-Scheme应用场景"><span class="nav-number">2.</span> <span class="nav-text">URL Scheme应用场景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#URL-Scheme协议格式"><span class="nav-number">3.</span> <span class="nav-text">URL Scheme协议格式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#URL-Scheme如何使用"><span class="nav-number">4.</span> <span class="nav-text">URL Scheme如何使用</span></a></li></ol></div>
             
           </div>
         </section>

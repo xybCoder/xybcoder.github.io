@@ -80,22 +80,22 @@
 
 
 
-<meta name="description" content="#为什么要组件化？从个人经历来说的话，随着所接触的APP的体积变得越来越大，业务的也变得越来越复杂，业务模块的数量越来越多，而且每个模块的代码也变的越来越多，单一工程下的APP架构势必会影响开发效率，增加项目的维护成本，每个工程师都要熟悉如此之多的代码，将很难进行多人协作开发，而且Android项目在编译代码的时候电脑会非常卡，又因为单一工程下代码耦合严重，每修改一处代码后都要重新编译打包测试，导">
+<meta name="description" content="为什么要组件化？从个人经历来说的话，随着所接触的APP的体积变得越来越大，业务的也变得越来越复杂，业务模块的数量越来越多，而且每个模块的代码也变的越来越多，单一工程下的APP架构势必会影响开发效率，增加项目的维护成本，每个工程师都要熟悉如此之多的代码，将很难进行多人协作开发，而且Android项目在编译代码的时候电脑会非常卡，又因为单一工程下代码耦合严重，每修改一处代码后都要重新编译打包测试，导致">
 <meta name="keywords" content="组件化">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Android组件化开发之路(一)">
 <meta property="og:url" content="http://yoursite.com/2017/05/10/ Android组件化开发之路(一)/index.html">
 <meta property="og:site_name" content="xybCoder博客">
-<meta property="og:description" content="#为什么要组件化？从个人经历来说的话，随着所接触的APP的体积变得越来越大，业务的也变得越来越复杂，业务模块的数量越来越多，而且每个模块的代码也变的越来越多，单一工程下的APP架构势必会影响开发效率，增加项目的维护成本，每个工程师都要熟悉如此之多的代码，将很难进行多人协作开发，而且Android项目在编译代码的时候电脑会非常卡，又因为单一工程下代码耦合严重，每修改一处代码后都要重新编译打包测试，导">
+<meta property="og:description" content="为什么要组件化？从个人经历来说的话，随着所接触的APP的体积变得越来越大，业务的也变得越来越复杂，业务模块的数量越来越多，而且每个模块的代码也变的越来越多，单一工程下的APP架构势必会影响开发效率，增加项目的维护成本，每个工程师都要熟悉如此之多的代码，将很难进行多人协作开发，而且Android项目在编译代码的时候电脑会非常卡，又因为单一工程下代码耦合严重，每修改一处代码后都要重新编译打包测试，导致">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1677338-a536fe6884ddb06a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1677338-d64b6fbf3d18734f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1677338-2ffd60b7f5e3dbf2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1677338-2711dc782320ac39.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2017-11-02T14:40:55.000Z">
+<meta property="og:updated_time" content="2017-11-05T09:13:14.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android组件化开发之路(一)">
-<meta name="twitter:description" content="#为什么要组件化？从个人经历来说的话，随着所接触的APP的体积变得越来越大，业务的也变得越来越复杂，业务模块的数量越来越多，而且每个模块的代码也变的越来越多，单一工程下的APP架构势必会影响开发效率，增加项目的维护成本，每个工程师都要熟悉如此之多的代码，将很难进行多人协作开发，而且Android项目在编译代码的时候电脑会非常卡，又因为单一工程下代码耦合严重，每修改一处代码后都要重新编译打包测试，导">
+<meta name="twitter:description" content="为什么要组件化？从个人经历来说的话，随着所接触的APP的体积变得越来越大，业务的也变得越来越复杂，业务模块的数量越来越多，而且每个模块的代码也变的越来越多，单一工程下的APP架构势必会影响开发效率，增加项目的维护成本，每个工程师都要熟悉如此之多的代码，将很难进行多人协作开发，而且Android项目在编译代码的时候电脑会非常卡，又因为单一工程下代码耦合严重，每修改一处代码后都要重新编译打包测试，导致">
 <meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/1677338-a536fe6884ddb06a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 
@@ -341,7 +341,7 @@
       
 
       
-        <p>#为什么要组件化？<br>从个人经历来说的话，随着所接触的APP的体积变得越来越大，业务的也变得越来越复杂，业务模块的数量越来越多，而且每个模块的代码也变的越来越多，单一工程下的APP架构势必会影响开发效率，增加项目的维护成本，每个工程师都要熟悉如此之多的代码，将很难进行多人协作开发，而且Android项目在编译代码的时候电脑会非常卡，又因为单一工程下代码耦合严重，每修改一处代码后都要重新编译打包测试，导致非常耗时，代码想要做单元测试也很难。</p>
+        <h1 id="为什么要组件化？"><a href="#为什么要组件化？" class="headerlink" title="为什么要组件化？"></a>为什么要组件化？</h1><p>从个人经历来说的话，随着所接触的APP的体积变得越来越大，业务的也变得越来越复杂，业务模块的数量越来越多，而且每个模块的代码也变的越来越多，单一工程下的APP架构势必会影响开发效率，增加项目的维护成本，每个工程师都要熟悉如此之多的代码，将很难进行多人协作开发，而且Android项目在编译代码的时候电脑会非常卡，又因为单一工程下代码耦合严重，每修改一处代码后都要重新编译打包测试，导致非常耗时，代码想要做单元测试也很难。</p>
 <p>目前大部分app的单一项目结构原型。大致如下图所示：</p>
 <p><img src="http://upload-images.jianshu.io/upload_images/1677338-a536fe6884ddb06a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2017-10-28 17.53.16.png"></p>
 <p>我们再来看下他们的直接的依赖关系图：</p>
@@ -605,7 +605,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#组件化："><span class="nav-number">1.</span> <span class="nav-text">组件化：</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#为什么要组件化？"><span class="nav-number">1.</span> <span class="nav-text">为什么要组件化？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#组件化："><span class="nav-number">2.</span> <span class="nav-text">组件化：</span></a></li></ol></div>
             
           </div>
         </section>
