@@ -1,0 +1,800 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="注解," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="吐槽Android开发中，我们经常写一大坨findViewById(int)类似代码，既浪费时间代码又不美观，所以很多人选择使用第三方注解式绑定库butterknife，其实Android注解式绑定控件，没你想象的那么难，我们自己也可以实现，那就开始动手吧。 注解什么是注解？注解是用来干嘛的？ 从jdk1.5开始，Java提供了注解的功能，允许开发者定义和使用自己的注解类型，该功能由一个定义注解类">
+<meta name="keywords" content="注解">
+<meta property="og:type" content="article">
+<meta property="og:title" content="深入浅出Android注解式绑定控件">
+<meta property="og:url" content="http://yoursite.com/2016/11/10/深入浅出Android注解式绑定控件/index.html">
+<meta property="og:site_name" content="xybCoder博客">
+<meta property="og:description" content="吐槽Android开发中，我们经常写一大坨findViewById(int)类似代码，既浪费时间代码又不美观，所以很多人选择使用第三方注解式绑定库butterknife，其实Android注解式绑定控件，没你想象的那么难，我们自己也可以实现，那就开始动手吧。 注解什么是注解？注解是用来干嘛的？ 从jdk1.5开始，Java提供了注解的功能，允许开发者定义和使用自己的注解类型，该功能由一个定义注解类">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-11-05T12:02:13.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="深入浅出Android注解式绑定控件">
+<meta name="twitter:description" content="吐槽Android开发中，我们经常写一大坨findViewById(int)类似代码，既浪费时间代码又不美观，所以很多人选择使用第三方注解式绑定库butterknife，其实Android注解式绑定控件，没你想象的那么难，我们自己也可以实现，那就开始动手吧。 注解什么是注解？注解是用来干嘛的？ 从jdk1.5开始，Java提供了注解的功能，允许开发者定义和使用自己的注解类型，该功能由一个定义注解类">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"right","display":"hide"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 6263412572838430000,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> 深入浅出Android注解式绑定控件 | xybCoder博客 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?2ffc178452e1fcf54c288f14f8c972a1";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">xybCoder博客</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-android">
+          <a href="/ANDROID" rel="section">
+            
+            Android开源库
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-ios">
+          <a href="/IOS" rel="section">
+            
+            IOS开源库
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                深入浅出Android注解式绑定控件
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-11-10T20:10:00+08:00" content="2016-11-10">
+              2016-11-10
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Android进阶/" itemprop="url" rel="index">
+                    <span itemprop="name">Android进阶</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/11/10/深入浅出Android注解式绑定控件/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/10/深入浅出Android注解式绑定控件/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+              &nbsp; | &nbsp;
+              <span class="page-pv">本文总阅读量
+              <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+              </span>
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="吐槽"><a href="#吐槽" class="headerlink" title="吐槽"></a>吐槽</h1><p>Android开发中，我们经常写一大坨findViewById(int)类似代码，既浪费时间代码又不美观，所以很多人选择使用第三方注解式绑定库<strong><a href="https://github.com/JakeWharton/butterknife" target="_blank" rel="external">butterknife</a></strong>，其实Android注解式绑定控件，没你想象的那么难，我们自己也可以实现，那就开始动手吧。</p>
+<h1 id="注解"><a href="#注解" class="headerlink" title="注解"></a>注解</h1><p>什么是注解？注解是用来干嘛的？</p>
+<p>从jdk1.5开始，Java提供了注解的功能，允许开发者定义和使用自己的注解类型，该功能由一个定义注解类型的语法和描述一个注解声明的语法，读取注解的API，一个使用注解修饰的class文件和一个注解处理工具组成。首先，你需要接受一个关键字@interface，它可不是接口定义关键字，是Java中表示声明一个注解类的关键字。使用@interface表示我们已经继承了java.lang.annotation.Annotation类，这是一个注解的基类接口，就好像Object类，现在你只需要知道它的存在就行了。还有一条规定：在定义注解时，不能继承其他的注解或接口。那么，这就是最简单的一个注解类</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="variable">@Target</span>(FIELD)</div><div class="line"><span class="variable">@Retention</span>(RUNTIME)</div><div class="line">public <span class="variable">@interface</span> BindView &#123;</div><div class="line">    <span class="comment">/**</span></div><div class="line"><span class="comment">     * View ID to which the field will be bound.</span></div><div class="line"><span class="comment">     */</span></div><div class="line">    <span class="variable">@IdRes</span> int value();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>@Target的意思是我们注解作用的目标，这里是ElementType.FIELD，也就是作用于字段的<br>ElementType的类型有以下几种：</p>
+<ol>
+<li>CONSTRUCTOR:用于描述构造器<ol>
+<li>FIELD:用于描述字段</li>
+<li>LOCAL_VARIABLE:用于描述局部变量</li>
+<li>METHOD:用于描述方法</li>
+<li>PACKAGE:用于描述包</li>
+<li>PARAMETER:用于描述参数</li>
+<li>TYPE:用于描述类、接口(包括注解类型) 或enum声明</li>
+</ol>
+</li>
+</ol>
+<p>@Retention的意思是注解的运行级别<br>  RetentionPolicy的类型有以下几种</p>
+<ol>
+<li>SOURCE:在源文件中有效（即源文件保留）<ol>
+<li>CLASS:在class文件中有效（即class保留）</li>
+<li>RUNTIME:在运行时有效（即运行时保留）</li>
+</ol>
+</li>
+</ol>
+<h1 id="使用注解"><a href="#使用注解" class="headerlink" title="使用注解"></a>使用注解</h1><p>注解类型是不能直接new对象的，那么这个BindView对象从哪里来呢？<br>这时就需要用到Java的反射机制。我们知道，每一个继承自Object类的类都会继承一个getClass()方法下面看一下这个方法的原型：<br><figure class="highlight puppet"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">private transient Class&lt;?&gt; shadow<span class="variable">$_klass_</span>;</div><div class="line">    private transient int shadow<span class="variable">$_monitor_</span>;</div><div class="line"></div><div class="line">    /**</div><div class="line">     * Returns the runtime <span class="keyword">class</span> <span class="title">of</span> <span class="title">this</span> &#123;@code Object&#125;. The returned</div><div class="line">     * &#123;@code Class&#125; object is the object that is locked <span class="keyword">by</span> &#123;@code</div><div class="line">     * static synchronized&#125; <span class="keyword">methods</span> <span class="keyword">of</span> <span class="keyword">the</span> <span class="keyword">represented</span> <span class="keyword">class</span>.</div><div class="line">     *</div><div class="line">     * &lt;p&gt;&lt;b&gt;The actual result type <span class="keyword">is</span> &#123;@code Class&lt;? extends |X|&gt;&#125;</div><div class="line">     * <span class="keyword">where</span> &#123;@code |X|&#125; <span class="keyword">is</span> <span class="keyword">the</span> <span class="keyword">erasure</span> <span class="keyword">of</span> <span class="keyword">the</span> <span class="keyword">static</span> <span class="keyword">type</span> <span class="keyword">of</span> <span class="keyword">the</span></div><div class="line">     * expression on <span class="keyword">which</span> &#123;@code getClass&#125; <span class="keyword">is</span> <span class="keyword">called</span>.&lt;/b&gt; For</div><div class="line">     * example, no cast is required in this code fragment:&lt;/p&gt;</div><div class="line">     *</div><div class="line">     * &lt;p&gt;</div><div class="line">     * &#123;@code Number n = 0;                             &#125;&lt;br&gt;</div><div class="line">     * &#123;@code Class&lt;? extends Number&gt; c = n.getClass(); &#125;</div><div class="line">     * &lt;/p&gt;</div><div class="line">     *</div><div class="line">     * @return <span class="keyword">The</span> &#123;@code Class&#125; <span class="keyword">object</span> <span class="keyword">that</span> <span class="keyword">represents</span> <span class="keyword">the</span> <span class="keyword">runtime</span></div><div class="line">     *         <span class="keyword">class</span> <span class="title">of</span> <span class="title">this</span> <span class="title">object</span>.</div><div class="line">     * @<span class="title">jls</span> 15.8.2 <span class="title">Class</span> <span class="title">Literals</span></div><div class="line">     */</div><div class="line">    <span class="title">public</span> <span class="title">final</span> <span class="title">Class</span>&lt;?&gt; <span class="title">getClass</span>() &#123;</div><div class="line">      return shadow<span class="variable">$_klass_</span>;</div><div class="line">    &#125;</div></pre></td></tr></table></figure></p>
+<p>这个方法返回的是该类的Class对象,Class中有一个方法叫getDeclaredFields()，是用来返回这个类的全部字段，返回类型是Field[]<br>通过Field对象的getAnnotation(Class&lt;?&gt;)方法，我们可以获取到任何一个Class的对象，通过getAnnotation(Class&lt;?&gt;)，我们就可以获取到BindView的对象了。</p>
+<figure class="highlight armasm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="symbol">Field</span>[] fields = currentClass.getClass().getDeclaredFields()<span class="comment">;</span></div><div class="line"><span class="symbol">for</span> (<span class="meta">Field</span> <span class="meta">field</span> : fields) &#123; // 遍历所有字段</div><div class="line">            // 获取字段的注解，如果没有<span class="keyword">BindView注解，则返回null</span></div><div class="line"><span class="keyword"> </span>           <span class="keyword">BindView </span><span class="keyword">bindView </span>= <span class="meta">field</span>.getAnnotation(<span class="keyword">BindView.class); </span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="Android项目中应用"><a href="#Android项目中应用" class="headerlink" title="Android项目中应用"></a>Android项目中应用</h1><p>定义好了注解，如果我们直接来使用，是没有任何效果的，因为注解只是一段代码，并没有关联上我们的控件，所以我们要编写一个工具类来做关联</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">AnnotateUtils</span> &#123;</div><div class="line">     <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">bind</span>(<span class="params">Activity activity</span>) </span>&#123;</div><div class="line">        Class&lt;? extends Activity&gt; <span class="keyword">object</span> = activity.getClass(); <span class="comment">// 获取activity的Class实例</span></div><div class="line">        Field[] fields = <span class="keyword">object</span>.getDeclaredFields(); <span class="comment">// 通过Class实例获取activity的所有字段</span></div><div class="line">        <span class="keyword">for</span> (Field field : fields) &#123; <span class="comment">// 遍历所有字段</span></div><div class="line">            <span class="comment">// 获取字段的注解，如果没有BindView注解，则返回null</span></div><div class="line">            BindView bindView = field.getAnnotation(BindView.class);</div><div class="line">            <span class="keyword">if</span> (bindView != <span class="literal">null</span>) &#123;</div><div class="line">                <span class="keyword">int</span> viewId = bindView.<span class="keyword">value</span>(); <span class="comment">// 获取字段注解的参数，这就是我们传进去控件Id</span></div><div class="line">                <span class="keyword">if</span> (viewId != <span class="number">-1</span>) &#123;</div><div class="line">                    <span class="keyword">try</span> &#123;</div><div class="line">                        <span class="comment">// 获取类中的findViewById方法，参数为int</span></div><div class="line">                        Method method = <span class="keyword">object</span>.getMethod(<span class="string">"findViewById"</span>, <span class="keyword">int</span>.class);</div><div class="line">                        <span class="comment">// 执行该方法，返回一个Object类型的View实例</span></div><div class="line">                        Object resView = method.invoke(activity, viewId);</div><div class="line">                        field.setAccessible(<span class="literal">true</span>);</div><div class="line">                        <span class="comment">// 把字段的值设置为该View的实例</span></div><div class="line">                        field.<span class="keyword">set</span>(activity, resView);</div><div class="line">                    &#125; <span class="keyword">catch</span> (NoSuchMethodException e) &#123;</div><div class="line">                        e.printStackTrace();</div><div class="line">                    &#125; <span class="keyword">catch</span> (IllegalAccessException e) &#123;</div><div class="line">                        e.printStackTrace();</div><div class="line">                    &#125; <span class="keyword">catch</span> (InvocationTargetException e) &#123;</div><div class="line">                        e.printStackTrace();</div><div class="line">                    &#125;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>当我们需要使用注解的时候，我们只需要在定义View的时候，在View的字段上添加对应的注解，把Id传入，然后在onCreate方法中调用上面这个工具类的方法即可。<br><figure class="highlight scala"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">public <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="meta">@BindView</span>(<span class="type">R</span>.id.tv_hello)</div><div class="line">    <span class="keyword">private</span> <span class="type">TextView</span> tvHello;</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="keyword">protected</span> void onCreate(<span class="type">Bundle</span> savedInstanceState) &#123;</div><div class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</div><div class="line">        setContentView(<span class="type">R</span>.layout.activity_main);</div><div class="line">        <span class="type">AnnotateUtils</span>.bind(<span class="keyword">this</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><strong>几点说明：</strong></p>
+<ol>
+<li>如果注解中的值不是value，那么在进行注解是时候，需要给出对应的值的名字，假如我们在注解中做了如下定义：<figure class="highlight less"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="variable">@Target</span>(FIELD)</div><div class="line"><span class="variable">@Retention</span>(RUNTIME)</div><div class="line">public <span class="variable">@interface</span> BindView &#123;</div><div class="line">    <span class="comment">/**</span></div><div class="line"><span class="comment">     * View ID to which the field will be bound.</span></div><div class="line"><span class="comment">     */</span></div><div class="line">    <span class="variable">@IdRes</span> int id();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>那么在注解的时候，需要这样：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">@<span class="keyword">BindView</span>(<span class="keyword">id</span>==<span class="keyword">R</span>.<span class="keyword">id</span>.<span class="keyword">tv_hello</span>)</div><div class="line"><span class="keyword">private</span> TextView tvHello;</div></pre></td></tr></table></figure></p>
+<p>2 .使用注解的时候，句末不能加”;”</p>
+<ol>
+<li>Android中的注解式绑定控件（也是所谓的IOC控制反转在安卓中的一种应用）其实本质的使用就是Java基础中反射的使用。值得一提的是，反射执行的效率是很低的.</li>
+</ol>
+
+      
+    </div>
+    
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/注解/" rel="tag">#注解</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/10/03/Service后台保活/" rel="next" title="Service后台保活">
+                <i class="fa fa-chevron-left"></i> Service后台保活
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/03/03/约瑟夫问题/" rel="prev" title="约瑟夫问题">
+                约瑟夫问题 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  <p>热评文章</p>
+  <div class="ds-top-threads" data-range="weekly" data-num-items="4"></div>
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/11/10/深入浅出Android注解式绑定控件/"
+           data-title="深入浅出Android注解式绑定控件" data-url="http://yoursite.com/2016/11/10/深入浅出Android注解式绑定控件/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.png"
+               alt="xybCoder" />
+          <p class="site-author-name" itemprop="name">xybCoder</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">41</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">25</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/xybCoder" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/p/1005053745997724/home?is_all=1" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element">
+            <div class="links-of-blogroll-title">
+              <i class="fa fa-globe fa-fw"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://blog.daimajia.com/" title="代码家" target="_blank">代码家</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://github.com/lzyzsd/" title="hi大头鬼hi" target="_blank">hi大头鬼hi</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://blog.zhaiyifan.cn/" title="翟一帆" target="_blank">翟一帆</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://liaohuqiu.net/" title="秋百万" target="_blank">秋百万</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://drakeet.me/" title="Drakeet博客" target="_blank">Drakeet博客</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.trinea.cn/" title="Trinea" target="_blank">Trinea</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://p.codekk.com/" title="CodeKK" target="_blank">CodeKK</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://blog.csdn.net/eclipsexys/" title="Tomcat的猫" target="_blank">Tomcat的猫</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.race604.com/" title="android笔记" target="_blank">android笔记</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.androidperformance.com/" title="Gracker" target="_blank">Gracker</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://yanghui.name/" title="杨辉" target="_blank">杨辉</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://hujiaweibujidao.github.io/" title="五道口宅男" target="_blank">五道口宅男</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://blog.csdn.net/singwhatiwanna/" title="任玉刚博客" target="_blank">任玉刚博客</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://blog.fangjie.info/" title="方杰博客" target="_blank">方杰博客</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://blog.isming.me/" title="码农明明桑" target="_blank">码农明明桑</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#吐槽"><span class="nav-number">1.</span> <span class="nav-text">吐槽</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#注解"><span class="nav-number">2.</span> <span class="nav-text">注解</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用注解"><span class="nav-number">3.</span> <span class="nav-text">使用注解</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Android项目中应用"><span class="nav-number">4.</span> <span class="nav-text">Android项目中应用</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xybCoder</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+        
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">本站访客数<span class="busuanzi-value" id="busuanzi_value_site_uv"></span>人次</span>
+  
+
+  
+    <span class="site-pv">本站总访问量<span class="busuanzi-value" id="busuanzi_value_site_pv"></span>次</span>
+  
+  
+</div>
+
+
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"xybcoder"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+      
+      <script src="/vendors/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+      <script src="/js/src/hook-duoshuo.js"></script>
+    
+  
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+<script type="text/javascript" async src="//push.zhanzhang.baidu.com/push.js">
+</script>
+
+
+</body>
+</html>
