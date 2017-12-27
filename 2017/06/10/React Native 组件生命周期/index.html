@@ -80,19 +80,19 @@
 
 
 
-<meta name="description" content="#概述就像 Android 开发中的 View 一样，React Native（RN） 中的组件也有生命周期（Lifecycle）。所谓生命周期，就是一个对象从开始生成到最后消亡所经历的状态，理解生命周期，是合理开发的关键。RN 组件的生命周期整理如下图：  如图，可以把组件生命周期大致分为三个阶段： 第一阶段：是组件第一次绘制阶段，如图中的上面虚线框内，在这里完成了组件的加载和初始化；第二阶段">
+<meta name="description" content="概述就像 Android 开发中的 View 一样，React Native（RN） 中的组件也有生命周期（Lifecycle）。所谓生命周期，就是一个对象从开始生成到最后消亡所经历的状态，理解生命周期，是合理开发的关键。RN 组件的生命周期整理如下图：  如图，可以把组件生命周期大致分为三个阶段： 第一阶段：是组件第一次绘制阶段，如图中的上面虚线框内，在这里完成了组件的加载和初始化；第二阶段：是">
 <meta name="keywords" content="React Native">
 <meta property="og:type" content="article">
 <meta property="og:title" content="React Native 组件生命周期">
 <meta property="og:url" content="http://yoursite.com/2017/06/10/React Native 组件生命周期/index.html">
 <meta property="og:site_name" content="xybCoder博客">
-<meta property="og:description" content="#概述就像 Android 开发中的 View 一样，React Native（RN） 中的组件也有生命周期（Lifecycle）。所谓生命周期，就是一个对象从开始生成到最后消亡所经历的状态，理解生命周期，是合理开发的关键。RN 组件的生命周期整理如下图：  如图，可以把组件生命周期大致分为三个阶段： 第一阶段：是组件第一次绘制阶段，如图中的上面虚线框内，在这里完成了组件的加载和初始化；第二阶段">
+<meta property="og:description" content="概述就像 Android 开发中的 View 一样，React Native（RN） 中的组件也有生命周期（Lifecycle）。所谓生命周期，就是一个对象从开始生成到最后消亡所经历的状态，理解生命周期，是合理开发的关键。RN 组件的生命周期整理如下图：  如图，可以把组件生命周期大致分为三个阶段： 第一阶段：是组件第一次绘制阶段，如图中的上面虚线框内，在这里完成了组件的加载和初始化；第二阶段：是">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1677338-eff7adfd09b06850.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2017-12-27T14:11:16.000Z">
+<meta property="og:updated_time" content="2017-12-27T14:25:56.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="React Native 组件生命周期">
-<meta name="twitter:description" content="#概述就像 Android 开发中的 View 一样，React Native（RN） 中的组件也有生命周期（Lifecycle）。所谓生命周期，就是一个对象从开始生成到最后消亡所经历的状态，理解生命周期，是合理开发的关键。RN 组件的生命周期整理如下图：  如图，可以把组件生命周期大致分为三个阶段： 第一阶段：是组件第一次绘制阶段，如图中的上面虚线框内，在这里完成了组件的加载和初始化；第二阶段">
+<meta name="twitter:description" content="概述就像 Android 开发中的 View 一样，React Native（RN） 中的组件也有生命周期（Lifecycle）。所谓生命周期，就是一个对象从开始生成到最后消亡所经历的状态，理解生命周期，是合理开发的关键。RN 组件的生命周期整理如下图：  如图，可以把组件生命周期大致分为三个阶段： 第一阶段：是组件第一次绘制阶段，如图中的上面虚线框内，在这里完成了组件的加载和初始化；第二阶段：是">
 <meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/1677338-eff7adfd09b06850.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 
@@ -338,33 +338,24 @@
       
 
       
-        <p> #概述<br>就像 Android 开发中的 View 一样，React Native（RN） 中的组件也有生命周期（Lifecycle）。所谓生命周期，就是一个对象从开始生成到最后消亡所经历的状态，理解生命周期，是合理开发的关键。RN 组件的生命周期整理如下图：</p>
+        <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>就像 Android 开发中的 View 一样，React Native（RN） 中的组件也有生命周期（Lifecycle）。所谓生命周期，就是一个对象从开始生成到最后消亡所经历的状态，理解生命周期，是合理开发的关键。RN 组件的生命周期整理如下图：</p>
 <p><img src="http://upload-images.jianshu.io/upload_images/1677338-eff7adfd09b06850.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="component-lifecycle.jpg"></p>
 <p>如图，可以把组件生命周期大致分为三个阶段：</p>
 <p>第一阶段：是组件第一次绘制阶段，如图中的上面虚线框内，在这里完成了组件的加载和初始化；<br>第二阶段：是组件在运行和交互阶段，如图中左下角虚线框，这个阶段组件可以处理用户交互，或者接收事件更新界面；<br>第三阶段：是组件卸载消亡的阶段，如图中右下角的虚线框中，这里做一些组件的清理工作。</p>
-<p>#生命周期回调函数</p>
-<p>##getDefaultProps</p>
-<p>在组件创建之前，会先调用 getDefaultProps()，这是全局调用一次，严格地来说，这不是组件的生命周期的一部分。在组件被创建并加载候，首先调用 getInitialState()，来初始化组件的状态。</p>
-<p>##componentWillMount</p>
-<p>然后，准备加载组件，会调用 componentWillMount()，这个函数调用时机是在组件创建，并初始化了状态之后，在第一次绘制render() 之前。可以在这里做一些业务初始化操作，也可以设置组件状态。这个函数在整个生命周期中只被调用一次。</p>
-<p>##componentDidMount</p>
-<p>在组件第一次绘制之后，会调用 componentDidMount()，通知组件已经加载完成。这个函数调用的时候，其虚拟 DOM 已经构建完成，你可以在这个函数开始获取其中的元素或者子组件了。需要注意的是，RN 框架是先调用子组件的 componentDidMount()，然后调用父组件的函数。从这个函数开始，就可以和 JS 其他框架交互了，例如设置计时 setTimeout 或者 setInterval，或者发起网络请求。这个函数也是只被调用一次。这个函数之后，就进入了稳定运行状态，等待事件触发。</p>
-<p>##componentWillReceiveProps</p>
-<p>如果组件收到新的属性（props），就会调用 componentWillReceiveProps()，其原型如下：<br><figure class="highlight ceylon"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">void</span> componentWillReceiveProps(  </div><div class="line">  <span class="keyword">object</span> nextProps</div><div class="line">)</div></pre></td></tr></table></figure></p>
+<h1 id="生命周期回调函数"><a href="#生命周期回调函数" class="headerlink" title="生命周期回调函数"></a>生命周期回调函数</h1><h2 id="getDefaultProps"><a href="#getDefaultProps" class="headerlink" title="getDefaultProps"></a>getDefaultProps</h2><p>在组件创建之前，会先调用 getDefaultProps()，这是全局调用一次，严格地来说，这不是组件的生命周期的一部分。在组件被创建并加载候，首先调用 getInitialState()，来初始化组件的状态。</p>
+<h2 id="componentWillMount"><a href="#componentWillMount" class="headerlink" title="componentWillMount"></a>componentWillMount</h2><p>然后，准备加载组件，会调用 componentWillMount()，这个函数调用时机是在组件创建，并初始化了状态之后，在第一次绘制render() 之前。可以在这里做一些业务初始化操作，也可以设置组件状态。这个函数在整个生命周期中只被调用一次。</p>
+<h2 id="componentDidMount"><a href="#componentDidMount" class="headerlink" title="componentDidMount"></a>componentDidMount</h2><p>在组件第一次绘制之后，会调用 componentDidMount()，通知组件已经加载完成。这个函数调用的时候，其虚拟 DOM 已经构建完成，你可以在这个函数开始获取其中的元素或者子组件了。需要注意的是，RN 框架是先调用子组件的 componentDidMount()，然后调用父组件的函数。从这个函数开始，就可以和 JS 其他框架交互了，例如设置计时 setTimeout 或者 setInterval，或者发起网络请求。这个函数也是只被调用一次。这个函数之后，就进入了稳定运行状态，等待事件触发。</p>
+<h2 id="componentWillReceiveProps"><a href="#componentWillReceiveProps" class="headerlink" title="componentWillReceiveProps"></a>componentWillReceiveProps</h2><p>如果组件收到新的属性（props），就会调用 componentWillReceiveProps()，其原型如下：<br><figure class="highlight ceylon"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">void</span> componentWillReceiveProps(  </div><div class="line">  <span class="keyword">object</span> nextProps</div><div class="line">)</div></pre></td></tr></table></figure></p>
 <p>输入参数 nextProps 是即将被设置的属性，旧的属性还是可以通过 this.props 来获取。在这个回调函数里面，你可以根据属性的变化，通过调用 this.setState() 来更新你的组件状态，这里调用更新状态是安全的，并不会触发额外的 render() 调用。如下：<br><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">componentWillReceiveProps: <span class="function"><span class="keyword">function</span><span class="params">(nextProps)</span> </span>&#123;  </div><div class="line">  <span class="keyword">this</span>.setState(&#123;</div><div class="line">    .......</div><div class="line">  &#125;);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>##shouldComponentUpdate</p>
-<p>当组件接收到新的属性和状态改变的话，都会触发调用 shouldComponentUpdate(…)，函数原型如下：<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">boolean shouldComponentUpdate(  </div><div class="line">  <span class="selector-tag">object</span> nextProps, <span class="selector-tag">object</span> nextState</div><div class="line">)</div></pre></td></tr></table></figure></p>
+<h2 id="shouldComponentUpdate"><a href="#shouldComponentUpdate" class="headerlink" title="shouldComponentUpdate"></a>shouldComponentUpdate</h2><p>当组件接收到新的属性和状态改变的话，都会触发调用 shouldComponentUpdate(…)，函数原型如下：<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">boolean shouldComponentUpdate(  </div><div class="line">  <span class="selector-tag">object</span> nextProps, <span class="selector-tag">object</span> nextState</div><div class="line">)</div></pre></td></tr></table></figure></p>
 <p>输入参数 nextProps 和上面的 componentWillReceiveProps 函数一样，nextState 表示组件即将更新的状态值。这个函数的返回值决定是否需要更新组件，如果 true 表示需要更新，继续走后面的更新流程。否者，则不更新，直接进入等待状态。</p>
 <p>默认情况下，这个函数永远返回 true 用来保证数据变化的时候 UI 能够同步更新。在大型项目中，你可以自己重载这个函数，通过检查变化前后属性和状态，来决定 UI 是否需要更新，能有效提高应用性能。</p>
 <h2 id="componentWillUpdate"><a href="#componentWillUpdate" class="headerlink" title="componentWillUpdate"></a>componentWillUpdate</h2><p>如果组件状态或者属性改变，并且上面的 shouldComponentUpdate(…) 返回为 true，就会开始准更新组件，并调用 componentWillUpdate()，其函数原型如下：<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">void componentWillUpdate(  </div><div class="line">  <span class="selector-tag">object</span> nextProps, <span class="selector-tag">object</span> nextState</div><div class="line">)</div></pre></td></tr></table></figure></p>
 <p>输入参数与 shouldComponentUpdate 一样，在这个回调中，可以做一些在更新界面之前要做的事情。需要特别注意的是，在这个函数里面，你就不能使用 this.setState 来修改状态。这个函数调用之后，就会把 nextProps 和 nextState 分别设置到 this.props 和 this.state 中。紧接着这个函数，就会调用 render() 来更新界面了。</p>
-<p>##componentDidUpdate</p>
-<p>调用了 render() 更新完成界面之后，会调用 componentDidUpdate() 来得到通知，其函数原型如下：<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">void componentDidUpdate(  </div><div class="line">  <span class="selector-tag">object</span> prevProps, <span class="selector-tag">object</span> prevState</div><div class="line">)</div></pre></td></tr></table></figure></p>
+<h2 id="componentDidUpdate"><a href="#componentDidUpdate" class="headerlink" title="componentDidUpdate"></a>componentDidUpdate</h2><p>调用了 render() 更新完成界面之后，会调用 componentDidUpdate() 来得到通知，其函数原型如下：<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">void componentDidUpdate(  </div><div class="line">  <span class="selector-tag">object</span> prevProps, <span class="selector-tag">object</span> prevState</div><div class="line">)</div></pre></td></tr></table></figure></p>
 <p>因为到这里已经完成了属性和状态的更新了，此函数的输入参数变成了 prevProps 和 prevState。</p>
-<p>##componentWillUnmount</p>
-<p>当组件要被从界面上移除的时候，就会调用 componentWillUnmount()，在这个函数中，可以做一些组件相关的清理工作，例如取消计时器、网络请求等。</p>
-<p>#总结</p>
-<p>到这里，RN 的组件的完整的生命都介绍完了，在回头来看一下前面的图，就比较清晰了，把生命周期的回调函数总结成如下表格：</p>
+<h2 id="componentWillUnmount"><a href="#componentWillUnmount" class="headerlink" title="componentWillUnmount"></a>componentWillUnmount</h2><p>当组件要被从界面上移除的时候，就会调用 componentWillUnmount()，在这个函数中，可以做一些组件相关的清理工作，例如取消计时器、网络请求等。</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>到这里，RN 的组件的完整的生命都介绍完了，在回头来看一下前面的图，就比较清晰了，把生命周期的回调函数总结成如下表格：</p>
 <table>
 <thead>
 <tr>
@@ -423,32 +414,6 @@
 <td>componentWillUnmount</td>
 <td>1</td>
 <td style="text-align:center">否</td>
-</tr>
-</tbody>
-</table>
-<table>
-<thead>
-<tr>
-<th>Tables</th>
-<th>Are</th>
-<th style="text-align:right">Cool</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>col 3 is</td>
-<td>right-aligned</td>
-<td style="text-align:right">$16000</td>
-</tr>
-<tr>
-<td>col 2 is</td>
-<td>centered</td>
-<td style="text-align:right">$12</td>
-</tr>
-<tr>
-<td>zebra strips</td>
-<td>are neat</td>
-<td style="text-align:right">$1</td>
 </tr>
 </tbody>
 </table>
@@ -702,7 +667,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#componentWillUpdate"><span class="nav-number">1.</span> <span class="nav-text">componentWillUpdate</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#生命周期回调函数"><span class="nav-number">2.</span> <span class="nav-text">生命周期回调函数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#getDefaultProps"><span class="nav-number">2.1.</span> <span class="nav-text">getDefaultProps</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#componentWillMount"><span class="nav-number">2.2.</span> <span class="nav-text">componentWillMount</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#componentDidMount"><span class="nav-number">2.3.</span> <span class="nav-text">componentDidMount</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#componentWillReceiveProps"><span class="nav-number">2.4.</span> <span class="nav-text">componentWillReceiveProps</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#shouldComponentUpdate"><span class="nav-number">2.5.</span> <span class="nav-text">shouldComponentUpdate</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#componentWillUpdate"><span class="nav-number">2.6.</span> <span class="nav-text">componentWillUpdate</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#componentDidUpdate"><span class="nav-number">2.7.</span> <span class="nav-text">componentDidUpdate</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#componentWillUnmount"><span class="nav-number">2.8.</span> <span class="nav-text">componentWillUnmount</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">3.</span> <span class="nav-text">总结</span></a></li></ol></div>
             
           </div>
         </section>
